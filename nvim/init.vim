@@ -11,6 +11,8 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'majutsushi/tagbar'
+Plug 'AndrewRadev/splitjoin.vim'
 call plug#end()
 
 colorscheme gruvbox
@@ -56,13 +58,14 @@ nnoremap <silent> <F3> :NERDTreeToggle<CR>
 
 "" Airline configuration
 let g:airline_theme = 'bubblegum'
-let g:airline#extensions#syntastic#enabled = 1
+" let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#ale#enabled = 1 " show errors or warnings at airline
 let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
-let g:airline_skip_empty_sections = 1
+let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline_skip_empty_sections = 1
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
@@ -71,6 +74,14 @@ let g:airline_symbols = {}
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+
+"" Ale configuration
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
@@ -114,15 +125,15 @@ nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
 
-" Disable visualbell
+"" Tagbar
+nmap <silent> <F4> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+
+"" Disable visualbell
 set noerrorbells visualbell t_vb=
 if has('autocmd')
   autocmd GUIEnter * set visualbell t_vb=
 endif
-
-"" Lint ALE
-" show errors or warnings at airline
-let g:airline#extensions#ale#enabled = 1
 
 ""fzf
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
@@ -150,6 +161,7 @@ let g:go_highlight_space_tab_error = 0
 let g:go_highlight_array_whitespace_error = 0
 let g:go_highlight_trailing_whitespace_error = 0
 let g:go_highlight_extra_types = 1
+let g:go_decls_mode = 'fzf'
 
 function! s:build_go_files()
   let l:file = expand('%')
