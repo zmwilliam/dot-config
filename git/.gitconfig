@@ -1,0 +1,16 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+#	name = William Zmiyewski
+#	email = zmwilliam@Williams-MacBook-Pro.local
+[credential]
+	helper = osxkeychain
+[user]
+	email = willcxa@gmail.com
+	name = zmwilliam
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[mergetool]
+	keepBackup = false
