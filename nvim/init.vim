@@ -13,6 +13,11 @@ Plug 'w0rp/ale'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'majutsushi/tagbar'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 call plug#end()
 
 colorscheme gruvbox
@@ -52,6 +57,7 @@ let g:NERDTreeShowBookmarks=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 50
+let g:NERDTreeQuitOnOpen=1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 nnoremap <silent> <F3> :NERDTreeToggle<CR>
@@ -65,6 +71,7 @@ let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_skip_empty_sections = 1
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -89,41 +96,48 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " terminal emulation
-nnoremap <silent> <leader>sh :terminal<CR>
+" nnoremap <silent> <leader>sh :terminal<CR>
 
 "" Split
-noremap <Leader>h :<C-u>split<CR>
+noremap <Leader>s :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
+
+"" Movement
+noremap <Leader>h ^
+noremap <Leader>l $
 
 "" Switching windows
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
+
 "" Buffer nav
-noremap <leader>z :bp<CR>
-noremap <leader>q :bp<CR>
-noremap <leader>x :bn<CR>
-noremap <leader>w :bn<CR>
-"" Close buffer
-noremap <leader>c :bd<CR>
+"Move to the next buffer
+nmap <leader>x :bnext<CR>
+"Move to the previous buffer
+nmap <leader>z :bprevious<CR>
+"Close the current buffer and move to the previous one
+nmap <leader>c :bp <BAR> bd #<CR>
+
 "" Clean search (highlight)
-nnoremap <silent> <leader><space> :noh<cr>
+" nnoremap <silent> <leader><space> :noh<cr>
+nnoremap <silent> <leader>cl :noh<cr>
 
 "" Git
-noremap <Leader>ga :Gwrite<CR>
-noremap <Leader>gc :Gcommit<CR>
-noremap <Leader>gsh :Gpush<CR>
-noremap <Leader>gll :Gpull<CR>
-noremap <Leader>gs :Gstatus<CR>
-noremap <Leader>gb :Gblame<CR>
-noremap <Leader>gd :Gvdiff<CR>
-noremap <Leader>gr :Gremove<CR>
+noremap <Leader>gia :Gwrite<CR>
+noremap <Leader>gic :Gcommit<CR>
+noremap <Leader>gipu :Gpush<CR>
+noremap <Leader>gip :Gpull<CR>
+noremap <Leader>gis :Gstatus<CR>
+noremap <Leader>gib :Gblame<CR>
+noremap <Leader>gid :Gvdiff<CR>
+noremap <Leader>gir :Gremove<CR>
 
 "" Tabs
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
-nnoremap <silent> <S-t> :tabnew<CR>
+" nnoremap <Tab> gt
+" nnoremap <S-Tab> gT
+" nnoremap <silent> <S-t> :tabnew<CR>
 
 "" Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
@@ -139,15 +153,42 @@ endif
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>e :FZF -m<CR>
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
+" The Silver Searcher
+if executable('ag')
+  let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
 
+"" multiple-cursor
+let g:multi_cursor_use_default_mapping = 0
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_select_all_word_key = '<A-n>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_select_all_key      = 'g<A-n>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
 
-" Jump to next error with Ctrl-n and previous error with Ctrl-m. Close the
-" quickfix window with <leader>a
-map <C-n> :cnext<CR>		
-map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>		
+"" deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#pointer = 1
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+" Disable the candidates in Comment/String syntaxes.
+call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment', 'String'])
 
 "" vim-go
+
+" Jump to next error with F8 and previous error with Shift F8. Close the
+" quickfix window with <leader>a
+map <F8> :cnext<CR>		
+map <S-F8> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>		
+
 let g:go_list_type = "quickfix" 		" Specifies the type of list to use for command outputs 
 let g:go_highlight_types = 1			" Highlight struct and interface names.
 let g:go_highlight_fields = 1			" Highlight struct field names
