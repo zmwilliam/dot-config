@@ -25,3 +25,8 @@ set -gx EDITOR nvim
 set -gx VISUAL nvim
 
 set -x GOPATH $HOME/workspace/go
+set -U fish_user_paths $fish_user_paths $GOPATH/bin
+
+if test -f $HOME/.config/fish/config.secret.fish
+  source $HOME/.config/fish/config.secret.fish 
+end
