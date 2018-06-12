@@ -3,7 +3,6 @@ Plug 'morhetz/gruvbox'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -16,12 +15,17 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 call plug#end()
 
 colorscheme gruvbox
 set background=dark
+if exists('$SHELL')
+    set shell=$SHELL
+else
+    set shell=/bin/sh
+endif
 
 let mapleader="\<space>" 	" Map leader to space
 set hidden 			" hidden buffers
@@ -42,6 +46,10 @@ set laststatus=2		" Display the status line always
 set backspace=indent,eol,start  " Makes backspace key more powerful.
 set pumheight=10                " Completion window max size
 set nowrap 			" Disable word wrap
+set tabstop=2
+set softtabstop=0
+set shiftwidth=2
+set expandtab
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 if exists("*fugitive#statusline")
@@ -72,6 +80,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_skip_empty_sections = 1
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -89,6 +98,15 @@ let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
+
+"" Neosnippet
+" C-k to select-and-expand a snippet from the deoplete popup (Use C-n and C-p to select it).
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+" <tab> to select-and-expand a snippet from the deoplete popup (Use C-n and C-p to select it).
+imap <expr><tab> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<c-j>" : "\<tab>"
+smap <expr><tab> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
@@ -178,8 +196,7 @@ let g:deoplete#enable_smart_case = 1
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#pointer = 1
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-" Disable the candidates in Comment/String syntaxes.
-call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment', 'String'])
+call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment'])
 
 "" vim-go
 
@@ -189,13 +206,13 @@ map <F8> :cnext<CR>
 map <S-F8> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>		
 
-let g:go_list_type = "quickfix" 		" Specifies the type of list to use for command outputs 
-let g:go_highlight_types = 1			" Highlight struct and interface names.
-let g:go_highlight_fields = 1			" Highlight struct field names
-let g:go_highlight_functions = 1		" Highlight function and method declarations.
+let g:go_list_type = "quickfix" 		    " Specifies the type of list to use for command outputs 
+let g:go_highlight_types = 1			      " Highlight struct and interface names.
+let g:go_highlight_fields = 1			      " Highlight struct field names
+let g:go_highlight_functions = 1		    " Highlight function and method declarations.
 let g:go_highlight_function_calls = 1		" Highlight function and method calls
-let g:go_highlight_operators = 1		" Highlight operators such as `:=` , `==`, `-=`, etc.
-let g:go_highlight_build_constraints = 1	" 
+let g:go_highlight_operators = 1		    " Highlight operators such as `:=` , `==`, `-=`, etc.
+let g:go_highlight_build_constraints = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_generate_tags = 1
 let g:go_highlight_space_tab_error = 0
@@ -203,6 +220,10 @@ let g:go_highlight_array_whitespace_error = 0
 let g:go_highlight_trailing_whitespace_error = 0
 let g:go_highlight_extra_types = 1
 let g:go_decls_mode = 'fzf'
+let g:go_fmt_command = "goimports"
+let g:go_auto_type_info = 1               " show the type info for the word under the cursor automatically
+let g:go_auto_sameids = 1                 " highlight all uses of the identifier under the cursor
+let g:go_addtags_transform = "snakecase"  " snake_case for json generated tags
 
 function! s:build_go_files()
   let l:file = expand('%')
