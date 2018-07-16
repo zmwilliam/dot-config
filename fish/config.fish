@@ -17,15 +17,17 @@ abbr glast 'git diff HEADˆ'
 abbr ga 'git add'
 abbr gp 'git push'
 abbr gl 'git log --graph --date=short'
+abbr glc 'git log --pretty=format:"%h %cr %cn %Cgreen%s%Creset" --name-status'
 abbr gta 'go test ./...'
-
 abbr vim nvim
 
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 
 set -x GOPATH $HOME/workspace/go
-set -U fish_user_paths $fish_user_paths $GOPATH/bin
+
+add_to_user_path $GOPATH/bin
+add_to_user_path "usr/local/sbin"
 
 if test -f $HOME/.config/fish/config.secret.fish
   source $HOME/.config/fish/config.secret.fish 

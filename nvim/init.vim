@@ -22,6 +22,9 @@ call plug#end()
 
 colorscheme gruvbox
 set background=dark
+if has("termguicolors")
+	set termguicolors
+endif
 if exists('$SHELL')
     set shell=$SHELL
 else
@@ -133,11 +136,14 @@ noremap <C-h> <C-w>h
 
 "" Buffer nav
 "Move to the next buffer
-nmap <leader>x :bnext<CR>
+"nmap <leader>x :bnext<CR>
 "Move to the previous buffer
-nmap <leader>z :bprevious<CR>
+"nmap <leader>z :bprevious<CR>
 "Close the current buffer and move to the previous one
-nmap <leader>c :bp <BAR> bd #<CR>
+"nmap <leader>c :bp <BAR> bd #<CR>
+nnoremap <leader>x :bp <BAR> bd #<CR>
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
 
 "" Clean search (highlight)
 " nnoremap <silent> <leader><space> :noh<cr>
@@ -223,8 +229,9 @@ let g:go_highlight_extra_types = 1
 let g:go_decls_mode = 'fzf'
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1               " show the type info for the word under the cursor automatically
-let g:go_auto_sameids = 1                 " highlight all uses of the identifier under the cursor
+let g:go_auto_sameids = 0                 " highlight all uses of the identifier under the cursor
 let g:go_addtags_transform = "snakecase"  " snake_case for json generated tags
+let g:go_info_mode = 'gocode'
 
 function! s:build_go_files()
   let l:file = expand('%')
