@@ -1,7 +1,6 @@
 call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
@@ -18,6 +17,9 @@ Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Raimondi/delimitMate'
+Plug 'sheerun/vim-polyglot'
+" Plug 'pangloss/vim-javascript'
+" Plug 'mxw/vim-jsx'
 call plug#end()
 
 colorscheme gruvbox
@@ -54,6 +56,9 @@ set tabstop=2
 set softtabstop=0
 set shiftwidth=2
 set expandtab
+
+"This will enable filetype detection, running filetype specific plugins, and loading filetype specific indentation settings.
+filetype plugin indent on
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 if exists("*fugitive#statusline")
@@ -102,6 +107,7 @@ let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
+let g:ale_lint_on_enter = 0
 
 "" Neosnippet
 " C-k to select-and-expand a snippet from the deoplete popup (Use C-n and C-p to select it).
@@ -204,6 +210,9 @@ let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#pointer = 1
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment'])
+
+"" vim-javascript
+" let g:javascript_plugin_flow = 1
 
 "" vim-go
 
