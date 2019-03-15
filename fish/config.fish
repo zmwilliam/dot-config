@@ -26,28 +26,20 @@ abbr tsd 'tmux attach -t default ;or tmux new -s default'
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 
-set -x GOPATH $HOME/workspace/go
-
-set -x HOMEBREW_GITHUB_API_TOKEN 8987912df0b55e31928286c7836e94316a8a07e0
-
+set -gx GOPATH $HOME/workspace/go
 add_to_user_path $GOPATH/bin
 
 if test -f $HOME/.config/fish/config.secret.fish
   source $HOME/.config/fish/config.secret.fish 
 end
 
-#if test ! (which node)
-#  and test (which nave)
-#    nave use latest
-#end
-
 if test (which asdf)
   source /usr/local/opt/asdf/asdf.fish
 end
 
-if test (which tmux) 
-  and status is-interactive 
-  and not set -q TMUX
-    eval tmux attach -t default ;or tmux new -s default
-end
+#if test (which tmux) 
+#  and status is-interactive 
+#  and not set -q TMUX
+#    eval tmux attach -t default ;or tmux new -s default
+#end
 

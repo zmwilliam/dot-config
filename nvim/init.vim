@@ -3,12 +3,14 @@ Plug 'morhetz/gruvbox'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'majutsushi/tagbar'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'easymotion/vim-easymotion'
@@ -18,8 +20,9 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Raimondi/delimitMate'
 Plug 'sheerun/vim-polyglot'
-" Plug 'pangloss/vim-javascript'
-" Plug 'mxw/vim-jsx'
+Plug 'ryanoasis/vim-devicons'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
 call plug#end()
 
 colorscheme gruvbox
@@ -57,6 +60,11 @@ set softtabstop=0
 set shiftwidth=2
 set expandtab
 
+"" Clipboard
+if has('unnamedplus')
+  set clipboard=unnamed,unnamedplus
+endif
+
 "This will enable filetype detection, running filetype specific plugins, and loading filetype specific indentation settings.
 filetype plugin indent on
 
@@ -65,6 +73,23 @@ if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
 
+"" Abbreviations
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qall qall
+
+"" Session management
+let g:session_directory = "~/.vim/session"
+let g:session_autoload = "yes"
+let g:session_autosave = "yes"
+let g:session_command_aliases = 1
 
 "" NERDTree configuration
 let g:NERDTreeChDirMode=2
@@ -100,6 +125,12 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
+"" Devicons
+" enable folder/directory glyph flag
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+" enable open and close folder/directory glyph flags
+let g:DevIconsEnableFoldersOpenClose = 1
+
 "" Ale configuration
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
@@ -134,19 +165,7 @@ noremap <Leader>v :<C-u>vsplit<CR>
 noremap <Leader>h ^
 noremap <Leader>l $
 
-"" Switching windows
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-noremap <C-h> <C-w>h
-
 "" Buffer nav
-"Move to the next buffer
-"nmap <leader>x :bnext<CR>
-"Move to the previous buffer
-"nmap <leader>z :bprevious<CR>
-"Close the current buffer and move to the previous one
-"nmap <leader>c :bp <BAR> bd #<CR>
 nnoremap <leader>x :bp <BAR> bd #<CR>
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
@@ -183,7 +202,10 @@ endif
 ""fzf
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>e :FZF -m<CR>
+nnoremap <silent> <leader>E :FZF -m<CR>
+nnoremap <silent> <leader>e :call Fzf_dev()<CR>
+nnoremap <silent> <leader>t :BTags<CR>
+
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 " The Silver Searcher
@@ -210,9 +232,6 @@ let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#pointer = 1
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment'])
-
-"" vim-javascript
-" let g:javascript_plugin_flow = 1
 
 "" vim-go
 
@@ -241,6 +260,41 @@ let g:go_auto_type_info = 1               " show the type info for the word unde
 let g:go_auto_sameids = 0                 " highlight all uses of the identifier under the cursor
 let g:go_addtags_transform = "snakecase"  " snake_case for json generated tags
 let g:go_info_mode = 'gocode'
+let g:go_gocode_propose_source = 1
+let g:go_def_mode = 'godef'
+
+" Files + devicons
+function! Fzf_dev()
+  let l:fzf_files_options = '--preview "rougify --theme gruvbox.dark {2..-1} | head -'.&lines.'"'
+
+  function! s:files()
+    let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
+    return s:prepend_icon(l:files)
+  endfunction
+
+  function! s:prepend_icon(candidates)
+    let l:result = []
+    for l:candidate in a:candidates
+      let l:filename = fnamemodify(l:candidate, ':p:t')
+      let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
+      call add(l:result, printf('%s %s', l:icon, l:candidate))
+    endfor
+
+    return l:result
+  endfunction
+
+  function! s:edit_file(item)
+    let l:pos = stridx(a:item, ' ')
+    let l:file_path = a:item[pos+1:-1]
+    execute 'silent e' l:file_path
+  endfunction
+
+  call fzf#run({
+        \ 'source': <sid>files(),
+        \ 'sink':   function('s:edit_file'),
+        \ 'options': '-m ' . l:fzf_files_options,
+        \ 'down':    '40%' })
+endfunction
 
 function! s:build_go_files()
   let l:file = expand('%')
@@ -262,6 +316,9 @@ augroup go
 
   " :GoTest
   autocmd FileType go nmap <leader>got  <Plug>(go-test)
+
+  " :GoTestFunc
+  autocmd FileType go nmap <leader>gof  <Plug>(go-test-func)
 
   " :GoRun
   autocmd FileType go nmap <leader>gor  <Plug>(go-run)
