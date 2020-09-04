@@ -1,47 +1,42 @@
 call plug#begin()
-Plug 'morhetz/gruvbox'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'w0rp/ale'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'majutsushi/tagbar'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'Raimondi/delimitMate'
-Plug 'sheerun/vim-polyglot'
+" Plug 'scrooloose/nerdtree'	" file system explorer for the Vim editor
+Plug 'tpope/vim-fugitive'	" the premier Vim plugin for Git
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'		" fuzzy finder
+Plug 'sheerun/vim-polyglot'	" language pack (syntax, indent)
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " 
+
+Plug 'gruvbox-community/gruvbox'
 Plug 'ryanoasis/vim-devicons'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
+Plug 'vim-airline/vim-airline'
+Plug 'mhinz/vim-startify'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
+if has("termguicolors")
+  set termguicolors
+endif
+" if exists('$SHELL')
+"   set shell=$SHELL
+" else
+"   set shell=/bin/sh
+" endif
+
+set shell=/bin/bash
+
+let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_invert_selection='0'
+if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
 colorscheme gruvbox
 set background=dark
-if has("termguicolors")
-	set termguicolors
-endif
-if exists('$SHELL')
-    set shell=$SHELL
-else
-    set shell=/bin/sh
-endif
 
 let mapleader="\<space>" 	" Map leader to space
 set hidden 			" hidden buffers
 set number			" Show line numbers
 set relativenumber		" Relative line numbers
-set mouse=a
-set inccommand=split
 set autowrite 			" Automatically save before :next, :make etc.
 set clipboard=unnamed  		" System clipboard
 set incsearch                   " Shows the match while typing
@@ -59,21 +54,16 @@ set tabstop=2
 set softtabstop=0
 set shiftwidth=2
 set expandtab
+set updatetime=50
+set mouse=a
+set inccommand=split
+set smartindent
+set noerrorbells
 
-"" Clipboard
-if has('unnamedplus')
-  set clipboard=unnamed,unnamedplus
-endif
-
-"This will enable filetype detection, running filetype specific plugins, and loading filetype specific indentation settings.
+syntax on
 filetype plugin indent on
 
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
-if exists("*fugitive#statusline")
-  set statusline+=%{fugitive#statusline()}
-endif
-
-"" Abbreviations
+"" Abbreviations to 'ignore' typos
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
 cnoreabbrev Qall! qall!
@@ -85,36 +75,45 @@ cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
 
-"" Session management
-let g:session_directory = "~/.vim/session"
-let g:session_autoload = "yes"
-let g:session_autosave = "yes"
-let g:session_command_aliases = 1
-
 "" NERDTree configuration
-let g:NERDTreeChDirMode=2
-let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
-let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let g:NERDTreeShowBookmarks=1
-let g:nerdtree_tabs_focus_on_files=1
-let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let g:NERDTreeWinSize = 50
-let g:NERDTreeQuitOnOpen=1
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-nnoremap <silent> <F2> :NERDTreeFind<CR>
-nnoremap <silent> <F3> :NERDTreeToggle<CR>
+" let g:NERDTreeChDirMode=2
+" let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
+" let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+" let g:NERDTreeShowBookmarks=1
+" let g:nerdtree_tabs_focus_on_files=1
+" let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
+" let g:NERDTreeWinSize = 50
+" let g:NERDTreeQuitOnOpen=1
+" set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
+" nnoremap <silent> <F2> :NERDTreeFind<CR>
+" nnoremap <silent> <F3> :NERDTreeToggle<CR>
+
+"" Startify
+let g:startify_session_dir = '~/.config/nvim/sessions' "Sessions directory
+let g:startify_session_delete_buffers = 1 "Delete all buffers when loading or closing a session
+let g:startify_change_to_vcs_root = 1 "seek and change to the root directory of the VCS
+let g:startify_session_persistence = 1 "Automatically update sessions before quiting vim
+let g:startify_lists = [
+          \ { 'type': 'sessions',  'header': ['   Sessions']       },
+          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+          \ { 'type': 'files',     'header': ['   Files']            },
+          \ ]
+let g:startify_bookmarks = [
+            \ { 'i': '~/.config/nvim/init.vim' },
+            \ { 'c': '~/.config/nvim/coc-settings.json' },
+            \ { 'z': '~/.config/tmux/tmux.conf' },
+            \ { 'x': '~/.gitconfig' },
+            \ ]
 
 "" Airline configuration
-let g:airline_theme = 'bubblegum'
-" let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#ale#enabled = 1 " show errors or warnings at airline
+" let g:airline_theme = 'bubblegum'
 let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#coc#enabled = 1
 let g:airline_skip_empty_sections = 1
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -126,44 +125,26 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
 "" Devicons
-" enable folder/directory glyph flag
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-" enable open and close folder/directory glyph flags
-let g:DevIconsEnableFoldersOpenClose = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1 " enable folder/directory glyph flag
+let g:DevIconsEnableFoldersOpenClose = 1        " enable open and close folder/directory glyph flags
 
-"" Ale configuration
-let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '⚠'
-let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 1
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-let g:ale_lint_on_enter = 0
-
-"" Neosnippet
-" C-k to select-and-expand a snippet from the deoplete popup (Use C-n and C-p to select it).
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-" <tab> to select-and-expand a snippet from the deoplete popup (Use C-n and C-p to select it).
-imap <expr><tab> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<c-j>" : "\<tab>"
-smap <expr><tab> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
+"" FZF
+cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>E :FZF -m<CR>
+nnoremap <silent> <leader>e :GFiles<CR>
+nnoremap <silent> <leader>t :BTags<CR>
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let $FZF_DEFAULT_OPTS='--reverse'
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-" terminal emulation
-" nnoremap <silent> <leader>sh :terminal<CR>
-
 "" Split
 noremap <Leader>s :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
-
-"" Movement
-noremap <Leader>h ^
-noremap <Leader>l $
 
 "" Buffer nav
 nnoremap <leader>x :bp <BAR> bd #<CR>
@@ -171,161 +152,79 @@ nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 
 "" Clean search (highlight)
-" nnoremap <silent> <leader><space> :noh<cr>
 nnoremap <silent> <leader>cl :noh<cr>
-
-"" Git
-noremap <Leader>gia :Gwrite<CR>
-noremap <Leader>gic :Gcommit<CR>
-noremap <Leader>gipu :Gpush<CR>
-noremap <Leader>gip :Gpull<CR>
-noremap <Leader>gis :Gstatus<CR>
-noremap <Leader>gib :Gblame<CR>
-noremap <Leader>gid :Gvdiff<CR>
-noremap <Leader>gir :Gremove<CR>
-
-"" Tabs
-" nnoremap <Tab> gt
-" nnoremap <S-Tab> gT
-" nnoremap <silent> <S-t> :tabnew<CR>
-
-"" Tagbar
-nmap <silent> <F4> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
-
-"" Disable visualbell
-set noerrorbells visualbell t_vb=
-if has('autocmd')
-  autocmd GUIEnter * set visualbell t_vb=
-endif
-
-""fzf
-cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>E :FZF -m<CR>
-nnoremap <silent> <leader>e :call Fzf_dev()<CR>
-nnoremap <silent> <leader>t :BTags<CR>
-
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
-" The Silver Searcher
-if executable('ag')
-  let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
-  set grepprg=ag\ --nogroup\ --nocolor
-endif
-
-"" multiple-cursor
-let g:multi_cursor_use_default_mapping = 0
-let g:multi_cursor_start_word_key      = '<C-n>'
-let g:multi_cursor_select_all_word_key = '<A-n>'
-let g:multi_cursor_start_key           = 'g<C-n>'
-let g:multi_cursor_select_all_key      = 'g<A-n>'
-let g:multi_cursor_next_key            = '<C-n>'
-let g:multi_cursor_prev_key            = '<C-p>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
-
-"" deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-let g:deoplete#sources#go#pointer = 1
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment'])
-
-"" vim-go
 
 " Jump to next error with F8 and previous error with Shift F8. Close the
 " quickfix window with <leader>a
-map <F8> :cnext<CR>		
+map <F8> :cnext<CR>
 map <S-F8> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>		
 
-let g:go_list_type = "quickfix" 		    " Specifies the type of list to use for command outputs 
-let g:go_highlight_types = 1			      " Highlight struct and interface names.
-let g:go_highlight_fields = 1			      " Highlight struct field names
-let g:go_highlight_functions = 1		    " Highlight function and method declarations.
-let g:go_highlight_function_calls = 1		" Highlight function and method calls
-let g:go_highlight_operators = 1		    " Highlight operators such as `:=` , `==`, `-=`, etc.
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_space_tab_error = 0
-let g:go_highlight_array_whitespace_error = 0
-let g:go_highlight_trailing_whitespace_error = 0
-let g:go_highlight_extra_types = 1
-let g:go_decls_mode = 'fzf'
-let g:go_fmt_command = "goimports"
-let g:go_auto_type_info = 1               " show the type info for the word under the cursor automatically
-let g:go_auto_sameids = 0                 " highlight all uses of the identifier under the cursor
-let g:go_addtags_transform = "snakecase"  " snake_case for json generated tags
-let g:go_info_mode = 'gocode'
-let g:go_gocode_propose_source = 1
-let g:go_def_mode = 'godef'
+nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
+nnoremap <Leader>ps :Rg<SPACE>
 
-" Files + devicons
-function! Fzf_dev()
-  let l:fzf_files_options = '--preview "rougify --theme gruvbox.dark {2..-1} | head -'.&lines.'"'
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
+augroup END
 
-  function! s:files()
-    let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
-    return s:prepend_icon(l:files)
-  endfunction
+"" CoC
+" CoC extensions
+let g:coc_global_extensions = [
+  \ 'coc-marketplace',
+  \ 'coc-explorer',
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-json', 
+  \ 'coc-elixir', 
+  \ ]
 
-  function! s:prepend_icon(candidates)
-    let l:result = []
-    for l:candidate in a:candidates
-      let l:filename = fnamemodify(l:candidate, ':p:t')
-      let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
-      call add(l:result, printf('%s %s', l:icon, l:candidate))
-    endfor
+nmap <silent>gd <Plug>(coc-definition)
+nmap <leader>gy <Plug>(coc-type-definition)
+nmap <leader>gi <Plug>(coc-implementation)
+nmap <leader>gr <Plug>(coc-references)
+nmap <leader>rr <Plug>(coc-rename)
+nmap <leader>g[ <Plug>(coc-diagnostic-prev)
+nmap <leader>g] <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
+nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
+nnoremap <leader>cr :CocRestart
+" Use ctrl+c to trigger completion.
+inoremap <silent><expr> <C-c> coc#refresh()
 
-    return l:result
-  endfunction
-
-  function! s:edit_file(item)
-    let l:pos = stridx(a:item, ' ')
-    let l:file_path = a:item[pos+1:-1]
-    execute 'silent e' l:file_path
-  endfunction
-
-  call fzf#run({
-        \ 'source': <sid>files(),
-        \ 'sink':   function('s:edit_file'),
-        \ 'options': '-m ' . l:fzf_files_options,
-        \ 'down':    '40%' })
+" CoC -> tab and shift+tab to navigate completions
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#test#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
+"  CoC -> use <CR> to confirm completion
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" CoC -> Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" CoC -> Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
   endif
 endfunction
 
-augroup go
-  autocmd!
-
-  " Show by default 4 spaces for a tab
-  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
-
-  " :GoBuild and :GoTestCompile
-  autocmd FileType go nmap <leader>gob :<C-u>call <SID>build_go_files()<CR>
-
-  " :GoTest
-  autocmd FileType go nmap <leader>got  <Plug>(go-test)
-
-  " :GoTestFunc
-  autocmd FileType go nmap <leader>gof  <Plug>(go-test-func)
-
-  " :GoRun
-  autocmd FileType go nmap <leader>gor  <Plug>(go-run)
-
-  " :GoDoc
-  autocmd FileType go nmap <Leader>god <Plug>(go-doc)
-
-  " :GoCoverageToggle
-  autocmd FileType go nmap <Leader>goc <Plug>(go-coverage-toggle)
-augroup END
+" CoC -> coc-explorer
+nmap <silent> <F2> :CocCommand explorer<CR>
+" closes coc-explorer if it is the last buffer open
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif

@@ -54,3 +54,5 @@ plugged/
 fishd.*
 configstore/
 config.secret.fish
+
+nvim/sessions/

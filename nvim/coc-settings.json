@@ -1,0 +1,27 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "elixir",
+    "json",
+    "javascript",
+    "go"
+  ],
+  "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh",
+  "elixirLS.dialyzerEnabled": true,
+  "explorer.width": 40,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.quitOnOpen": true,
+  "explorer.keyMappings": {
+    "<cr>": [
+      "expandable?",
+      [
+        "expanded?",
+        "collapse",
+        "expand"
+      ],
+      "open"
+    ],
+    "m": "actionMenu",
+    "v": "open:vsplit"
+  }
+}
