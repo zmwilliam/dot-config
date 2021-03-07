@@ -9,6 +9,13 @@ set -g default_user your_normal_user
 set -g theme_color_scheme gruvbox
 set -g fish_prompt_pwd_dir_length 1
 set -g theme_display_ruby no
+set -x LC_ALL en_US.UTF-8
+
+set -g SPACEFISH_PACKAGE_SHOW false
+set -g SPACEFISH_NODE_SHOW false
+set -g SPACEFISH_DOCKER_SHOW false
+set -g SPACEFISH_ELIXIR_SHOW false
+set -g SPACEFISH_GOLANG_SHOW false
 
 abbr gcm 'git commit -m'
 abbr gs 'git status'
@@ -27,7 +34,10 @@ set -gx EDITOR nvim
 set -gx VISUAL nvim
 
 set -gx GOPATH $HOME/workspace/go
-add_to_user_path $GOPATH/bin
+#add_to_user_path $GOPATH/bin
+set -g fish_user_paths $GOPATH/bin $fish_user_paths
+
+set -gx GRAALVM_HOME $HOME/graalvm-ce-1.0.0-rc13/Contents/Home
 
 if test -f $HOME/.config/fish/config.secret.fish
   source $HOME/.config/fish/config.secret.fish 
@@ -37,9 +47,15 @@ if test (which asdf)
   source /usr/local/opt/asdf/asdf.fish
 end
 
-#if test (which tmux) 
-#  and status is-interactive 
-#  and not set -q TMUX
-#    eval tmux attach -t default ;or tmux new -s default
-#end
+if test (which tmux) 
+  and status is-interactive 
+  and not set -q TMUX
+    eval tmux attach -t default ;or tmux new -s default
+end
 
+if test -f $HOME/.asdf/plugins/java/set-java-home.fish
+  source $HOME/.asdf/plugins/java/set-java-home.fish
+end
+
+set -g fish_user_paths "/usr/local/opt/erlang@22/bin" $fish_user_paths
+set -g fish_user_paths "/usr/local/opt/libpq/bin" $fish_user_paths

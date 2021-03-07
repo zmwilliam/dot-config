@@ -1,4 +1,5 @@
 {
+  "codeLens.enable": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "elixir",
     "json",
@@ -6,12 +7,12 @@
     "go"
   ],
   "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh",
-  "elixirLS.dialyzerEnabled": true,
+  "elixirLS.dialyzerEnabled": false,
   "explorer.width": 40,
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
   "explorer.quitOnOpen": true,
-  "explorer.keyMappings": {
+  "explorer.keyMappings.global": {
     "<cr>": [
       "expandable?",
       [
@@ -23,5 +24,18 @@
     ],
     "m": "actionMenu",
     "v": "open:vsplit"
+  },
+  "languageserver": {
+    "elmLS": {
+      "command": "elm-language-server",
+      "filetypes": ["elm"],
+      "rootPatterns": ["elm.json"],
+      "initializationOptions": {
+        "elmPath": "elm", // optional
+        "elmFormatPath": "elm-format", // optional
+        "elmTestPath": "elm-test", // optional
+        "elmAnalyseTrigger": "change" // optional
+      }
+    }
   }
 }

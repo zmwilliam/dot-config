@@ -1,10 +1,13 @@
 call plug#begin()
 " Plug 'scrooloose/nerdtree'	" file system explorer for the Vim editor
 Plug 'tpope/vim-fugitive'	" the premier Vim plugin for Git
+Plug 'tpope/vim-rhubarb'	" fugitive support for github
+Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'		" fuzzy finder
 Plug 'sheerun/vim-polyglot'	" language pack (syntax, indent)
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " 
+Plug 'honza/vim-snippets'
 
 Plug 'gruvbox-community/gruvbox'
 Plug 'ryanoasis/vim-devicons'
@@ -89,6 +92,8 @@ cnoreabbrev Qall qall
 " nnoremap <silent> <F3> :NERDTreeToggle<CR>
 
 "" Startify
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_startify = 1
 let g:startify_session_dir = '~/.config/nvim/sessions' "Sessions directory
 let g:startify_session_delete_buffers = 1 "Delete all buffers when loading or closing a session
 let g:startify_change_to_vcs_root = 1 "seek and change to the root directory of the VCS
@@ -106,8 +111,7 @@ let g:startify_bookmarks = [
             \ ]
 
 "" Airline configuration
-" let g:airline_theme = 'bubblegum'
-let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#enabled = 0 " fugitive extensions seems to slow down as time passes by
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
@@ -123,6 +127,16 @@ let g:airline_symbols = {}
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
 
 "" Devicons
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1 " enable folder/directory glyph flag
@@ -135,6 +149,7 @@ nnoremap <silent> <leader>E :FZF -m<CR>
 nnoremap <silent> <leader>e :GFiles<CR>
 nnoremap <silent> <leader>t :BTags<CR>
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let g:fzf_preview_window = ['right:50%:hidden', 'ctrl-/']
 let $FZF_DEFAULT_OPTS='--reverse'
 
 " Search mappings: These will make it so that going to the next one in a
@@ -148,8 +163,8 @@ noremap <Leader>v :<C-u>vsplit<CR>
 
 "" Buffer nav
 nnoremap <leader>x :bp <BAR> bd #<CR>
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
+"nnoremap <Tab> :bnext<CR>
+"nnoremap <S-Tab> :bprevious<CR>
 
 "" Clean search (highlight)
 nnoremap <silent> <leader>cl :noh<cr>
@@ -175,10 +190,10 @@ let g:coc_global_extensions = [
   \ 'coc-marketplace',
   \ 'coc-explorer',
   \ 'coc-snippets',
-  \ 'coc-pairs',
   \ 'coc-json', 
   \ 'coc-elixir', 
   \ ]
+""\ 'coc-pairs',
 
 nmap <silent>gd <Plug>(coc-definition)
 nmap <leader>gy <Plug>(coc-type-definition)

@@ -1,16 +1,22 @@
 # This is Git's per-user configuration file.
-[user]
-# Please adapt and uncomment the following lines:
-#	name = William Zmiyewski
-#	email = zmwilliam@Williams-MacBook-Pro.local
 [credential]
 	helper = osxkeychain
 [user]
 	email = willcxa@gmail.com
 	name = zmwilliam
-[diff]
-	tool = vimdiff
 [merge]
-	tool = vimdiff
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff
 [mergetool]
 	keepBackup = false
+[includeIf "gitdir:~/workspace/obm/"]
+    path = ~/workspace/obm/.gitconfig
+[core]
+	autocrlf = input
+[pull]
+	rebase = false
