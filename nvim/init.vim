@@ -181,7 +181,7 @@ nnoremap <Leader>ps :Rg<SPACE>
 
 augroup highlight_yank
     autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 800})
 augroup END
 
 "" CoC
