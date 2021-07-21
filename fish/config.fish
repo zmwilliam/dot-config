@@ -29,6 +29,11 @@ abbr glc 'git log --pretty=format:"%h %cr %cn %Cgreen%s%Creset" --name-status'
 abbr gta 'go test ./...'
 abbr vim nvim
 abbr tsd 'tmux attach -t default ;or tmux new -s default'
+if type -q exa
+  alias ll "exa -l -g --icons"
+  alias lla "ll -a"
+  alias llt "ll --tree -a"
+end
 
 set -gx EDITOR nvim
 set -gx VISUAL nvim
@@ -59,3 +64,5 @@ end
 
 set -g fish_user_paths "/usr/local/opt/erlang@22/bin" $fish_user_paths
 set -g fish_user_paths "/usr/local/opt/libpq/bin" $fish_user_paths
+
+set -gx GPG_TTY (tty)

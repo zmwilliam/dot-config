@@ -8,32 +8,32 @@ Plug 'junegunn/fzf.vim'		" fuzzy finder
 Plug 'sheerun/vim-polyglot'	" language pack (syntax, indent)
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " 
 Plug 'honza/vim-snippets'
+Plug 'mattn/emmet-vim'
 
 Plug 'gruvbox-community/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'mhinz/vim-startify'
-Plug 'Yggdroot/indentLine'
-call plug#end()
+"Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
 
-if has("termguicolors")
-  set termguicolors
-endif
-" if exists('$SHELL')
-"   set shell=$SHELL
-" else
-"   set shell=/bin/sh
-" endif
+Plug 'rakr/vim-one'
+Plug 'arcticicestudio/nord-vim'
+call plug#end()
 
 set shell=/bin/bash
 
 let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_invert_selection='0'
-if exists('+termguicolors')
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+if exists('termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
 endif
-colorscheme gruvbox
+
+"colorscheme gruvbox
+colorscheme nord
 set background=dark
 
 let mapleader="\<space>" 	" Map leader to space
@@ -71,12 +71,14 @@ cnoreabbrev W! w!
 cnoreabbrev Q! q!
 cnoreabbrev Qall! qall!
 cnoreabbrev Wq wq
+cnoreabbrev Wqa wqa
 cnoreabbrev Wa wa
 cnoreabbrev wQ wq
 cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
+cnoreabbrev Qa qa
 
 "" NERDTree configuration
 " let g:NERDTreeChDirMode=2
@@ -150,7 +152,7 @@ nnoremap <silent> <leader>e :GFiles<CR>
 nnoremap <silent> <leader>t :BTags<CR>
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let g:fzf_preview_window = ['right:50%:hidden', 'ctrl-/']
-let $FZF_DEFAULT_OPTS='--reverse'
+let $FZF_DEFAULT_OPTS='--reverse --bind ctrl-q:select-all+accept'
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
@@ -174,6 +176,18 @@ nnoremap <silent> <leader>cl :noh<cr>
 map <F8> :cnext<CR>
 map <S-F8> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>		
+
+" Move selected line / block of text in visual mode
+" shift + k to move up
+" shift + j to move down
+" xnoremap K :move '<-2<CR>gv-gv
+" xnoremap J :move '>+1<CR>gv-gv
+
+" Disable arrow movement, resize splits instead.
+nnoremap <silent> <C-Up>    :resize -2<CR>
+nnoremap <silent> <C-Down>  :resize +2<CR>
+nnoremap <silent> <C-Left>  :vertical resize -2<CR>
+nnoremap <silent> <C-Right> :vertical resize +2<CR>
 
 nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
