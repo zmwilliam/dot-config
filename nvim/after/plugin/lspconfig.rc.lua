@@ -32,6 +32,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
+  -- code completion 
+  require'completion'.on_attach(client, bufnr)
+
   -- format on save
   if client.resolved_capabilities.document_formatting then
     vim.api.nvim_command [[augroup Format]]

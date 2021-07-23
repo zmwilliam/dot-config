@@ -13,8 +13,9 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
 Plug 'glepnir/lspsaga.nvim'
-Plug 'hrsh7th/nvim-compe'
+Plug 'nvim-lua/completion-nvim'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 
 Plug 'hoob3rt/lualine.nvim'
 Plug 'romgrk/barbar.nvim'
