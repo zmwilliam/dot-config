@@ -5,6 +5,9 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
+"Fix nord theme with telescope mathing color
+highlight TelescopeMatching guifg=#81A1C1
+
 lua << EOF
 local actions = require('telescope.actions')
 -- Global remapping

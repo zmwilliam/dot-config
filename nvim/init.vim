@@ -2,18 +2,19 @@ call plug#begin()
 Plug 'tpope/vim-fugitive'	" the premier Vim plugin for Git
 Plug 'tpope/vim-rhubarb'	" fugitive support for github
 Plug 'tpope/vim-commentary'
-"Plug 'honza/vim-snippets'
-Plug 'mattn/emmet-vim'
+Plug 'sheerun/vim-polyglot'
 
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
 Plug 'kyazdani42/nvim-tree.lua'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
 Plug 'glepnir/lspsaga.nvim'
-Plug 'nvim-lua/completion-nvim'
+Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/vim-vsnip'
 
 Plug 'hoob3rt/lualine.nvim'
 Plug 'romgrk/barbar.nvim'
@@ -29,11 +30,11 @@ set shell=/bin/bash
 let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_invert_selection='0'
 
-" if exists('termguicolors')
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-set termguicolors
-" endif
+if exists('&termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 "colorscheme gruvbox
 colorscheme nord
@@ -82,25 +83,6 @@ cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
 cnoreabbrev Qa qa
-
-"" Startify
-let g:webdevicons_enable = 1
-let g:webdevicons_enable_startify = 1
-let g:startify_session_dir = '~/.config/nvim/sessions' "Sessions directory
-let g:startify_session_delete_buffers = 1 "Delete all buffers when loading or closing a session
-let g:startify_change_to_vcs_root = 1 "seek and change to the root directory of the VCS
-let g:startify_session_persistence = 1 "Automatically update sessions before quiting vim
-let g:startify_lists = [
-          \ { 'type': 'sessions',  'header': ['   Sessions']       },
-          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-          \ { 'type': 'files',     'header': ['   Files']            },
-          \ ]
-let g:startify_bookmarks = [
-            \ { 'i': '~/.config/nvim/init.vim' },
-            \ { 'c': '~/.config/nvim/coc-settings.json' },
-            \ { 'z': '~/.config/tmux/tmux.conf' },
-            \ { 'x': '~/.gitconfig' },
-            \ ]
 
 "" Devicons
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1 " enable folder/directory glyph flag
