@@ -15,7 +15,7 @@ nnoremap <silent>    <A-7> :BufferGoto 7<CR>
 nnoremap <silent>    <A-8> :BufferGoto 8<CR>
 nnoremap <silent>    <A-9> :BufferLast<CR>
 " Close buffer
-nnoremap <silent>    <A-c> :BufferClose<CR>
+nnoremap <silent>    <A-q> :BufferClose<CR>
 " Wipeout buffer
 "                          :BufferWipeout<CR>
 " Close commands
@@ -28,6 +28,13 @@ nnoremap <silent> <M-s>    :BufferPick<CR>
 " Sort automatically by...
 nnoremap <silent> <leader>bd :BufferOrderByDirectory<CR>
 nnoremap <silent> <leader>bl :BufferOrderByLanguage<CR>
+
+"" Fix colors with nord colorscheme
+if g:colors_name == 'nord'
+  highlight BufferVisibleMod guifg=#5E81AC
+  highlight BufferInactiveMod guifg=#5E81AC
+  highlight BufferCurrentMod guifg=#88C0D0
+endif
 
 lua << EOF
 local tree ={}

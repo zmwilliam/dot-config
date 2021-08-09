@@ -10,11 +10,24 @@ saga.init_lsp_saga {
   infor_sign = ' ',
   border_style = "round",
 }
-
 EOF
 
-nnoremap <silent> <C-j> <Cmd>Lspsaga diagnostic_jump_next<CR>
+"Jump Diagnostic and Show Diagnostics
+nnoremap <silent> [d :Lspsaga diagnostic_jump_next<CR>
+nnoremap <silent> ]d :Lspsaga diagnostic_jump_prev<CR>
+
+"Code Action
+noremap <silent><leader>ca :Lspsaga code_action<CR>
+vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
+
+"Hover Doc
 nnoremap <silent>K <Cmd>Lspsaga hover_doc<CR>
-inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
+
+" SignatureHelp
+nnoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
+
+"lsp provider to find the cursor word definition and reference
 nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
 
+"Rename
+nnoremap <silent>rn :Lspsaga rename<CR>

@@ -39,7 +39,6 @@ set -gx EDITOR nvim
 set -gx VISUAL nvim
 
 set -gx GOPATH $HOME/workspace/go
-#add_to_user_path $GOPATH/bin
 set -g fish_user_paths $GOPATH/bin $fish_user_paths
 
 set -gx GRAALVM_HOME $HOME/graalvm-ce-1.0.0-rc13/Contents/Home
@@ -56,10 +55,6 @@ if test (which tmux)
   and status is-interactive 
   and not set -q TMUX
     eval tmux attach -t default ;or tmux new -s default
-end
-
-if test -f $HOME/.asdf/plugins/java/set-java-home.fish
-  source $HOME/.asdf/plugins/java/set-java-home.fish
 end
 
 set -g fish_user_paths "/usr/local/opt/erlang@22/bin" $fish_user_paths

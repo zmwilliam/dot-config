@@ -22,3 +22,9 @@ let g:completion_enable_snippet = 'vim-vsnip'
 
 " possible value: "length", "alphabet", "none"
 let g:completion_sorting = "alphabet"
+
+let g:completion_chain_complete_list = [
+    \{'complete_items': ['lsp', 'snippet', 'buffers']},
+    \{'mode': '<c-p>'},
+    \{'mode': '<c-n>'}
+\]
