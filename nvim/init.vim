@@ -12,7 +12,6 @@ Plug 'kyazdani42/nvim-tree.lua'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
-Plug 'glepnir/lspsaga.nvim'
 
 Plug 'nvim-lua/completion-nvim'
 Plug 'steelsojka/completion-buffers'
