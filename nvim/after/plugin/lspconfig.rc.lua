@@ -32,9 +32,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap("n", "<leader>fc", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
-  -- code completion 
-  require'completion'.on_attach(client, bufnr)
-
   -- format on save
   if client.resolved_capabilities.document_formatting then
     vim.api.nvim_command [[augroup Format]]
@@ -72,7 +69,6 @@ local on_attach = function(client, bufnr)
     '<>', -- TypeParameter
   }
 
-
   local diagnostics_signs = {
     { name = "LspDiagnosticsSignError", text = "" },
     { name = "LspDiagnosticsSignWarning", text = "" },
@@ -84,20 +80,13 @@ local on_attach = function(client, bufnr)
   end
 
   --borders
-  -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
-  -- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 end
 
--- Enable LSP snippet support
+-- LSP completion
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    'documentation',
-    'detail',
-    'additionalTextEdits',
-  }
-}
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
@@ -154,3 +143,4 @@ nvim_lsp.emmet_ls.setup {
     debounce_text_changes = 150,
   }
 }
+

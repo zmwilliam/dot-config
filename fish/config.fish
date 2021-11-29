@@ -1,21 +1,6 @@
 set -g fish_key_bindings fish_vi_key_bindings
-set -g theme_display_docker_machine no
-set -g theme_display_vi yes
-set -g theme_display_date no
-set -g theme_display_cmd_duration yes
-set -g theme_nerd_fonts yes
-set -g theme_show_exit_status yes
-set -g default_user your_normal_user
-set -g theme_color_scheme gruvbox
-set -g fish_prompt_pwd_dir_length 1
-set -g theme_display_ruby no
-set -x LC_ALL en_US.UTF-8
 
-set -g SPACEFISH_PACKAGE_SHOW false
-set -g SPACEFISH_NODE_SHOW false
-set -g SPACEFISH_DOCKER_SHOW false
-set -g SPACEFISH_ELIXIR_SHOW false
-set -g SPACEFISH_GOLANG_SHOW false
+set -x LC_ALL en_US.UTF-8
 
 abbr gcm 'git commit -m'
 abbr gs 'git status'
@@ -69,3 +54,6 @@ set -g fish_user_paths "/usr/local/opt/libpq/bin" $fish_user_paths
 set -g fish_user_paths "$HOME/.local/bin" $fish_user_paths
 
 set -gx GPG_TTY (tty)
+
+set -gx STARSHIP_CONFIG $HOME/.config/fish/starship.toml
+starship init fish | source
