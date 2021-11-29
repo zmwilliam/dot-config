@@ -1,6 +1,7 @@
 " Move to previous/next
-nnoremap <silent>    <A-,> :BufferPrevious<CR>
-nnoremap <silent>    <A-.> :BufferNext<CR>
+nnoremap <silent>    <S-h> :BufferPrevious<CR>
+nnoremap <silent>    <S-l> :BufferNext<CR>
+
 " Re-order to previous/next
 nnoremap <silent>    <A-<> :BufferMovePrevious<CR>
 nnoremap <silent>    <A->> :BufferMoveNext<CR>
@@ -30,11 +31,11 @@ nnoremap <silent> <leader>bd :BufferOrderByDirectory<CR>
 nnoremap <silent> <leader>bl :BufferOrderByLanguage<CR>
 
 "" Fix colors with nord colorscheme
-if g:colors_name == 'nord'
-  highlight BufferVisibleMod guifg=#5E81AC
-  highlight BufferInactiveMod guifg=#5E81AC
-  highlight BufferCurrentMod guifg=#88C0D0
-endif
+" if g:colors_name == 'nord'
+"   highlight BufferVisibleMod guifg=#5E81AC
+"   highlight BufferInactiveMod guifg=#5E81AC
+"   highlight BufferCurrentMod guifg=#88C0D0
+" endif
 
 lua << EOF
 local tree ={}

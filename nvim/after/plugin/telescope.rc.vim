@@ -10,15 +10,15 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 "Fix nord theme with telescope mathing color
-if g:colors_name == 'nord'
-  highlight TelescopeMatching guifg=#88C0D0
-endif
+" if g:colors_name == 'nord'
+"   highlight TelescopeMatching guifg=#88C0D0
+" endif
 
 lua << EOF
+local telescope = require('telescope')
 local actions = require('telescope.actions')
--- Global remapping
-------------------------------
-require('telescope').setup{
+
+telescope.setup{
   defaults = {
     layout_strategy = "vertical",
     layout_config = {
@@ -35,5 +35,7 @@ require('telescope').setup{
     git_files = { previewer = false },
   }
 }
+
+telescope.load_extension('project')
 EOF
 

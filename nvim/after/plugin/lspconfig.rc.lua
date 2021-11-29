@@ -71,6 +71,21 @@ local on_attach = function(client, bufnr)
     'ﬦ', -- Operator
     '<>', -- TypeParameter
   }
+
+
+  local diagnostics_signs = {
+    { name = "LspDiagnosticsSignError", text = "" },
+    { name = "LspDiagnosticsSignWarning", text = "" },
+    { name = "LspDiagnosticsSignHint", text = "" },
+    { name = "LspDiagnosticsSignInformation", text = "" },
+  }
+  for _, sign in ipairs(diagnostics_signs) do
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
+  end
+
+  --borders
+  -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
+  -- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
 end
 
 -- Enable LSP snippet support

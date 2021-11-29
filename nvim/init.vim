@@ -3,10 +3,13 @@ Plug 'tpope/vim-fugitive'	" the premier Vim plugin for Git
 Plug 'tpope/vim-rhubarb'	" fugitive support for github
 Plug 'tpope/vim-commentary'
 Plug 'sheerun/vim-polyglot'
+Plug 'DarwinSenior/nvim-colorizer.lua'
+Plug 'rhysd/conflict-marker.vim' " Weapon to fight against conflicts in Vim
 
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-project.nvim'
 
 Plug 'kyazdani42/nvim-tree.lua'
 
@@ -22,7 +25,8 @@ Plug 'hoob3rt/lualine.nvim'
 Plug 'romgrk/barbar.nvim'
 
 Plug 'gruvbox-community/gruvbox'
-Plug 'zmwilliam/nord-vim'
+"Plug 'zmwilliam/nord-vim'
+Plug 'shaunsingh/nord.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'mhinz/vim-startify'
 call plug#end()
@@ -36,6 +40,7 @@ if exists('&termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
+  hi LineNr ctermbg=NONE guibg=NONE
 endif
 
 "colorscheme gruvbox

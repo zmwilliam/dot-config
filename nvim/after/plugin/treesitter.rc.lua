@@ -15,6 +15,7 @@ require'nvim-treesitter.configs'.setup {
     "css",
     "scss",
     "elixir",
+    "heex",
     "go",
     "lua",
     "javascript"
