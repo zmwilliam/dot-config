@@ -24,6 +24,9 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
+Plug 'windwp/nvim-autopairs'
+Plug 'windwp/nvim-ts-autotag'
+
 Plug 'hoob3rt/lualine.nvim'
 Plug 'romgrk/barbar.nvim'
 

@@ -56,4 +56,5 @@ set -g fish_user_paths "$HOME/.local/bin" $fish_user_paths
 set -gx GPG_TTY (tty)
 
 set -gx STARSHIP_CONFIG $HOME/.config/fish/starship.toml
+set -gx STARSHIP_LOG "error"
 starship init fish | source

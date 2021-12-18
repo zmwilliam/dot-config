@@ -12,7 +12,7 @@ require'nvim-tree'.setup {
   ignore_ft_on_setup  = {'startify'},
 
   -- closes neovim automatically when the tree is the last **WINDOW** in the view
-  auto_close          = true,
+  auto_close          = false,
 
   -- hijack the cursor in the tree to put it at the start of the filename
   hijack_cursor       = true,

@@ -44,7 +44,7 @@ local formatting = {
     path = "(Path)",
     calc = "(Calc)",
     cmp_tabnine = "(Tabnine)",
-    vsnip = "(Snippet)",
+    vsnip = "(VSnip)",
     luasnip = "(Snippet)",
     buffer = "(Buffer)",
   },
@@ -112,7 +112,14 @@ cmp.setup(
         {name = "vsnip"}
       },
       {
-        {name = "buffer"}
+        {
+          name = "buffer",
+          option = {
+            get_bufnrs = function()
+              return vim.api.nvim_list_bufs()
+            end
+          },
+        }
       }
       ),
     formatting = {

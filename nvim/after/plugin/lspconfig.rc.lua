@@ -29,7 +29,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', '<leader>dl', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap("n", "<leader>fc", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
   -- format on save
@@ -90,7 +90,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = {"vimls", "tsserver", "html"}
+local servers = {"vimls", "tsserver", "tailwindcss"}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -100,6 +100,70 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+nvim_lsp.tailwindcss.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  filetypes = { 
+    "aspnetcorerazor",
+    "astro",
+    "astro-markdown",
+    "blade",
+    "django-html",
+    "edge",
+    "eelixir",
+    "ejs",
+    "erb",
+    "eruby",
+    "gohtml",
+    "haml",
+    "handlebars",
+    "hbs",
+    "html",
+    "html-eex",
+    "jade",
+    "leaf",
+    "liquid",
+    "markdown",
+    "mdx",
+    "mustache",
+    "njk",
+    "nunjucks",
+    "php",
+    "razor",
+    "slim",
+    "twig",
+    "css",
+    "less",
+    "postcss",
+    "sass",
+    "scss",
+    "stylus",
+    "sugarss",
+    "javascript",
+    "javascriptreact",
+    "reason",
+    "rescript",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "svelte",
+    "heex",
+    "leex",
+  }
+}
+
+nvim_lsp.html.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 150,
+    },
+    filetypes = { "html","heex" }
+}
 
 nvim_lsp.elixirls.setup {
   cmd = {"/Users/zmwilliam/.elixir-ls/release/language_server.sh"},
@@ -119,15 +183,29 @@ nvim_lsp.elixirls.setup {
       -- the .elixir_ls directory and restarting your editor.
       fetchDeps = false
     }
-  }
+  },
+  filetypes = {
+    "elixir", 
+    "eelixir",
+    "ex",
+    "exs",
+    "erl",
+    "hrl",
+    "yrl",
+    "xrl",
+    "eex",
+    "leex",
+    "heex",
+    "sface"
+  },
 }
 
 if not nvim_lsp.emmet_ls then    
-  local configs = require'lspconfig/configs'    
+  local configs = require('lspconfig.configs')
   configs.emmet_ls = {    
     default_config = {    
       cmd = {'emmet-ls', '--stdio'};
-      filetypes = {'html', 'css'};
+      filetypes = {'html', 'css', 'eex', 'leex', 'heex', 'eelixir'};
       root_dir = function(fname)    
         return vim.loop.cwd()
       end;    

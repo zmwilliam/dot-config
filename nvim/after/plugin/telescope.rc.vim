@@ -17,6 +17,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 lua << EOF
 local telescope = require('telescope')
 local actions = require('telescope.actions')
+local actions_layout = require("telescope.actions.layout")
 
 telescope.setup{
   defaults = {
@@ -26,7 +27,12 @@ telescope.setup{
     },
     mappings = {
       n = {
-        ["q"] = actions.close
+        ["q"] = actions.close,
+        ["<C-]>"] = actions_layout.toggle_preview
+      },
+      i = {
+        ["qq"] = actions.close,
+        ["<C-]>"] = actions_layout.toggle_preview
       },
     },
   },
