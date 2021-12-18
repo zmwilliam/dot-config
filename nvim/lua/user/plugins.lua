@@ -23,7 +23,7 @@ vim.cmd [[
   augroup end
 ]]
 
--- Use a protected call so we don't error out on first use
+-- Use a protected call so we don"t error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
   return
@@ -52,24 +52,26 @@ return packer.startup(function(use)
   }
 
   use {
-    'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    "nvim-telescope/telescope.nvim",
+    requires = { {"nvim-lua/plenary.nvim"} }
   }
 
   use {
-    'kyazdani42/nvim-tree.lua',
-    requires = {'kyazdani42/nvim-web-devicons'}
+    "kyazdani42/nvim-tree.lua",
+    requires = {"kyazdani42/nvim-web-devicons"}
   }
 
   use {
-    'akinsho/bufferline.nvim', 
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    "akinsho/bufferline.nvim", 
+    requires = {"kyazdani42/nvim-web-devicons", opt = true}
   }
 
   use {
-    'nvim-lualine/lualine.nvim',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    "nvim-lualine/lualine.nvim",
+    requires = {"kyazdani42/nvim-web-devicons", opt = true}
   }
+
+  use "folke/which-key.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

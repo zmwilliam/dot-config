@@ -7,8 +7,8 @@ local keymap = vim.api.nvim_set_keymap
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
-vim.g.mapleader = "<Space>"
-vim.g.maplocalleader = "<Space>"
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Modes
 --   normal_mode = "n",
@@ -44,10 +44,3 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
-
-
--- Telescope
-
--- nvim-tree
-keymap('n', '<F3>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-keymap('n', '<F2>', ':NvimTreeFindFile<CR>', { noremap = true, silent = true })
