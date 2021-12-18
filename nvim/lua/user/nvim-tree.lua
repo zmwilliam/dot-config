@@ -9,7 +9,7 @@ if not config_status_ok then
 end
 
 nvim_tree.setup {
-  quit_on_open = 0,
+  quit_on_open = 1,
 
   -- open the tree when running this setup function
   open_on_setup       = false,

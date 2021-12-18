@@ -15,6 +15,7 @@ local options = {
   relativenumber = true,                  -- set relative numbered lines
   scrolloff = 8,                           -- always show N lines above and bellow the cursor
   shiftwidth = 2,                          -- the number of spaces inserted for each indentation
+  showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
   showtabline = 2,                         -- always show tabs
   sidescrolloff = 8,
   signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
