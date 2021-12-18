@@ -56,3 +56,18 @@ configstore/
 config.secret.fish
 
 nvim/sessions/
+nvim/plugin/packer_compiled.lua
+copyq/
+exercism/
+fish/completions/
+fish/conf.d/pure.fish
+fish/conf.d/pure_init.fish
+fish/fish_variables
+gtk-2.0/
+hub
+idea/
+lvim/
+omf/theme
+pgcli/history
+tmux/plugins
+
