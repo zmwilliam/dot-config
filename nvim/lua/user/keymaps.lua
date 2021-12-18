@@ -44,3 +44,10 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+
+
+-- Telescope
+
+-- nvim-tree
+keymap('n', '<F3>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+keymap('n', '<F2>', ':NvimTreeFindFile<CR>', { noremap = true, silent = true })
