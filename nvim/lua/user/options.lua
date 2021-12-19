@@ -39,3 +39,11 @@ end
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
+
+-- highlight yank
+vim.cmd [[
+  augroup highlight_yank
+      autocmd!
+      autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 800})
+  augroup END
+]]
