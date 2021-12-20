@@ -98,6 +98,15 @@ return packer.startup(function(use)
     requires = "tpope/vim-fugitive"
   }
 
+  use {
+    'numToStr/Comment.nvim', --Smart and Powerful commenting 
+    config = function()
+      require('Comment').setup()
+    end
+  }
+
+  use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

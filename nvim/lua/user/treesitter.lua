@@ -11,10 +11,17 @@ configs.setup {
     disable = { "" }, -- list of language that will be disabled
     additional_vim_regex_highlighting = true,
   },
-  indent = { 
-    enable = true, 
-    disable = { "yaml" } 
+  indent = {
+    enable = true,
+    disable = { "yaml" }
   },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
+  autopairs = {
+		enable = true,
+	},
   ensure_installed = { -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     "fish",
     "json",
@@ -27,5 +34,5 @@ configs.setup {
     "go",
     "lua",
     "javascript"
-  }, 
+  },
 }
