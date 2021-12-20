@@ -85,7 +85,10 @@ return packer.startup(function(use)
     }
   }
 
-  use "rafamadriz/friendly-snippets"
+  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+
+  use "neovim/nvim-lspconfig" -- enable LSP
+  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
