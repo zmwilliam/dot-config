@@ -25,20 +25,21 @@ local options = {
   splitright = true,                       -- force all vertical splits to go to the right of current window
   swapfile = false,                        -- don't creates a swapfile
   tabstop = 2,                             -- insert 2 spaces for a tab
-  timeoutlen = 100,                        -- time to wait for a mapped sequence to complete (in milliseconds)
+  timeoutlen = 300,                        -- time to wait for a mapped sequence to complete (in milliseconds)
   undofile = true,                         -- enable persistent undo
   updatetime = 300,                        -- faster completion (4000ms default)
   wrap = false,                            -- display lines as one long line
 }
 
-vim.opt.shortmess:append "c"
-
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set iskeyword+=-]]
+vim.opt.shortmess:append "c"
+vim.opt.whichwrap:append "<,>,[,],h,l"
+vim.opt.iskeyword:append "-"
+--vim.cmd "set whichwrap+=<,>,[,],h,l"
+--vim.cmd [[set iskeyword+=-]]
 
 -- highlight yank
 vim.cmd [[

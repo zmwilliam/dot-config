@@ -62,7 +62,7 @@ return packer.startup(function(use)
   }
 
   use {
-    "akinsho/bufferline.nvim", 
+    "akinsho/bufferline.nvim",
     requires = {"kyazdani42/nvim-web-devicons", opt = true}
   }
 
@@ -89,6 +89,14 @@ return packer.startup(function(use)
 
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+
+  -- Git
+  use "lewis6991/gitsigns.nvim"
+  use "tpope/vim-fugitive" -- the premier Vim plugin for Git
+  use {
+    "tpope/vim-rhubarb", -- fugitive support for github
+    requires = "tpope/vim-fugitive"
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
