@@ -31,7 +31,7 @@ lsp_installer.on_server_ready(function(server)
 
   local is_custom_settings, custom_opts = pcall(require, "user.lsp.settings." .. server.name)
   if is_custom_settings then
-    print("[lsp-installer] Loading custom opts for " .. server.name)
+    --print("[lsp-installer] Loading custom opts for " .. server.name)
     opts = vim.tbl_deep_extend("force", custom_opts, opts)
   end
   --if server.name == "sumneko_lua" then

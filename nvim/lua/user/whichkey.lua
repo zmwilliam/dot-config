@@ -89,19 +89,22 @@ local mappings = {
   f = {
     name = "Find",
     f  = {
-      "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+      --"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+      "<cmd>lua require('telescope.builtin').find_files()<cr>",
       "Files",
     },
-    g = { 
-      "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"  \")})<cr>", 
-      "Grep For" 
+    g = {
+      "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"  \")})<cr>",
+      "Grep For"
     },
     G = { "<cmd>Telescope live_grep theme=ivy<cr>", "Live grep" },
     b = {
-      "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+      --"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+      "<cmd>lua require('telescope.builtin').buffers()<cr>",
       "Buffers",
     },
     p = { "<cmd>Telescope projects<cr>", "Projects" },
+    t = { "<cmd>NvimTreeFindFileToggle<cr>", "Explorer" },
   },
 
   p = {
