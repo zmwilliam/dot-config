@@ -107,6 +107,8 @@ return packer.startup(function(use)
 
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
 
+  use "DarwinSenior/nvim-colorizer.lua"
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
