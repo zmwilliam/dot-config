@@ -61,7 +61,6 @@ local formatting = {
   duplicates_default = 0,
 }
 
-local cmp = require "cmp"
 cmp.setup(
   {
     snippet = {
@@ -112,7 +111,8 @@ cmp.setup(
     sources = cmp.config.sources(
       {
         {name = "nvim_lsp"},
-        {name = "vsnip"}
+        {name = "vsnip"},
+        {name = "path"}
       },
       {
         {
@@ -139,7 +139,7 @@ cmp.setup(
 cmp.setup.cmdline( "/", { sources = { {name = "buffer"} } })
 
 cmp.setup.cmdline( ":",
-  { 
+  {
     sources = cmp.config.sources(
       { {name = "path"} },
       { {name = "cmdline"} })

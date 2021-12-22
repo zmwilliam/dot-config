@@ -56,6 +56,8 @@ return packer.startup(function(use)
     requires = { {"nvim-lua/plenary.nvim"} }
   }
 
+  use "ahmedkhalf/project.nvim"
+
   use {
     "kyazdani42/nvim-tree.lua",
     requires = {"kyazdani42/nvim-web-devicons"}
@@ -99,7 +101,7 @@ return packer.startup(function(use)
   }
 
   use {
-    'numToStr/Comment.nvim', --Smart and Powerful commenting 
+    'numToStr/Comment.nvim', --Smart and Powerful commenting
     config = function()
       require('Comment').setup()
     end
@@ -112,8 +114,6 @@ return packer.startup(function(use)
   use "lewis6991/impatient.nvim"
 
   use "goolord/alpha-nvim"
-
-  use "ahmedkhalf/project.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

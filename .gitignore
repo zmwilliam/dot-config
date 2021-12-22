@@ -69,5 +69,6 @@ idea/
 lvim/
 omf/theme
 pgcli/history
+pgcli/log
 tmux/plugins
 
