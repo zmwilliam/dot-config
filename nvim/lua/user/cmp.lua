@@ -1,4 +1,7 @@
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+local cmp_status_ok, cmp = pcall(require, "cmp")
+if not cmp_status_ok then
+  return
+end
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -10,7 +13,7 @@ local feedkey = function(key, mode)
 end
 
 local formatting = {
-  fields = { "abbr", "kind", "menu" },
+  fields = { "kind", "abbr", "menu" },
   kind_icons = {
     Class = " ",
     Color = " ",
@@ -58,7 +61,6 @@ local formatting = {
   duplicates_default = 0,
 }
 
-local cmp = require "cmp"
 cmp.setup(
   {
     snippet = {
@@ -109,7 +111,8 @@ cmp.setup(
     sources = cmp.config.sources(
       {
         {name = "nvim_lsp"},
-        {name = "vsnip"}
+        {name = "vsnip"},
+        {name = "path"}
       },
       {
         {
@@ -136,7 +139,7 @@ cmp.setup(
 cmp.setup.cmdline( "/", { sources = { {name = "buffer"} } })
 
 cmp.setup.cmdline( ":",
-  { 
+  {
     sources = cmp.config.sources(
       { {name = "path"} },
       { {name = "cmdline"} })
