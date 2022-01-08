@@ -10,7 +10,7 @@ telescope.setup{
   defaults = {
     prompt_prefix = " ",
     selection_caret = " ",
-    path_display = { "smart" },
+    path_display = { truncate = 3 },
     layout_strategy = "vertical",
     layout_config = {
       vertical = { width = 0.95 },
@@ -18,11 +18,15 @@ telescope.setup{
     mappings = {
       n = {
         ["q"] = actions.close,
-        ["<C-]>"] = actions_layout.toggle_preview
+        ["<C-]>"] = actions_layout.toggle_preview,
+        ["<M-q>"] = actions.send_to_qflist + actions.open_qflist,
+        ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
       },
       i = {
         ["qq"] = actions.close,
-        ["<C-]>"] = actions_layout.toggle_preview
+        ["<C-]>"] = actions_layout.toggle_preview,
+        ["<M-q>"] = actions.send_to_qflist + actions.open_qflist,
+        ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
       },
     },
   },

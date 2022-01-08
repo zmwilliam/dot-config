@@ -45,6 +45,16 @@ nvim_tree.setup {
     }
   },
 
+  diagnostics = {
+    enable = true,
+    icons = {
+      hint = "",
+      info = "",
+      warning = "",
+      error = "",
+    },
+  },
+
   -- project support
   update_cwd = true,
   update_focused_file = {

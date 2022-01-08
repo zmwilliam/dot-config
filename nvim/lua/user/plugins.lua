@@ -59,7 +59,15 @@ return packer.startup(function(use)
     requires = { {"nvim-lua/plenary.nvim"} }
   }
 
-  use "ahmedkhalf/project.nvim"
+  use {
+    "ahmedkhalf/project.nvim",
+    requires = {"nvim-telescope/telescope.nvim"}
+  }
+
+  use {
+    "Shatur/neovim-session-manager",
+    requires = {"nvim-telescope/telescope.nvim"}
+  }
 
   use {
     "kyazdani42/nvim-tree.lua",
@@ -117,6 +125,8 @@ return packer.startup(function(use)
   use "lewis6991/impatient.nvim"
 
   use "goolord/alpha-nvim"
+
+  use "moll/vim-bbye" --:Bdelete and :Bwipeout commands that behave like well designed citizens
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

@@ -83,27 +83,19 @@ local mappings = {
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
-  ["c"] = { "<cmd>bdelete!<CR>", "Close Buffer" },
+  ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 
   f = {
     name = "Find",
-    f  = {
-      --"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-      "<cmd>lua require('user.telescope').project_files()<cr>",
-      "Files",
-    },
+    f  = { "<cmd>lua require('user.telescope').project_files()<cr>", "Files" },
     g = {
       "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"  \")})<cr>",
       "Grep For"
     },
     G = { "<cmd>Telescope live_grep theme=ivy<cr>", "Live grep" },
-    w = { "<cmd>lua require('telescope.builtin').grep_string()<cr>", "Grep string"},
-    b = {
-      --"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-      "<cmd>lua require('telescope.builtin').buffers()<cr>",
-      "Buffers",
-    },
+    w = { "<cmd>lua require('telescope.builtin').grep_string()<cr>", "Grep string" },
+    b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers" },
     p = { "<cmd>Telescope projects<cr>", "Projects" },
     e = { "<cmd>NvimTreeFindFileToggle<cr>", "Explorer" },
   },
@@ -178,6 +170,35 @@ local mappings = {
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
   },
+
+  b = {
+    name = "Buffers",
+    b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "List" },
+    p = { "<cmd>BufferLinePick<CR>", "Pick" },
+    q = { "<cmd>bdelete!<CR>", "Close Current" },
+    Q = { "<cmd>BufferLinePickClose<CR>", "Close Pick" },
+    l = { "<cmd>BufferLineCloseRight<CR>", "Close buffers to the RIGHT" },
+    h = { "<cmd>BufferLineCloseLeft<CR>", "Close buffers to the LEFT" },
+    s = {
+      name = "Sort By",
+      e = { "<cmd>BufferLineSortByExtension<CR>", "Extension" },
+      d = { "<cmd>BufferLineSortByDirectory<CR>", "Directory" },
+      r = { "<cmd>BufferLineSortByRelativeDirectory<CR>", "Relative Directory" },
+      t = { "<cmd>BufferLineSortByTabs<CR>", "Tabs" },
+    },
+    g = {
+      name = "Go to #",
+      ["1"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer #1" },
+      ["2"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer #2" },
+      ["3"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer #3" },
+      ["4"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer #4" },
+      ["5"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer #5" },
+      ["6"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer #6" },
+      ["7"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer #7" },
+      ["8"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer #8" },
+      ["9"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer #9" },
+    }
+  }
 }
 
 which_key.setup(setup)

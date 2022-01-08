@@ -12,7 +12,7 @@ return {
     }
   },
   filetypes = {
-    "elixir", 
+    "elixir",
     "eelixir",
     "ex",
     "exs",
