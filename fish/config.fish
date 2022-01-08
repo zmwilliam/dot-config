@@ -33,8 +33,6 @@ set -gx VISUAL nvim
 set -gx GOPATH $HOME/workspace/go
 set -g fish_user_paths $GOPATH/bin $fish_user_paths
 
-set -gx GRAALVM_HOME $HOME/graalvm-ce-1.0.0-rc13/Contents/Home
-
 if test -f $HOME/.config/fish/config.secret.fish
   source $HOME/.config/fish/config.secret.fish 
 end
