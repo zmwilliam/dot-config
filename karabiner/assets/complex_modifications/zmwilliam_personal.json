@@ -1,0 +1,169 @@
+{
+  "title": "zmwilliam personal config",
+  "rules":
+  [
+    {
+      "description": "Caps Lock → Hyper Key (⌃⌥⇧⌘) (Escape if alone)",
+      "manipulators":
+      [
+        {
+          "from":
+          {
+            "key_code": "caps_lock",
+            "modifiers": { "optional": [ "any" ] }
+          },
+          "to":
+          [
+            {
+              "key_code": "left_shift",
+              "modifiers":
+              [
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          ],
+          "to_if_alone":
+          [
+            {
+              "key_code": "escape"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Shift + Caps Lock → Hyper Key (⌃⌥⇧⌘)",
+      "manipulators":
+      [
+        {
+          "from":
+          {
+            "key_code": "caps_lock",
+            "modifiers": {
+              "mandatory": [ "shift" ]
+            }
+          },
+          "to":
+          [
+            {
+              "key_code": "left_shift",
+              "modifiers":
+              [
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Caps Lock → Escape",
+      "manipulators":
+      [
+        {
+          "from": { "key_code": "caps_lock" },
+          "to": [ { "key_code": "escape" } ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Swap left_command with left_option",
+      "manipulators":
+      [
+        {
+          "type": "basic",
+          "from":
+          {
+            "key_code": "left_command",
+            "modifiers":
+            {
+              "optional":
+              [
+                "any"
+              ]
+            }
+          },
+          "to":
+          [
+            {
+              "key_code": "left_option"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from":
+          {
+            "key_code": "left_option",
+            "modifiers":
+            {
+              "optional":
+              [
+                "any"
+              ]
+            }
+          },
+          "to":
+          [
+            {
+              "key_code": "left_command"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Swap right_command with right_option",
+      "manipulators":
+      [
+        {
+          "type": "basic",
+          "from":
+          {
+            "key_code": "right_command",
+            "modifiers":
+            {
+              "optional":
+              [
+                "any"
+              ]
+            }
+          },
+          "to":
+          [
+            {
+              "key_code": "right_option"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from":
+          {
+            "key_code": "right_option",
+            "modifiers":
+            {
+              "optional":
+              [
+                "any"
+              ]
+            }
+          },
+          "to":
+          [
+            {
+              "key_code": "right_command"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
