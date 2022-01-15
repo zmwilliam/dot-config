@@ -6,7 +6,10 @@ end
 -- Include the servers you want to have installed by default below
 local servers = {
   "elixirls",
+  "emmet_ls",
+  "html",
   "sumneko_lua",
+  --"tailwindcss",
   "vimls",
 }
 

@@ -4,8 +4,6 @@ if not status_ok then
 end
 
 configs.setup {
-  sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
-  ignore_install = { "" }, -- List of parsers to ignore installing
   highlight = {
     enable = true, -- false will disable the whole extension
     disable = { "" }, -- list of language that will be disabled
@@ -22,17 +20,20 @@ configs.setup {
   autopairs = {
 		enable = true,
 	},
-  ensure_installed = { -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-    "fish",
-    "json",
-    "yaml",
-    "html",
-    "css",
-    "scss",
-    "elixir",
-    "heex",
-    "go",
-    "lua",
-    "javascript"
-  },
+  sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+  ignore_install = {}, -- List of parsers to ignore installing
+  ensure_installed = "maintained",
+  -- ensure_installed = { -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  --   "fish",
+  --   "json",
+  --   "yaml",
+  --   "html",
+  --   "css",
+  --   "scss",
+  --   "elixir",
+  --   "heex",
+  --   "go",
+  --   "lua",
+  --   "javascript"
+  -- },
 }

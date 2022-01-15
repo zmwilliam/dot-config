@@ -54,6 +54,8 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   }
 
+  use "elixir-editors/vim-elixir"
+
   use {
     "nvim-telescope/telescope.nvim",
     requires = { {"nvim-lua/plenary.nvim"} }
@@ -64,10 +66,13 @@ return packer.startup(function(use)
     requires = {"nvim-telescope/telescope.nvim"}
   }
 
-  use {
-    "Shatur/neovim-session-manager",
-    requires = {"nvim-telescope/telescope.nvim"}
-  }
+  -- use {
+  --   "Shatur/neovim-session-manager",
+  --   requires = {
+  --     {"nvim-lua/plenary.nvim"},
+  --     {"nvim-telescope/telescope.nvim"}
+  --   }
+  -- }
 
   use {
     "kyazdani42/nvim-tree.lua",
