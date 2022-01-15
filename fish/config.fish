@@ -13,6 +13,7 @@ abbr gl 'git log --graph --date=short'
 abbr glc 'git log --pretty=format:"%h %cr %cn %Cgreen%s%Creset" --name-status'
 
 abbr vim 'nvim'
+abbr v 'nvim'
 abbr tsd 'tmux attach -t default ;or tmux new -s default'
 abbr bi 'brew install'
 abbr bs 'brew search'
@@ -40,6 +41,8 @@ end
 if test (which asdf)
   source /usr/local/opt/asdf/asdf.fish
 end
+
+source $HOME/.config/fish/themes/nightfox.fish
 
 if test (which tmux) 
   and status is-interactive 
