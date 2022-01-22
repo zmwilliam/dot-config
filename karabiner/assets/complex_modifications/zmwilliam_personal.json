@@ -35,40 +35,104 @@
       ]
     },
     {
-      "description": "Shift + Caps Lock → Hyper Key (⌃⌥⇧⌘)",
-      "manipulators":
-      [
+      "description": "Hyper Key (⌃⌥⇧⌘) + h/j/k/l == vim directional Keys",
+      "manipulators": [
         {
-          "from":
-          {
-            "key_code": "caps_lock",
+          "from": {
+            "key_code": "k",
             "modifiers": {
-              "mandatory": [ "shift" ]
-            }
-          },
-          "to":
-          [
-            {
-              "key_code": "left_shift",
-              "modifiers":
-              [
+              "mandatory": [
+                "left_shift",
                 "left_command",
                 "left_control",
                 "left_option"
               ]
             }
+          },
+          "to": [
+            {
+              "key_code": "up_arrow"
+            }
           ],
           "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "Caps Lock → Escape",
-      "manipulators":
-      [
+        },
         {
-          "from": { "key_code": "caps_lock" },
-          "to": [ { "key_code": "escape" } ],
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_arrow"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "down_arrow"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_arrow"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "semicolon",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
           "type": "basic"
         }
       ]
