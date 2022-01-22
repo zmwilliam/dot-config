@@ -2,5 +2,5 @@
   "IO.inspect with label for pipe": {
     "prefix": "insp",
     "body": "IO.inspect(label: \"$0\")"
-  },
+  }
 }
