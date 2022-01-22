@@ -133,6 +133,13 @@ return packer.startup(function(use)
 
   use "moll/vim-bbye" --:Bdelete and :Bwipeout commands that behave like well designed citizens
 
+  use {
+    "ggandor/lightspeed.nvim", --cutting-edge motion plugin
+    requires = "tpope/vim-repeat"
+  }
+
+  use "takac/vim-hardtime"  -- I want to stop using h/j/k/l repeatedly
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
