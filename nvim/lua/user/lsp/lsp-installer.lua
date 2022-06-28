@@ -8,9 +8,12 @@ local servers = {
   "elixirls",
   "emmet_ls",
   "html",
+  "cssls",
   "sumneko_lua",
-  --"tailwindcss",
+  "tailwindcss",
+  "tsserver",
   "vimls",
+  "eslint",
 }
 
 for _, name in pairs(servers) do
@@ -37,10 +40,6 @@ lsp_installer.on_server_ready(function(server)
     --print("[lsp-installer] Loading custom opts for " .. server.name)
     opts = vim.tbl_deep_extend("force", custom_opts, opts)
   end
-  --if server.name == "sumneko_lua" then
-  --  local sumneko_opts = require("user.lsp.settings.sumneko_lua")
-  --  opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
-  --end
 
   -- This setup() function is exactly the same as lspconfig's setup function.
   -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md

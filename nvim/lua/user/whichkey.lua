@@ -88,16 +88,16 @@ local mappings = {
 
   f = {
     name = "Find",
-    f  = { "<cmd>lua require('user.telescope').project_files()<cr>", "Files" },
-    g = {
+    f    = { "<cmd>lua require('user.telescope').project_files()<cr>", "Files" },
+    g    = {
       "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"  \")})<cr>",
       "Grep For"
     },
-    G = { "<cmd>Telescope live_grep theme=ivy<cr>", "Live grep" },
-    w = { "<cmd>lua require('telescope.builtin').grep_string()<cr>", "Grep string" },
-    b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers" },
-    p = { "<cmd>Telescope projects<cr>", "Projects" },
-    e = { "<cmd>NvimTreeFindFileToggle<cr>", "Explorer" },
+    G    = { "<cmd>Telescope live_grep theme=ivy<cr>", "Live grep" },
+    w    = { "<cmd>lua require('telescope.builtin').grep_string()<cr>", "Grep string" },
+    b    = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers" },
+    p    = { "<cmd>Telescope projects<cr>", "Projects" },
+    e    = { "<cmd>NvimTreeFindFileToggle<cr>", "Explorer" },
   },
 
   p = {
@@ -119,11 +119,11 @@ local mappings = {
     r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
     R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
     s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-    u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk"},
+    u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
     o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-    d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff"},
+    d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
     P = { "<cmd>Git push<CR>", "Push" },
   },
 
@@ -138,7 +138,8 @@ local mappings = {
       "<cmd>Telescope lsp_workspace_diagnostics<cr>",
       "Workspace Diagnostics",
     },
-    f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
+    f = { "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", "Format" },
+
     i = { "<cmd>LspInfo<cr>", "Info" },
     I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
     j = {
@@ -157,6 +158,7 @@ local mappings = {
       "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
       "Workspace Symbols",
     },
+    t = { "<cmd>LspToggleAutoFormat<CR>", "toggle format on save" },
   },
 
   s = {

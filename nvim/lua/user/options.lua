@@ -29,6 +29,7 @@ local options = {
   undofile = true,                         -- enable persistent undo
   updatetime = 300,                        -- faster completion (4000ms default)
   wrap = false,                            -- display lines as one long line
+  laststatus = 3,                          -- Enable global statusline
 }
 
 for k, v in pairs(options) do

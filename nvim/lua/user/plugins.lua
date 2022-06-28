@@ -54,16 +54,21 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   }
 
-  use "elixir-editors/vim-elixir"
+  use {
+    "nvim-treesitter/playground",
+    requires = { "nvim-treesitter/nvim-treesitter" }
+  }
+
+  --use "elixir-editors/vim-elixir"
 
   use {
     "nvim-telescope/telescope.nvim",
-    requires = { {"nvim-lua/plenary.nvim"} }
+    requires = { { "nvim-lua/plenary.nvim" } }
   }
 
   use {
     "ahmedkhalf/project.nvim",
-    requires = {"nvim-telescope/telescope.nvim"}
+    requires = { "nvim-telescope/telescope.nvim" }
   }
 
   -- use {
@@ -76,17 +81,18 @@ return packer.startup(function(use)
 
   use {
     "kyazdani42/nvim-tree.lua",
-    requires = {"kyazdani42/nvim-web-devicons"}
+    requires = { "kyazdani42/nvim-web-devicons" }
   }
 
   use {
     "akinsho/bufferline.nvim",
-    requires = {"kyazdani42/nvim-web-devicons", opt = true}
+    tag = "v2.*",
+    requires = { "kyazdani42/nvim-web-devicons", opt = true }
   }
 
   use {
     "nvim-lualine/lualine.nvim",
-    requires = {"kyazdani42/nvim-web-devicons", opt = true}
+    requires = { "kyazdani42/nvim-web-devicons", opt = true }
   }
 
   use "folke/which-key.nvim"
@@ -94,12 +100,12 @@ return packer.startup(function(use)
   use {
     "hrsh7th/nvim-cmp",
     requires = {
-      {"hrsh7th/cmp-nvim-lsp"},
-      {"hrsh7th/cmp-buffer"},
-      {"hrsh7th/cmp-path"},
-      {"hrsh7th/cmp-cmdline"},
-      {"hrsh7th/cmp-vsnip"},
-      {"hrsh7th/vim-vsnip"}
+      { "hrsh7th/cmp-nvim-lsp" },
+      { "hrsh7th/cmp-buffer" },
+      { "hrsh7th/cmp-path" },
+      { "hrsh7th/cmp-cmdline" },
+      { "hrsh7th/cmp-vsnip" },
+      { "hrsh7th/vim-vsnip" }
     }
   }
 
@@ -125,6 +131,8 @@ return packer.startup(function(use)
 
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
 
+  use "windwp/nvim-ts-autotag" -- Use treesitter to autoclose and autorename html tag
+
   use "DarwinSenior/nvim-colorizer.lua"
 
   use "lewis6991/impatient.nvim"
@@ -138,7 +146,9 @@ return packer.startup(function(use)
     requires = "tpope/vim-repeat"
   }
 
-  use "takac/vim-hardtime"  -- I want to stop using h/j/k/l repeatedly
+  use "takac/vim-hardtime" -- I want to stop using h/j/k/l repeatedly
+
+  use { 'rcarriga/nvim-notify' } -- A fancy, configurable, notification manager for NeoVim
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

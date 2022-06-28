@@ -32,7 +32,7 @@ set -gx EDITOR nvim
 set -gx VISUAL nvim
 
 set -gx GOPATH $HOME/workspace/go
-set -g fish_user_paths $GOPATH/bin $fish_user_paths
+fish_add_path $GOPATH/bin 
 
 if test -f $HOME/.config/fish/config.secret.fish
   source $HOME/.config/fish/config.secret.fish 
@@ -50,9 +50,10 @@ if test (which tmux)
     eval tmux attach -t default ;or tmux new -s default
 end
 
-set -g fish_user_paths "/usr/local/opt/erlang@22/bin" $fish_user_paths
-set -g fish_user_paths "/usr/local/opt/libpq/bin" $fish_user_paths
-set -g fish_user_paths "$HOME/.local/bin" $fish_user_paths
+fish_add_path "/usr/local/opt/erlang@22/bin" 
+fish_add_path "/usr/local/opt/libpq/bin" 
+fish_add_path "$HOME/.local/bin" 
+fish_add_path "/usr/local/sbin"
 
 set -gx GPG_TTY (tty)
 

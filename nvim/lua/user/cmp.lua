@@ -68,21 +68,28 @@ cmp.setup(
         vim.fn["vsnip#anonymous"](args.body)
       end
     },
-    documentation = {
-      border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}
-    },
+    -- documentation = {
+    --   border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}
+    -- },
     mapping = {
-      ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}),
-      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}),
-      ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
-      ["<C-y>"] = cmp.config.disable,
+      ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+      ["<C-c>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+      --["<C-y>"] = cmp.config.disable,
+      ["<c-y>"] = cmp.mapping(
+        cmp.mapping.confirm {
+          behavior = cmp.ConfirmBehavior.Insert,
+          select = true,
+        },
+        { "i", "c" }
+      ),
       ["<C-e>"] = cmp.mapping(
         {
           i = cmp.mapping.abort(),
           c = cmp.mapping.close()
         }
-        ),
-      ["<CR>"] = cmp.mapping.confirm({select = true}),
+      ),
+      ["<CR>"] = cmp.mapping.confirm({ select = true }),
       ["<Tab>"] = cmp.mapping(
         function(fallback)
           if cmp.visible() then
@@ -95,8 +102,8 @@ cmp.setup(
             fallback()
           end
         end,
-        {"i", "s"}
-        ),
+        { "i", "s" }
+      ),
       ["<S-Tab>"] = cmp.mapping(
         function()
           if cmp.visible() then
@@ -105,14 +112,14 @@ cmp.setup(
             feedkey("<Plug>(vsnip-jump-prev)", "")
           end
         end,
-        {"i", "s"}
-        )
+        { "i", "s" }
+      )
     },
     sources = cmp.config.sources(
       {
-        {name = "nvim_lsp"},
-        {name = "vsnip"},
-        {name = "path"}
+        { name = "nvim_lsp" },
+        { name = "vsnip" },
+        { name = "path" }
       },
       {
         {
@@ -124,7 +131,7 @@ cmp.setup(
           },
         }
       }
-      ),
+    ),
     formatting = {
       fields = formatting.fields,
       format = function(entry, vim_item)
@@ -134,13 +141,21 @@ cmp.setup(
         return vim_item
       end
     },
+    experimental = {
+      native_menu = false,
+      ghost_text = true,
+    },
   })
 
-cmp.setup.cmdline( "/", { sources = { {name = "buffer"} } })
+cmp.setup.cmdline("/", {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = { { name = "buffer" } }
+})
 
-cmp.setup.cmdline( ":",
-  {
-    sources = cmp.config.sources(
-      { {name = "path"} },
-      { {name = "cmdline"} })
-  })
+cmp.setup.cmdline(":", {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources(
+    { { name = "path" } },
+    { { name = "cmdline" }
+    })
+})
