@@ -10,7 +10,7 @@ require "user.lualine"
 require "user.whichkey"
 require "user.cmp"
 require "user.vsnip"
-require "user.lsp"
+require("user.lsp").setup()
 require "user.gitsigns"
 require "user.autopairs"
 require "user.colorizer"

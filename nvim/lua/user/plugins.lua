@@ -113,6 +113,7 @@ return packer.startup(function(use)
 
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "jose-elias-alvarez/null-ls.nvim" -- Hook non-LSP sources to nvim LSP client
 
   -- Git
   use "lewis6991/gitsigns.nvim"
