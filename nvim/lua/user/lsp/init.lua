@@ -55,4 +55,7 @@ M.setup = function()
   require("user.lsp.lsp-installer").setup(opts)
 end
 
+-- Debug logs, :LspLog to view
+--vim.lsp.set_log_level("debug")
+
 return M

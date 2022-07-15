@@ -1,47 +1,44 @@
 local M = {}
 
-M.setup = function(opts)
-  local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-  if not status_ok then
-    return
-  end
+local servers = {
+  "elixirls",
+  "emmet_ls",
+  "html",
+  "cssls",
+  "sumneko_lua",
+  "tailwindcss",
+  "tsserver",
+  "vimls",
+}
 
-  -- Include the servers you want to have installed by default below
-  local servers = {
-    "elixirls",
-    "emmet_ls",
-    "html",
-    "cssls",
-    "sumneko_lua",
-    "tailwindcss",
-    "tsserver",
-    "vimls",
+M.setup = function(opts)
+  local lsp_config = require "lspconfig"
+  local lsp_installer = require "nvim-lsp-installer"
+
+  -- nvim-lsp-installer must be set up before nvim-lspconfig
+  lsp_installer.setup {
+    ensure_installed = servers,
+    automatic_installation = false,
+    ui = {
+      border = "rounded",
+      icons = {
+        server_installed = "✓",
+        server_pending =  "➜",
+        server_uninstalled =  "✗",
+      },
+    },
   }
 
-  for _, name in pairs(servers) do
-    local server_is_found, server = lsp_installer.get_server(name)
-    if server_is_found then
-      if not server:is_installed() then
-        print("[lsp-installer] Installing " .. name)
-        server:install()
-      end
-    end
-  end
-
-  -- Register a handler that will be called for all installed servers.
-  -- Alternatively, you may also register handlers on specific server instances instead (see example below).
-  lsp_installer.on_server_ready(function(server)
-    local is_custom_settings, custom_opts = pcall(require, "user.lsp.settings." .. server.name)
+  for _, server_name in pairs(servers) do
+    local is_custom_settings, custom_opts = pcall(require, "user.lsp.settings." .. server_name)
     if is_custom_settings then
-      --print("[lsp-installer] Loading custom opts for " .. server.name)
+      --print("[lsp-installer] Loading custom opts for " .. server_name)
       opts = vim.tbl_deep_extend("force", custom_opts, opts)
     end
 
-    -- This setup() function is exactly the same as lspconfig's setup function.
-    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-    server:setup(opts)
-  end)
-
+    --print("[lsp-installer] setting up " .. server_name)
+    lsp_config[server_name].setup(opts)
+  end
 end
 
 return M
