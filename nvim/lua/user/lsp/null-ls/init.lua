@@ -14,8 +14,8 @@ end
 
 local sources = {
   --lua
-  b.formatting.stylua,
-  with_root_file(b.diagnostics.selene, "selene.toml"),
+  -- b.formatting.stylua,
+  -- with_root_file(b.diagnostics.selene, "selene.toml"),
 
   --json
   b.formatting.fixjson,

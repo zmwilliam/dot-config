@@ -1,22 +1,23 @@
-require "user.options"
-require "user.keymaps"
-require "user.plugins"
-require "user.colorscheme"
-require "user.treesitter"
-require "user.telescope"
-require "user.nvim-tree"
-require "user.bufferline"
-require "user.lualine"
-require "user.whichkey"
-require "user.cmp"
-require "user.vsnip"
+require("user.options")
+require("user.keymaps")
+require("user.plugins")
+require("user.colorscheme")
+require("user.treesitter")
+require("user.notify").setup()
+require("user.telescope")
+require("user.nvim-tree")
+require("user.bufferline")
+require("user.lualine")
+require("user.whichkey")
+require("user.cmp")
+require("user.vsnip")
 require("user.lsp").setup()
-require "user.gitsigns"
-require "user.autopairs"
-require "user.colorizer"
-require "user.impatient"
-require "user.alpha"
-require "user.project"
+require("user.gitsigns")
+require("user.autopairs")
+require("user.colorizer")
+require("user.impatient")
+require("user.alpha")
+require("user.project")
 --require "user.session"
-require "user.hardtime"
-require "user.ts-autotag"
+require("user.hardtime")
+require("user.ts-autotag")
