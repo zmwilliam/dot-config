@@ -1,31 +1,70 @@
 local M = {}
 
+local whichkey = require("which-key")
+
 M.setup = function(bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
-  local opts = { noremap = true, silent = true }
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
 
-  --TODO whichkey conflict
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<leader>dl', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-  buf_set_keymap("n", "<leader>fc", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
+  local keymap_diagnostic_prev = {
+    d = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "[Diagnostic] Previous" },
+    e = { "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.ERROR})<CR>", "[Diagnostic] Previous Error" }
+  }
 
-  --vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+  local keymap_diagnostic_next = {
+    d = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "[Diagnostic] Next" },
+    e = { "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.ERROR})<CR>", "[Diagnostic] Next Error" }
+  }
 
+  local keymap_goto = {
+    name = "Goto",
+    d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "[LSP] Definition" },
+    D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "[LSP] Declaration" },
+    I = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "[LSP] Implementation" },
+    h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "[LSP] Signature Help" },
+    t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "[LSP] Type Definition" },
+    r = { "<cmd>lua vim.lsp.buf.references()<CR>", "[LSP] References" }
+  }
+
+  local keymap_lsp = {
+    l = {
+      name = "LSP",
+      a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+      d = {
+        "<cmd>Telescope lsp_document_diagnostics<cr>",
+        "Document Diagnostics",
+      },
+      w = {
+        "<cmd>Telescope lsp_workspace_diagnostics<cr>",
+        "Workspace Diagnostics",
+      },
+      f = { "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", "Format" },
+
+      i = { "<cmd>LspInfo<cr>", "Info" },
+      I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
+      j = {
+        "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
+        "Next Diagnostic",
+      },
+      k = {
+        "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
+        "Prev Diagnostic",
+      },
+      l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+      q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
+      r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+      s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+      S = {
+        "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+        "Workspace Symbols",
+      },
+    }
+  }
+
+  whichkey.register(keymap_diagnostic_prev, { buffer = bufnr, prefix = "[" })
+  whichkey.register(keymap_diagnostic_next, { buffer = bufnr, prefix = "]" })
+  whichkey.register(keymap_goto, { buffer = bufnr, prefix = "g" })
+  whichkey.register(keymap_lsp, { buffer = bufnr, prefix = "<leader>" })
 end
 
 return M
