@@ -1,2 +1,2 @@
--- require "user.colorscheme.nightfox"
-require "user.colorscheme.kanagawa"
+require("user.colorscheme.nightfox").setup('duskfox')
+--require "user.colorscheme.kanagawa"
