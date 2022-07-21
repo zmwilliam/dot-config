@@ -18,6 +18,6 @@ require("user.colorizer")
 require("user.impatient")
 require("user.alpha")
 require("user.project")
---require "user.session"
+require("user.session").setup()
 require("user.hardtime")
 require("user.ts-autotag")

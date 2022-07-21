@@ -71,13 +71,13 @@ return packer.startup(function(use)
     requires = { "nvim-telescope/telescope.nvim" }
   }
 
-  -- use {
-  --   "Shatur/neovim-session-manager",
-  --   requires = {
-  --     {"nvim-lua/plenary.nvim"},
-  --     {"nvim-telescope/telescope.nvim"}
-  --   }
-  -- }
+  use {
+    "rmagatti/auto-session",
+    requires = {
+      "rmagatti/session-lens",
+      "nvim-telescope/telescope.nvim"
+    }
+  }
 
   use {
     "kyazdani42/nvim-tree.lua",
