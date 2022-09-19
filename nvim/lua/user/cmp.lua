@@ -63,15 +63,27 @@ local formatting = {
 
 cmp.setup(
   {
+    completion = {
+      keyword_length = 2,
+    },
     snippet = {
       expand = function(args)
         vim.fn["vsnip#anonymous"](args.body)
       end
     },
-    -- documentation = {
-    --   border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}
-    -- },
+    window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    },
     mapping = {
+      ['<C-n>'] = cmp.mapping(
+        cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        { 'i', 'c' }
+      ),
+      ['<C-p>'] = cmp.mapping(
+        cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        { 'i', 'c' }
+      ),
       ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
       ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
       ["<C-c>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),

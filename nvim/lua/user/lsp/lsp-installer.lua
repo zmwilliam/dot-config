@@ -3,6 +3,7 @@ local M = {}
 local servers = {
   "elixirls",
   "emmet_ls",
+  "gopls",
   "html",
   "cssls",
   "sumneko_lua",
@@ -23,8 +24,8 @@ M.setup = function(opts)
       border = "rounded",
       icons = {
         server_installed = "✓",
-        server_pending =  "➜",
-        server_uninstalled =  "✗",
+        server_pending = "➜",
+        server_uninstalled = "✗",
       },
     },
   }

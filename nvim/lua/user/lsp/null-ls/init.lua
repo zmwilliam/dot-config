@@ -26,6 +26,11 @@ local sources = {
   b.diagnostics.eslint_d,
   b.diagnostics.tsc, --typescript
 
+  --golang
+  b.diagnostics.golangci_lint,
+
+  --elixir
+  b.diagnostics.credo,
 }
 
 function M.setup(opts)
