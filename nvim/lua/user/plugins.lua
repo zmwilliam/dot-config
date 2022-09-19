@@ -112,7 +112,14 @@ return packer.startup(function(use)
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
   use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "williamboman/mason.nvim"
+  use {
+    "williamboman/mason-lspconfig.nvim",
+    requires = {
+      { "williamboman/mason.nvim" },
+      { "neovim/nvim-lspconfig" },
+    }
+  }
   use "jose-elias-alvarez/null-ls.nvim" -- Hook non-LSP sources to nvim LSP client
 
   -- Git

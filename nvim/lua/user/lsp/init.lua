@@ -52,7 +52,7 @@ M.setup = function()
 
   require("user.lsp.handlers").setup()
   require("user.lsp.null-ls").setup(opts)
-  require("user.lsp.lsp-installer").setup(opts)
+  require("user.lsp.mason-lspconfig").setup(opts)
 end
 
 -- Debug logs, :LspLog to view
