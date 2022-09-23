@@ -59,11 +59,17 @@ return packer.startup(function(use)
     requires = { "nvim-treesitter/nvim-treesitter" }
   }
 
-  --use "elixir-editors/vim-elixir"
+  use {
+    "nvim-treesitter/nvim-treesitter-context",
+    requires = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("treesitter-context").setup()
+    end
+  }
 
   use {
     "nvim-telescope/telescope.nvim",
-    requires = { { "nvim-lua/plenary.nvim" } }
+    requires = { "nvim-lua/plenary.nvim" }
   }
 
   use {
