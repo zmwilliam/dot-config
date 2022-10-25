@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup(colorscheme)
+function M.setup(style)
   local status, nightfox = pcall(require, 'nightfox')
   if not status then
     return
@@ -15,11 +15,16 @@ function M.setup(colorscheme)
       },
       inverse = {
         match_paren = false, -- inverse the highlighting of match_parens
-      }
+        visual = false,
+        search = false,
+      },
+      transparent = false, -- Disable setting background
+      dim_inactive = false, -- Non focused panes set to alternative background
     }
   })
 
-  vim.cmd("colorscheme " .. (colorscheme or "nightfox"))
+  -- dark styles: nightfox, duskfox, nordfox, terafox, carbonfox
+  vim.cmd("colorscheme " .. (style or "nightfox"))
 end
 
 return M

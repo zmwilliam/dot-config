@@ -30,11 +30,12 @@ local sources = {
   b.diagnostics.golangci_lint,
 
   --elixir
-  b.diagnostics.credo,
+  --b.diagnostics.credo,
 }
 
 function M.setup(opts)
   null_ls.setup({
+    debug = false,
     debounce = 150,
     save_after_format = false,
     sources = sources,

@@ -76,33 +76,33 @@ cmp.setup(
       documentation = cmp.config.window.bordered(),
     },
     mapping = {
-      ['<C-n>'] = cmp.mapping(
+      ['<C-n>']     = cmp.mapping(
         cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
         { 'i', 'c' }
       ),
-      ['<C-p>'] = cmp.mapping(
+      ['<C-p>']     = cmp.mapping(
         cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
         { 'i', 'c' }
       ),
-      ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-      ["<C-c>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-      --["<C-y>"] = cmp.config.disable,
-      ["<c-y>"] = cmp.mapping(
+      ["<C-b>"]     = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+      ["<C-f>"]     = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+      --Gotta double tap Space due to tmux prefix also being C-Space
+      ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+      ["<c-y>"]     = cmp.mapping(
         cmp.mapping.confirm {
           behavior = cmp.ConfirmBehavior.Insert,
           select = true,
         },
         { "i", "c" }
       ),
-      ["<C-e>"] = cmp.mapping(
+      ["<C-e>"]     = cmp.mapping(
         {
           i = cmp.mapping.abort(),
           c = cmp.mapping.close()
         }
       ),
-      ["<CR>"] = cmp.mapping.confirm({ select = true }),
-      ["<Tab>"] = cmp.mapping(
+      ["<CR>"]      = cmp.mapping.confirm({ select = true }),
+      ["<Tab>"]     = cmp.mapping(
         function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
@@ -116,7 +116,7 @@ cmp.setup(
         end,
         { "i", "s" }
       ),
-      ["<S-Tab>"] = cmp.mapping(
+      ["<S-Tab>"]   = cmp.mapping(
         function()
           if cmp.visible() then
             cmp.select_prev_item()
@@ -137,6 +137,7 @@ cmp.setup(
         {
           name = "buffer",
           option = {
+            -- pull keywords from all buffers
             get_bufnrs = function()
               return vim.api.nvim_list_bufs()
             end

@@ -89,6 +89,7 @@ local mappings = {
   f = {
     name = "Find",
     f    = { "<cmd>lua require('user.telescope').project_files()<cr>", "Files" },
+    F    = { "<cmd>Telescope find_files<cr>", "Files (all)" },
     g    = {
       "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"  \")})<cr>",
       "Grep For"
@@ -147,6 +148,7 @@ local mappings = {
     Q = { "<cmd>BufferLinePickClose<CR>", "Close Pick" },
     l = { "<cmd>BufferLineCloseRight<CR>", "Close buffers to the RIGHT" },
     h = { "<cmd>BufferLineCloseLeft<CR>", "Close buffers to the LEFT" },
+    x = { "<cmd>%bd|e#|bd#<CR>|'\"", "Close all buffers but current" },
     s = {
       name = "Sort By",
       e = { "<cmd>BufferLineSortByExtension<CR>", "Extension" },

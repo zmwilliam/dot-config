@@ -48,6 +48,8 @@ return packer.startup(function(use)
   use "shaunsingh/nord.nvim"
   use "rebelot/kanagawa.nvim"
   use "EdenEast/nightfox.nvim"
+  use "rose-pine/neovim"
+  use "folke/tokyonight.nvim"
 
   use {
     "nvim-treesitter/nvim-treesitter",

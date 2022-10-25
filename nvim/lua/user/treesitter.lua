@@ -7,11 +7,11 @@ local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
 
 parser_config.embedded_template = {
   install_info = {
-    url = 'https://github.com/tree-sitter/tree-sitter-embedded-template',
-    files =  { 'src/parser.c' },
-    requires_generate_from_grammar  = true,
+    url                            = 'https://github.com/tree-sitter/tree-sitter-embedded-template',
+    files                          = { 'src/parser.c' },
+    requires_generate_from_grammar = true,
   },
-  used_by = {'eex', 'leex', 'eelixir', 'eruby', 'erb'}
+  used_by = { 'eex', 'leex', 'eelixir', 'eruby', 'erb' }
 }
 
 configs.setup {
@@ -22,15 +22,15 @@ configs.setup {
   },
   indent = {
     enable = false,
-    disable = { "yaml"}
+    disable = { "yaml" }
   },
   context_commentstring = {
     enable = true,
     enable_autocmd = false,
   },
   autopairs = {
-		enable = true,
-	},
+    enable = true,
+  },
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
   ignore_install = {}, -- List of parsers to ignore installing
   ensure_installed = { -- one of "all", "maintained" (parsers with maintainers), or a list of languages

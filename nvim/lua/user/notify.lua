@@ -1,17 +1,21 @@
 local M = {}
 
-
 function M.setup()
-  local status_ok, notify = pcall(require, "notify")
-  if not status_ok then
-    return
-  end
+  local onRequireOk = require("user.utils").onRequireOk
 
-  notify.setup({
-    timeout = 1500,
-  })
+  onRequireOk("notify", function(notify)
+    notify.setup({
+      timeout = 1500,
+      on_open = function(win)
+        vim.api.nvim_win_set_config(win, { focusable = false })
+      end
+    })
+    vim.notify = notify
+  end)
 
-  vim.notify = notify
+  onRequireOk("telescope", function(telescope)
+    telescope.load_extension("notify")
+  end)
 end
 
 return M

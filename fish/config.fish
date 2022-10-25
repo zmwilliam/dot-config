@@ -42,7 +42,9 @@ if test (which asdf)
   source /usr/local/opt/asdf/asdf.fish
 end
 
-source $HOME/.config/fish/themes/nightfox.fish
+#Theme/colorscheme
+#source $HOME/.config/fish/themes/nightfox.fish
+fish_config theme choose "Rose Pine Moon"
 
 if test (which tmux) 
   and status is-interactive 
