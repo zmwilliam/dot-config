@@ -1,0 +1,10 @@
+{
+  "Create a module": {
+    "prefix": "mod",
+    "body": [
+      "local ${1:M} = {}\n",
+      "function M.${2:funcName}($3)\n\t$0\nend\n",
+      "return $1"
+    ]
+  }
+}

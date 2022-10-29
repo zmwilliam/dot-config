@@ -25,16 +25,6 @@ function M.setup()
     overrides = {},
   })
 
-  vim.opt.fillchars:append({
-    horiz = '━',
-    horizup = '┻',
-    horizdown = '┳',
-    vert = '┃',
-    vertleft = '┨',
-    vertright = '┣',
-    verthoriz = '╋',
-  })
-
   -- setup must be called before loading
   vim.cmd("colorscheme kanagawa")
 end
