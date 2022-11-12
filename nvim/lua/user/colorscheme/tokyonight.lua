@@ -4,7 +4,7 @@ function M.setup(style)
   local status, tokyonight = pcall(require, "tokyonight")
   if not status then return end
 
-  local transparent = true
+  local transparent = false
 
   tokyonight.setup({
     style = style or "day", -- `storm`, `moon`, a darker variant `night` and `day`

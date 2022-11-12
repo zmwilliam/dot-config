@@ -14,9 +14,9 @@ local setup = {
     -- the presets plugin, adds help for a bunch of default keybindings in Neovim
     -- No actual key bindings are created
     presets = {
-      operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
-      motions = false, -- adds help for motions
-      text_objects = false, -- help for text objects triggered after entering an operator
+      operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
+      motions = true, -- adds help for motions
+      text_objects = true, -- help for text objects triggered after entering an operator
       windows = true, -- default bindings on <c-w>
       nav = true, -- misc bindings to work with windows
       z = true, -- bindings for folds, spelling and others prefixed with z
@@ -82,7 +82,7 @@ local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
-  ["q"] = { "<cmd>q!<CR>", "Quit" },
+  ["q"] = { "<cmd>qa!<CR>", "Quit" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 
@@ -91,7 +91,14 @@ local mappings = {
     f    = { "<cmd>lua require('user.telescope').project_files()<cr>", "Files" },
     F    = { "<cmd>Telescope find_files<cr>", "Files (all)" },
     g    = {
-      "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"  \")})<cr>",
+      function()
+        vim.ui.input(
+          { prompt = "  " },
+          function(input)
+              return input and require("telescope.builtin").grep_string({ search = input })
+          end
+        )
+      end,
       "Grep For"
     },
     G    = { "<cmd>Telescope live_grep theme=ivy<cr>", "Live grep" },
@@ -101,8 +108,9 @@ local mappings = {
     e    = { "<cmd>NvimTreeFindFileToggle<cr>", "Explorer" },
   },
 
-  p = {
+  P = {
     name = "Packer",
+    p = { "<cmd>runtime lua/user/plugins.lua | PackerSync<cr>", "Source and Sync Plugins" },
     c = { "<cmd>PackerCompile<cr>", "Compile" },
     i = { "<cmd>PackerInstall<cr>", "Install" },
     s = { "<cmd>PackerSync<cr>", "Sync" },
@@ -144,8 +152,8 @@ local mappings = {
     name = "Buffers",
     b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "List" },
     p = { "<cmd>BufferLinePick<CR>", "Pick" },
-    q = { "<cmd>bdelete!<CR>", "Close Current" },
-    Q = { "<cmd>BufferLinePickClose<CR>", "Close Pick" },
+    c = { "<cmd>bdelete!<CR>", "Close Current" },
+    q = { "<cmd>BufferLinePickClose<CR>", "Close Pick" },
     l = { "<cmd>BufferLineCloseRight<CR>", "Close buffers to the RIGHT" },
     h = { "<cmd>BufferLineCloseLeft<CR>", "Close buffers to the LEFT" },
     x = { "<cmd>%bd|e#|bd#<CR>|'\"", "Close all buffers but current" },
@@ -173,3 +181,20 @@ local mappings = {
 
 which_key.setup(setup)
 which_key.register(mappings, opts)
+
+local clipboard_mappings = {
+  normal_visual = {
+    d = { [["+d]], "delete to clipboard" },
+    p = { [["+p]], "paste from clipboard (after)" },
+    P = { [["+P]], "paste from clipboard (before)" },
+    y = { [["+y]], "yank to clipboard" }
+  },
+  normal_only = {
+    D = { [["+d$]], "delete to clipboard (d$)" },
+    Y = { [["+y$]], "yank to clipboard (y$)" }
+  }
+}
+
+which_key.register(clipboard_mappings.normal_only, { prefix = "<leader>", mode = "n" })
+which_key.register(clipboard_mappings.normal_visual, { prefix = "<leader>", mode = "n" })
+which_key.register(clipboard_mappings.normal_visual, { prefix = "<leader>", mode = "x" })

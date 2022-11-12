@@ -5,7 +5,9 @@ function M.setup()
 
   onRequireOk("notify", function(notify)
     notify.setup({
-      timeout = 1500,
+      --timeout = 1500,
+      max_width = 70,
+      --background_colour = "#000000",
       on_open = function(win)
         vim.api.nvim_win_set_config(win, { focusable = false })
       end

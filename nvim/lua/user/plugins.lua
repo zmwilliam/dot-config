@@ -166,10 +166,10 @@ return packer.startup(function(use)
 
   use "rcarriga/nvim-notify" -- A fancy, configurable, notification manager for NeoVim
 
-  use { "anuvyklack/windows.nvim",
+  use { "epwalsh/obsidian.nvim",
     requires = {
-      "anuvyklack/middleclass",
-      "anuvyklack/animation.nvim"
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
     }
   }
 

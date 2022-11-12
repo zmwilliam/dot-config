@@ -20,6 +20,14 @@ vim.g.maplocalleader = " "
 keymap("n", "n", "nzzzv", opts)
 keymap("n", "N", "Nzzzv", opts)
 
+--Pg up/down centering
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-u>", "<C-u>zz", opts)
+
+--Keep the cursor position
+keymap("n", "J", "mzJ`z", opts)
+
+--Visual paste without yanking
 keymap("v", "p", '"_dP', opts)
 
 -- Resize with arrows

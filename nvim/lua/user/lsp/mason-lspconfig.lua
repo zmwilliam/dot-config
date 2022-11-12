@@ -17,6 +17,9 @@ M.setup = function(opts)
   local mason = require "mason"
   local mason_lspconfig = require "mason-lspconfig"
 
+  local mason_registry = require "mason-registry.index"
+  mason_registry["elixir-ls"] = "user.lsp.registry.elixir-ls"
+
   mason.setup {
     ui = {
       border = "rounded",

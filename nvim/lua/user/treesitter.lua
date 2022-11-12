@@ -53,9 +53,7 @@ function M.setup()
     },
   })
 
-  --Tree-sitter based folding
-  vim.opt.foldmethod = "expr"
-  vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+  --require("user.options").enable_treesitter_fold()
 end
 
 return M

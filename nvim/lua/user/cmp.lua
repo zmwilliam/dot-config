@@ -136,12 +136,12 @@ cmp.setup(
       {
         {
           name = "buffer",
-          option = {
-            -- pull keywords from all buffers
-            get_bufnrs = function()
-              return vim.api.nvim_list_bufs()
-            end
-          },
+          -- option = {
+          --   -- pull keywords from all buffers
+          --   get_bufnrs = function()
+          --     return vim.api.nvim_list_bufs()
+          --   end
+          -- },
         }
       }
     ),
