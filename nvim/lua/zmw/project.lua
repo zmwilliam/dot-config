@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup()
-  local onRequireOk = require("user.utils").onRequireOk
+  local onRequireOk = require("zmw.utils").onRequireOk
 
   onRequireOk("project_nvim", function(project)
     project.setup({

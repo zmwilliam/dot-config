@@ -79,7 +79,7 @@ local spaces = function()
   return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 
-local session = require("user.session").session_name
+local session = require("zmw.session").session_name
 
 lualine.setup({
   options = {

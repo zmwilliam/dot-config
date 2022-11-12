@@ -29,11 +29,11 @@ M.on_attach = function(client, bufnr)
   -- See `:help formatexpr` for more information.
   vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 
-  require("user.lsp.keymaps").setup(bufnr)
+  require("zmw.lsp.keymaps").setup(bufnr)
 
-  require("user.lsp.highlight").setup(client)
+  require("zmw.lsp.highlight").setup(client)
 
-  require("user.lsp.formatter").setup(client)
+  require("zmw.lsp.formatter").setup(client)
 end
 
 local opts = {
@@ -50,9 +50,9 @@ M.setup = function()
     return
   end
 
-  require("user.lsp.handlers").setup()
-  require("user.lsp.null-ls").setup(opts)
-  require("user.lsp.mason-lspconfig").setup(opts)
+  require("zmw.lsp.handlers").setup()
+  require("zmw.lsp.null-ls").setup(opts)
+  require("zmw.lsp.mason-lspconfig").setup(opts)
 end
 
 -- Debug logs, :LspLog to view

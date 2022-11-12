@@ -41,7 +41,7 @@ M.setup = function()
 end
 
 -- Falling back to find_files if git_files can't find a .git directory
--- :lua require"user.telescope".project_files()
+-- :lua require"zmw.telescope".project_files()
 M.project_files = function()
   local opts = {} -- define here if you want to define something
   local ok = pcall(require "telescope.builtin".git_files, opts)

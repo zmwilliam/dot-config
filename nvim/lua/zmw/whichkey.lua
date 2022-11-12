@@ -88,14 +88,14 @@ local mappings = {
 
   f = {
     name = "Find",
-    f    = { "<cmd>lua require('user.telescope').project_files()<cr>", "Files" },
+    f    = { "<cmd>lua require('zmw.telescope').project_files()<cr>", "Files" },
     F    = { "<cmd>Telescope find_files<cr>", "Files (all)" },
     g    = {
       function()
         vim.ui.input(
           { prompt = "  " },
           function(input)
-              return input and require("telescope.builtin").grep_string({ search = input })
+            return input and require("telescope.builtin").grep_string({ search = input })
           end
         )
       end,
@@ -110,7 +110,7 @@ local mappings = {
 
   P = {
     name = "Packer",
-    p = { "<cmd>runtime lua/user/plugins.lua | PackerSync<cr>", "Source and Sync Plugins" },
+    p = { "<cmd>runtime lua/zmw/plugins.lua | PackerSync<cr>", "Source and Sync Plugins" },
     c = { "<cmd>PackerCompile<cr>", "Compile" },
     i = { "<cmd>PackerInstall<cr>", "Install" },
     s = { "<cmd>PackerSync<cr>", "Sync" },

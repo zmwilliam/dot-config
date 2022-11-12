@@ -18,7 +18,7 @@ M.setup = function(opts)
   local mason_lspconfig = require "mason-lspconfig"
 
   local mason_registry = require "mason-registry.index"
-  mason_registry["elixir-ls"] = "user.lsp.registry.elixir-ls"
+  mason_registry["elixir-ls"] = "zmw.lsp.registry.elixir-ls"
 
   mason.setup {
     ui = {
@@ -37,7 +37,7 @@ M.setup = function(opts)
   }
 
   for _, server_name in pairs(servers) do
-    local is_custom_opts, custom_opts = pcall(require, "user.lsp.settings." .. server_name)
+    local is_custom_opts, custom_opts = pcall(require, "zmw.lsp.settings." .. server_name)
     local server_opts = vim.tbl_deep_extend("force", opts, is_custom_opts and custom_opts or {})
 
     --print("[LSP] setting up " .. server_name, "debug")

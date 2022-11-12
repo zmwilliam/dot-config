@@ -53,7 +53,7 @@ function M.setup()
     },
   })
 
-  --require("user.options").enable_treesitter_fold()
+  --require("zmw.options").enable_treesitter_fold()
 end
 
 return M
