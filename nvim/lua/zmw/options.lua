@@ -2,7 +2,7 @@ local function setup_options()
   local options = {
     backup = false, -- don't creates a backup file
     --clipboard = "unnamedplus", -- allows neovim to access the syst em clipbard
-    cmdheight = 2, -- more space to display messages at the command line
+    cmdheight = 1, -- more space to display messages at the command line
     completeopt = { 'menu', 'menuone', 'noselect' }, -- cmp requirement
     conceallevel = 0, -- so that `` is visible in markdown files
     cursorline = true, -- highlight the current line
@@ -43,16 +43,8 @@ local function setup_options()
   vim.opt.whichwrap:append "<,>,[,],h,l"
   vim.opt.iskeyword:append "-"
 
-  vim.opt.fillchars:append({
-    horiz = '━',
-    horizup = '┻',
-    horizdown = '┳',
-    vert = '┃',
-    vertleft = '┨',
-    vertright = '┣',
-    verthoriz = '╋',
-  })
-
+  local fillchars = require("zmw.icons").ui.FillChars
+  vim.opt.fillchars:append(fillchars)
 end
 
 local function set_abbreviations()

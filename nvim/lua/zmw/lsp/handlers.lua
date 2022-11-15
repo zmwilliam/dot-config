@@ -1,11 +1,12 @@
 local M = {}
 
 function M.setup()
+  local icons = require("zmw.icons").diagnostic
   local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
+    { name = "DiagnosticSignError", text = icons.Error },
+    { name = "DiagnosticSignWarn", text = icons.Warn },
+    { name = "DiagnosticSignHint", text = icons.Hint },
+    { name = "DiagnosticSignInfo", text = icons.Info },
   }
 
   for _, sign in ipairs(signs) do

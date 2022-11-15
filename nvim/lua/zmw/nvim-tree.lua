@@ -3,6 +3,8 @@ if not status_ok then
   return
 end
 
+local icons = require("zmw.icons")
+
 nvim_tree.setup {
   -- open the tree when running this setup function
   open_on_setup = false,
@@ -36,10 +38,10 @@ nvim_tree.setup {
   diagnostics = {
     enable = true,
     icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
+      hint = icons.diagnostic.Hint,
+      info = icons.diagnostic.Info,
+      warning = icons.diagnostic.Warn,
+      error = icons.diagnostic.Error,
     },
   },
 
@@ -61,22 +63,22 @@ nvim_tree.setup {
 vim.g.nvim_tree_respect_buf_cwd = 1 --"0 by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
 
 vim.g.nvim_tree_icons = {
-  default = "",
-  symlink = "",
+  default = icons.ui.Text,
+  symlink = icons.ui.FileSymlink,
   git = {
-    unstaged = "",
-    staged = "S",
-    unmerged = "",
-    renamed = "➜",
-    deleted = "",
-    untracked = "U",
-    ignored = "◌",
+    unstaged = icons.git.Unstaged,
+    staged = icons.git.Staged,
+    unmerged = icons.git.Unmerged,
+    renamed = icons.git.Renamed,
+    deleted = icons.git.Removed,
+    untracked = icons.git.Untracked,
+    ignored = icons.git.Ignored,
   },
   folder = {
-    default = "",
-    open = "",
-    empty = "",
-    empty_open = "",
-    symlink = "",
+    default = icons.ui.FolderDefault,
+    open = icons.ui.FolderOpen,
+    empty = icons.ui.FolderEmpty,
+    empty_open = icons.ui.FolderEmptyOpen,
+    symlink = icons.ui.FolderSymlink,
   },
 }

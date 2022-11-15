@@ -12,45 +12,13 @@ local feedkey = function(key, mode)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 
+local icons = require("zmw.icons")
+
 local formatting = {
-  fields = { "kind", "abbr", "menu" },
-  kind_icons = {
-    Class = " ",
-    Color = " ",
-    Constant = "ﲀ ",
-    Constructor = " ",
-    Enum = "練",
-    EnumMember = " ",
-    Event = " ",
-    Field = " ",
-    File = "",
-    Folder = " ",
-    Function = " ",
-    Interface = "ﰮ ",
-    Keyword = " ",
-    Method = " ",
-    Module = " ",
-    Operator = "",
-    Property = " ",
-    Reference = " ",
-    Snippet = " ",
-    Struct = " ",
-    Text = " ",
-    TypeParameter = " ",
-    Unit = "塞",
-    Value = " ",
-    Variable = " ",
-  },
-  source_names = {
-    nvim_lsp = "(LSP)",
-    emoji = "(Emoji)",
-    path = "(Path)",
-    calc = "(Calc)",
-    cmp_tabnine = "(Tabnine)",
-    vsnip = "(VSnip)",
-    luasnip = "(Snippet)",
-    buffer = "(Buffer)",
-  },
+  --fields = { "kind", "abbr", "menu" },
+  fields = { "abbr", "kind", "menu" },
+  kind_icons = icons.kind,
+  source_names = icons.sources,
   duplicates = {
     buffer = 1,
     path = 1,
@@ -136,20 +104,24 @@ cmp.setup(
       {
         {
           name = "buffer",
-          -- option = {
-          --   -- pull keywords from all buffers
-          --   get_bufnrs = function()
-          --     return vim.api.nvim_list_bufs()
-          --   end
-          -- },
+          option = {
+            -- pull keywords from all buffers
+            get_bufnrs = function()
+              return vim.api.nvim_list_bufs()
+            end
+          },
         }
       }
     ),
     formatting = {
       fields = formatting.fields,
       format = function(entry, vim_item)
-        vim_item.kind = formatting.kind_icons[vim_item.kind]
-        vim_item.menu = formatting.source_names[entry.source.name]
+        local kind = vim_item.kind
+        local icon = formatting.kind_icons[kind]
+        local source_icon = formatting.source_names[entry.source.name]
+
+        vim_item.kind = string.format("%s%s", icon, kind)
+        vim_item.menu = source_icon
         vim_item.dup = formatting.duplicates[entry.source.name] or formatting.duplicates_default
         return vim_item
       end

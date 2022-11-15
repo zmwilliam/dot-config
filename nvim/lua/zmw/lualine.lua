@@ -7,11 +7,18 @@ local hide_in_width = function()
   return vim.fn.winwidth(0) > 80
 end
 
+local icons = require("zmw.icons")
+
 local diagnostics = {
   "diagnostics",
   sources = { "nvim_diagnostic" },
   sections = { "error", "warn" },
-  symbols = { error = " ", warn = " " },
+  symbols = {
+    error = icons.diagnostic.Error .. " ",
+    warn = icons.diagnostic.Warn .. " ",
+    info = icons.diagnostic.Info .. " ",
+    hint = icons.diagnostic.Hint .. " ",
+  },
   colored = false,
   update_in_insert = false,
   always_visible = true,
@@ -20,15 +27,19 @@ local diagnostics = {
 local diff = {
   "diff",
   colored = false,
-  symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+  symbols = {
+    added = icons.git.Added .. " ",
+    modified = icons.git.Modified .. " ",
+    removed = icons.git.Removed .. " ",
+  },
   cond = hide_in_width
 }
 
 local mode = {
   "mode",
-  fmt = function(str)
-    return "-- " .. str .. " --"
-  end,
+  -- fmt = function(str)
+  --   return "-- " .. str .. " --"
+  -- end,
 }
 
 local filetype = {
@@ -40,7 +51,7 @@ local filetype = {
 local branch = {
   "branch",
   icons_enabled = true,
-  icon = "",
+  icon = icons.git.Branch
 }
 
 local location = {
@@ -51,18 +62,7 @@ local location = {
 local filename = {
   "filename",
   file_status = true, -- Displays file status (readonly status, modified status)
-  path = 1, -- 0: Just the filename
-  -- 1: Relative path
-  -- 2: Absolute path
-
-  -- shorting_target = 40,    -- Shortens path to leave 40 spaces in the window
-  --                          -- for other components. (terrible name, any suggestions?)
-
-  -- symbols = {
-  --   modified = '[+]',      -- Text to show when the file is modified.
-  --   readonly = '[-]',      -- Text to show when the file is non-modifiable or readonly.
-  --   unnamed = '[No Name]', -- Text to show for unnamed buffers.
-  -- }
+  path = 1, -- 0: Just the filename 1: Relative path 2: Absolute path
 }
 
 -- cool function for progress
@@ -86,8 +86,11 @@ lualine.setup({
     globalstatus = true,
     icons_enabled = true,
     theme = "auto",
-    component_separators = '|',
-    section_separators = { left = '', right = '' },
+    component_separators = icons.ui.LineCenter,
+    section_separators = {
+      left = icons.ui.SeparatorRoundedLeft,
+      right = icons.ui.SeparatorRoundedRight
+    },
     disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
     always_divide_middle = true,
   },

@@ -26,8 +26,8 @@ end
 local M = {}
 
 function M.setup()
-  local theme, style = pick_random_theme()
-  -- local theme, style = "rose-pine", "moon"
+  --local theme, style = pick_random_theme()
+  local theme, style = "tokyonight", "storm"
   require("zmw.colorscheme." .. theme).setup(style)
 end
 
