@@ -1,12 +1,12 @@
 local M = {}
 
 function M.setup()
-  local icons = require("zmw.icons").diagnostic
+  local icons = require("zmw.icons")
   local signs = {
-    { name = "DiagnosticSignError", text = icons.Error },
-    { name = "DiagnosticSignWarn", text = icons.Warn },
-    { name = "DiagnosticSignHint", text = icons.Hint },
-    { name = "DiagnosticSignInfo", text = icons.Info },
+    { name = "DiagnosticSignError", text = icons.diagnostic.Error },
+    { name = "DiagnosticSignWarn", text = icons.diagnostic.Warn },
+    { name = "DiagnosticSignHint", text = icons.diagnostic.Hint },
+    { name = "DiagnosticSignInfo", text = icons.diagnostic.Info },
   }
 
   for _, sign in ipairs(signs) do
@@ -17,7 +17,7 @@ function M.setup()
     --virtual_text = false,
     virtual_text = {
       spacing = 4,
-      prefix = "●",
+      prefix = icons.ui.BoldCircle,
       severity = vim.diagnostic.severity.ERROR
     },
     -- show signs

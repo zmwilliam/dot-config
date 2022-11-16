@@ -62,14 +62,6 @@ return packer.startup(function(use)
   }
 
   use {
-    "nvim-treesitter/nvim-treesitter-context",
-    requires = { "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      require("treesitter-context").setup()
-    end
-  }
-
-  use {
     "nvim-telescope/telescope.nvim",
     requires = { "nvim-lua/plenary.nvim" }
   }
@@ -171,6 +163,11 @@ return packer.startup(function(use)
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim"
     }
+  }
+
+  use {
+    "SmiteshP/nvim-navic",
+    requires = "neovim/nvim-lspconfig"
   }
 
   -- Automatically set up your configuration after cloning packer.nvim

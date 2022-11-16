@@ -34,6 +34,8 @@ M.on_attach = function(client, bufnr)
   require("zmw.lsp.highlight").setup(client)
 
   require("zmw.lsp.formatter").setup(client)
+
+  require("zmw.navic").attach(client, bufnr)
 end
 
 local opts = {

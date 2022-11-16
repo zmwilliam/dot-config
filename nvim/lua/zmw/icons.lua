@@ -25,6 +25,15 @@ return {
     Unit = "塞",
     Value = " ",
     Variable = " ",
+    Array = " ",
+    Boolean = "蘒",
+    Key = " ",
+    Namespace = " ",
+    Null = "ﳠ ",
+    Number = " ",
+    Object = " ",
+    Package = " ",
+    String = " ",
   },
   diagnostic = {
     Error = "",
@@ -76,6 +85,10 @@ return {
     FolderSymlink = "",
     Text = "",
     FileSymlink = "",
+    ChevronRight = ">",
+    GPS = "",
+    Location = "",
+    HorizDots = ""
   },
   git = {
     Added = "",
