@@ -31,6 +31,7 @@ function M.setup()
       "dockerfile",
       "eex",
       "elixir",
+      "elm",
       "erlang",
       "fish",
       "go",
@@ -53,7 +54,7 @@ function M.setup()
     },
   })
 
-  --require("zmw.options").enable_treesitter_fold()
+  require("zmw.options").enable_treesitter_fold()
 end
 
 return M

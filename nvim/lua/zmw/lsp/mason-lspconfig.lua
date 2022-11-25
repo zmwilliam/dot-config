@@ -3,6 +3,7 @@ local M = {}
 local servers = {
   "elixirls",
   "emmet_ls",
+  "elmls",
   "gopls",
   "html",
   "cssls",
