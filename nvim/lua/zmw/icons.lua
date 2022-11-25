@@ -69,6 +69,12 @@ return {
       vertright = '┣',
       verthoriz = '╋',
     },
+    ListChars = {
+      trail = "⋅",
+      eol = "↴",
+      tab = "»·",
+      nbsp = "☠",
+    },
     LineLeft = "▎",
     LineCenter = "|",
     SeparatorRoundedLeft = "",

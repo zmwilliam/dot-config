@@ -32,7 +32,6 @@ local function setup_options()
     updatetime = 300, -- faster completion (4000ms default)
     wrap = false, -- display lines as one long line
     laststatus = 3, -- Enable global statusline
-    foldenable = false -- When off, all folds are open.
   }
 
   for k, v in pairs(options) do
@@ -43,8 +42,11 @@ local function setup_options()
   vim.opt.whichwrap:append "<,>,[,],h,l"
   vim.opt.iskeyword:append "-"
 
-  local fillchars = require("zmw.icons").ui.FillChars
-  vim.opt.fillchars:append(fillchars)
+  local icons = require("zmw.icons")
+  vim.opt.fillchars:append(icons.ui.FillChars)
+
+  vim.opt.list = true
+  vim.opt.listchars:append(icons.ui.ListChars)
 end
 
 local function set_abbreviations()
@@ -78,6 +80,7 @@ local M = {}
 function M.enable_treesitter_fold()
   vim.opt.foldmethod = "expr"
   vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+  vim.opt.foldlevelstart = 99
 end
 
 function M.setup()
