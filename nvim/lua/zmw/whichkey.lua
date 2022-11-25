@@ -102,8 +102,7 @@ local mappings = {
       "Grep For"
     },
     G    = { "<cmd>Telescope live_grep theme=ivy<cr>", "Live grep" },
-    w    = { "<cmd>lua require('telescope.builtin').grep_string()<cr>", "Grep string" },
-    b    = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers" },
+    w    = { "<cmd>Telescope grep_string<cr>", "Grep string" },
     p    = { "<cmd>Telescope projects<cr>", "Projects" },
     e    = { "<cmd>NvimTreeFindFileToggle<cr>", "Explorer" },
   },
@@ -136,45 +135,21 @@ local mappings = {
     P = { "<cmd>Git push<CR>", "Push" },
   },
 
-  s = {
-    name = "Search",
-    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-    h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-    M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-    R = { "<cmd>Telescope registers<cr>", "Registers" },
-    k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-    C = { "<cmd>Telescope commands<cr>", "Commands" },
-  },
-
   b = {
     name = "Buffers",
-    b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "List" },
-    p = { "<cmd>BufferLinePick<CR>", "Pick" },
-    c = { "<cmd>bdelete!<CR>", "Close Current" },
-    q = { "<cmd>BufferLinePickClose<CR>", "Close Pick" },
-    l = { "<cmd>BufferLineCloseRight<CR>", "Close buffers to the RIGHT" },
-    h = { "<cmd>BufferLineCloseLeft<CR>", "Close buffers to the LEFT" },
-    x = { "<cmd>%bd|e#|bd#<CR>|'\"", "Close all buffers but current" },
-    s = {
+    b    = { "<cmd>Telescope buffers<cr>", "List" },
+    p    = { "<cmd>BufferLinePick<CR>", "Pick" },
+    c    = { "<cmd>bdelete!<CR>", "Close Current" },
+    q    = { "<cmd>BufferLinePickClose<CR>", "Close Pick" },
+    l    = { "<cmd>BufferLineCloseRight<CR>", "Close buffers to the RIGHT" },
+    h    = { "<cmd>BufferLineCloseLeft<CR>", "Close buffers to the LEFT" },
+    x    = { "<cmd>%bd|e#|bd#<CR>|'\"", "Close all buffers but current" },
+    s    = {
       name = "Sort By",
       e = { "<cmd>BufferLineSortByExtension<CR>", "Extension" },
       d = { "<cmd>BufferLineSortByDirectory<CR>", "Directory" },
       r = { "<cmd>BufferLineSortByRelativeDirectory<CR>", "Relative Directory" },
       t = { "<cmd>BufferLineSortByTabs<CR>", "Tabs" },
-    },
-    g = {
-      name = "Go to #",
-      ["1"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer #1" },
-      ["2"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer #2" },
-      ["3"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer #3" },
-      ["4"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer #4" },
-      ["5"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer #5" },
-      ["6"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer #6" },
-      ["7"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer #7" },
-      ["8"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer #8" },
-      ["9"] = { "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer #9" },
     }
   }
 }
