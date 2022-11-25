@@ -4,6 +4,7 @@ local themes = {
   { theme = "rose-pine", style = "moon" },
   { theme = "tokyonight", style = "storm" },
   { theme = "tokyonight", style = "moon" },
+  { theme = "tokyonight", style = "night" },
   { theme = "nightfox", style = "duskfox" },
   { theme = "nightfox", style = "nightfox" },
   { theme = "nightfox", style = "nordfox" },
@@ -27,7 +28,7 @@ local M = {}
 
 function M.setup()
   --local theme, style = pick_random_theme()
-  local theme, style = "tokyonight", "storm"
+  local theme, style = "tokyonight", "night"
   require("zmw.colorscheme." .. theme).setup(style)
 end
 
