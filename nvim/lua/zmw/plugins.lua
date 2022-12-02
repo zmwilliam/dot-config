@@ -167,8 +167,12 @@ return packer.startup(function(use)
   }
 
   use {
-    "SmiteshP/nvim-navic",
-    requires = "neovim/nvim-lspconfig"
+    "utilyre/barbecue.nvim",
+    requires = {
+      "neovim/nvim-lspconfig",
+      "smiteshp/nvim-navic",
+      "kyazdani42/nvim-web-devicons", -- optional
+    }
   }
 
   -- Automatically set up your configuration after cloning packer.nvim
