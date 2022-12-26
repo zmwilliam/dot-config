@@ -57,6 +57,11 @@ return packer.startup(function(use)
   }
 
   use {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    requires = { "nvim-treesitter/nvim-treesitter" }
+  }
+
+  use {
     "nvim-treesitter/playground",
     requires = { "nvim-treesitter/nvim-treesitter" }
   }
