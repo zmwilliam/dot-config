@@ -38,6 +38,8 @@ M.setup = function()
       git_files = { previewer = false },
     }
   }
+
+  telescope.load_extension("file_browser")
 end
 
 -- Falling back to find_files if git_files can't find a .git directory

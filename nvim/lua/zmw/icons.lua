@@ -94,7 +94,8 @@ return {
     ChevronRight = ">",
     GPS = "",
     Location = "",
-    HorizDots = ""
+    HorizDots = "",
+    Tab = ""
   },
   git = {
     Added = "",

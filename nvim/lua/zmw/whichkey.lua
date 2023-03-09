@@ -28,7 +28,8 @@ local function register_mappings(which_key)
 
   local mappings = {
     ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
-    ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+    -- ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+    ["e"] = { "<cmd>Telescope file_browser<cr>", "Explorer" },
     ["w"] = { "<cmd>w!<CR>", "Save" },
     ["q"] = { "<cmd>qa!<CR>", "Quit" },
     ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },

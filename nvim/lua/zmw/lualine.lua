@@ -35,12 +35,7 @@ local diff = {
   cond = hide_in_width
 }
 
-local mode = {
-  "mode",
-  -- fmt = function(str)
-  --   return "-- " .. str .. " --"
-  -- end,
-}
+local mode = { "mode" }
 
 local filetype = {
   "filetype",
@@ -76,7 +71,7 @@ local progress = function()
 end
 
 local spaces = function()
-  return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+  return icons.ui.Tab .. " " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 
 local session = require("zmw.session").session_name
