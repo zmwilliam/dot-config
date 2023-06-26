@@ -34,6 +34,13 @@ M.on_attach = function(client, bufnr)
   require("zmw.lsp.highlight").setup(client)
 
   require("zmw.lsp.formatter").setup(client)
+
+  -- if client.server_capabilities["documentSymbolProvider"] then
+  --   local nvim_navic_ok, nvim_navic = pcall(require, "nvim-navic")
+  --   if nvim_navic_ok then
+  --     nvim_navic.attach(client, bufnr)
+  --   end
+  -- end
 end
 
 local opts = {

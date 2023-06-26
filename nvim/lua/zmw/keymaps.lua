@@ -4,7 +4,7 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 
 --Remap space as leader key
---keymap("", "<Space>", "<Nop>", opts)
+keymap("n", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -43,3 +43,7 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+
+-- Exit on jj and jk
+keymap('i', 'jj', '<ESC>')
+keymap('i', 'jk', '<ESC>')

@@ -8,7 +8,7 @@ function M.setup()
 
   configs.setup({
     highlight = {
-      enable = true, -- false will disable the whole extension
+      enable = true,    -- false will disable the whole extension
       disable = { "" }, -- list of language that will be disabled
       additional_vim_regex_highlighting = true,
     },
@@ -24,8 +24,8 @@ function M.setup()
       enable = true,
     },
     sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
-    ignore_install = {}, -- List of parsers to ignore installing
-    ensure_installed = { -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    ignore_install = {},  -- List of parsers to ignore installing
+    ensure_installed = {  -- one of "all", "maintained" (parsers with maintainers), or a list of languages
       "bash",
       "css",
       "dockerfile",
@@ -55,10 +55,10 @@ function M.setup()
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = '<c-a>',
-        node_incremental = '<c-a>',
+        init_selection = '<CR>',
+        node_incremental = '<CR>',
         scope_incremental = '<c-s>',
-        node_decremental = '<c-backspace>',
+        node_decremental = '<BS>',
       },
     },
     textobjects = {

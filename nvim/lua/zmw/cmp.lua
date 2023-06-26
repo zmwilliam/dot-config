@@ -99,7 +99,11 @@ cmp.setup(
       {
         { name = "nvim_lua" },
         { name = "nvim_lsp" },
-        { name = "vsnip" },
+        {
+          name = "vsnip",
+          -- TODO: Remove this once https://github.com/hrsh7th/cmp-vsnip/issues/5 is fixed.
+          keyword_pattern = '\\%([^[:alnum:][:blank:]]\\|\\w\\+\\)',
+        },
         { name = "path" },
         {
           name = "buffer",

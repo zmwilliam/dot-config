@@ -73,3 +73,5 @@ pgcli/log
 tmux/plugins
 karabiner/automatic_backups/
 raycast/
+astro-nvim/
+.gitconfig.inc

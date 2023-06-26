@@ -1,19 +1,48 @@
 # This is Git's per-user configuration file.
 [credential]
 	helper = osxkeychain
+
 [merge]
 	tool = vscode
+
 [mergetool "vscode"]
 	cmd = code --wait $MERGED
+
+[mergetool "nvimdiff4"]
+	cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
 [diff]
-	tool = vscode
+  algorithm = patience
+	compactionHeuristic = true
+	tool = nvimdiff
+
 [difftool "vscode"]
 	cmd = code --wait --diff
+
+[difftool "nvimdiff"]
+	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"
+
 [mergetool]
 	keepBackup = false
+
 [core]
 	autocrlf = input
+
 [pull]
 	rebase = false
+
 [init]
 	defaultBranch = master
+
+[push]
+  default = current
+
+[user]
+  email = willcxa@gmail.com
+  name = zmwilliam
+
+[includeIf "gitdir:~/workspace/zmw/"]
+    path = ~/workspace/zmw/.gitconfig
+
+[includeIf "gitdir:~/workspace/remote/"]
+    path = ~/workspace/remote/.gitconfig
