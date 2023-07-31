@@ -8,10 +8,15 @@ local M = {}
 function M.apply(config)
 	config.disable_default_key_bindings = true
 
+	-- Set right `opt` to `alt` but keep the left opt as default
+	-- https://wezfurlong.org/wezterm/config/keyboard-concepts.html?h=mac#macos-left-and-right-option-key
+	config.send_composed_key_when_left_alt_is_pressed = true
+	config.send_composed_key_when_right_alt_is_pressed = false
+
 	config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 1000 }
 
 	config.keys = {
-		-- { key = "Space", mods = "LEADER", action = act.SendKey({ key = "Space", mods = "CTRL" }) },
+		{ key = "Space", mods = "LEADER", action = act.SendKey({ key = "Space", mods = "CTRL" }) },
 
 		-- Application
 		{ key = "Q", mods = "CTRL", action = act.QuitApplication },
@@ -30,6 +35,16 @@ function M.apply(config)
 		{ key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
 		{ key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
 
+		-- -- Swap the current pane with the one you select
+		{
+			key = "x",
+			mods = "LEADER",
+			action = act.PaneSelect({
+				alphabet = "1234567890",
+				mode = "SwapWithActive",
+			}),
+		},
+
 		-- -- LEADER + r will put us in resize-pane mode until we cancel that mode with ESCAPE.
 		{ key = "r", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
 
@@ -41,8 +56,14 @@ function M.apply(config)
 		{ key = "5", mods = "LEADER", action = act.ActivateTab(4) },
 		{ key = "6", mods = "LEADER", action = act.ActivateTab(5) },
 
-		{ key = "t", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
-		{ key = "c", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
+		-- -- Spawn new tab at the current dir
+		-- { key = "c", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
+		-- -- Spawn new tab at the HOME dir
+		{
+			key = "t",
+			mods = "LEADER",
+			action = act.SpawnCommandInNewTab({ cwd = wezterm.home_dir, domain = "CurrentPaneDomain" }),
+		},
 
 		{ key = "[", mods = "LEADER", action = act.ActivateTabRelative(-1) },
 		{ key = "]", mods = "LEADER", action = act.ActivateTabRelative(1) },
@@ -59,6 +80,7 @@ function M.apply(config)
 
 		-- Enter CopyMode
 		{ key = "Enter", mods = "LEADER", action = act.ActivateCopyMode },
+		{ key = "v", mods = "SUPER", action = act.PasteFrom("Clipboard") },
 
 		-- Enter SearchMode
 		{ key = "/", mods = "LEADER", action = act.Search("CurrentSelectionOrEmptyString") },

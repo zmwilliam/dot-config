@@ -2,16 +2,20 @@ local wezterm = require("wezterm")
 local helpers = require("helpers")
 local icons = wezterm.nerdfonts
 
-local format_tab_title = function(tab)
-	local index = tab.tab_index + 1
-	local work_dir = helpers.get_current_working_folder_name(tab)
-	local process_name = helpers.get_current_process_name(tab)
-	local folder_icon = tab.is_active and icons.fa_folder or icons.fa_folder_o
-	local zoom_indicator = tab.active_pane.is_zoomed and " " or ""
+local format_tab_title = function(tab_info)
+	local index = tab_info.tab_index + 1
+	local work_dir = helpers.get_current_working_folder_name(tab_info)
 
-	local title = string.format(" %s: (%s) %s %s %s", index, process_name, folder_icon, work_dir, zoom_indicator)
+	local folder_icon = tab_info.is_active and icons.fa_folder or icons.fa_folder_o
+	local zoom_indicator = tab_info.active_pane.is_zoomed and icons.cod_zoom_in or ""
 
-	if tab.is_active then
+	-- local process_name = helpers.get_current_process_name_from_tab(tab_info)
+	-- local process_icon = helpers.get_process_icon(process_name)
+	-- local title = string.format(" %s: (%s) %s %s %s", index, process_name, folder_icon, work_dir, zoom_indicator)
+
+	local title = string.format(" %s: %s %s %s ", index, folder_icon, work_dir, zoom_indicator)
+
+	if tab_info.is_active then
 		return {
 			{ Attribute = { Intensity = "Bold" } },
 			{ Attribute = { Italic = true } },
@@ -19,7 +23,9 @@ local format_tab_title = function(tab)
 		}
 	end
 
-	return title
+	return {
+		{ Text = title },
+	}
 end
 
 local M = {}

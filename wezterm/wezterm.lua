@@ -11,9 +11,11 @@ config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
 --appearence
 config.color_scheme = "tokyonight_night"
 config.font = wezterm.font("JetBrainsMono Nerd Font")
+-- config.font = wezterm.font("FiraCode Nerd Font")
 config.font_size = 14.5
 
 require("tab").apply(config)
 require("mappings").apply(config)
+require("events").setup()
 
 return config

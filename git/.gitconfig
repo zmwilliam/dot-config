@@ -36,6 +36,7 @@
 
 [push]
   default = current
+	autoSetupRemote = true
 
 [user]
   email = willcxa@gmail.com

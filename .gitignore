@@ -75,3 +75,6 @@ karabiner/automatic_backups/
 raycast/
 astro-nvim/
 .gitconfig.inc
+
+# podman
+containers/
