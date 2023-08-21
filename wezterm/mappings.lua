@@ -68,6 +68,9 @@ function M.apply(config)
 		{ key = "[", mods = "LEADER", action = act.ActivateTabRelative(-1) },
 		{ key = "]", mods = "LEADER", action = act.ActivateTabRelative(1) },
 
+		{ key = "{", mods = "LEADER", action = act.MoveTabRelative(-1) },
+		{ key = "}", mods = "LEADER", action = act.MoveTabRelative(1) },
+
 		{ key = "w", mods = "SHIFT|CTRL", action = act.CloseCurrentTab({ confirm = true }) },
 		{ key = "w", mods = "SUPER", action = act.CloseCurrentTab({ confirm = true }) },
 		{ key = "W", mods = "CTRL", action = act.CloseCurrentTab({ confirm = true }) },
