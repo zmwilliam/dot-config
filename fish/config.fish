@@ -50,11 +50,15 @@ end
 source $HOME/.config/fish/themes/tokyonight.fish
 #fish_config theme choose "Rose Pine Moon"
 
-# if test (which tmux) 
+# if type -q tmux
 #   and status is-interactive 
 #   and not set -q TMUX
 #     eval tmux attach -t default ;or tmux new -s default
 # end
+
+if type -q erl
+  set -gx ERL_AFLAGS "-kernel shell_history enabled"
+end
 
 fish_add_path "/usr/local/opt/erlang@22/bin" 
 fish_add_path "/usr/local/opt/libpq/bin" 
