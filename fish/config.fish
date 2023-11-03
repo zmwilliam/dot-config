@@ -43,7 +43,7 @@ if test -f $HOME/.config/fish/config.secret.fish
 end
 
 if test (which asdf)
-  source /opt/homebrew/opt/asdf/libexec/asdf.fish
+  source (brew --prefix)/opt/asdf/libexec/asdf.fish
 end
 
 #Theme/colorscheme
