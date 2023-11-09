@@ -6,24 +6,18 @@ end
 local icons = require("zmw.icons")
 
 nvim_tree.setup {
-  -- open the tree when running this setup function
-  open_on_setup = false,
-
   -- disables netrw completely
   disable_netrw = false,
 
   -- hijack netrw window on startup
   hijack_netrw = true,
 
-  -- will not open on setup if the filetype is in this list
-  ignore_ft_on_setup = { 'alpha', 'startify', 'dashboard' },
-
   -- hijack the cursor in the tree to put it at the start of the filename
   hijack_cursor = true,
 
   view = {
     -- width of the window, can be either a number (columns) or a string in `%`
-    width = 30,
+    width = "50%",
     -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
     side = 'left',
     mappings = {
@@ -82,3 +76,22 @@ vim.g.nvim_tree_icons = {
     symlink = icons.ui.FolderSymlink,
   },
 }
+
+local open_nvim_tree_for_dirs = function(data)
+  -- buffer is a directory
+  local directory = vim.fn.isdirectory(data.file) == 1
+  if not directory then
+    return
+  end
+
+  -- change to the directory
+  vim.cmd.cd(data.file)
+
+  -- open the tree
+  require("nvim-tree.api").tree.open()
+end
+
+vim.api.nvim_create_autocmd(
+  { "vimenter" },
+  { callback = open_nvim_tree_for_dirs }
+)

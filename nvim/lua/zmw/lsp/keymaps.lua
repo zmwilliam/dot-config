@@ -3,7 +3,6 @@ local M = {}
 local whichkey = require("which-key")
 
 M.setup = function(bufnr)
-
   vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
 
   local keymap_diagnostic_prev = {
@@ -23,7 +22,7 @@ M.setup = function(bufnr)
     I = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "[LSP] Implementation" },
     h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "[LSP] Signature Help" },
     t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "[LSP] Type Definition" },
-    r = { "<cmd>lua vim.lsp.buf.references()<CR>", "[LSP] References" }
+    r = { "<cmd>lua vim.lsp.buf.references()<CR>", "[LSP] References" },
   }
 
   local keymap_lsp = {
@@ -33,7 +32,6 @@ M.setup = function(bufnr)
       d = { "<cmd>Telescope diagnostics bufnr=0<cr>", "Document Diagnostics" },
       w = { "<cmd>Telescope diagnostics<cr>", "Workspace Diagnostics" },
       f = { "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", "Format" },
-
       i = { "<cmd>LspInfo<cr>", "Info" },
       I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
       j = {

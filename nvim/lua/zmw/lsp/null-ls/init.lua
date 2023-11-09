@@ -13,10 +13,6 @@ local with_root_file = function(builtin, file)
 end
 
 local sources = {
-  --lua
-  -- b.formatting.stylua,
-  -- with_root_file(b.diagnostics.selene, "selene.toml"),
-
   --json
   b.formatting.fixjson,
 
@@ -30,17 +26,27 @@ local sources = {
   b.diagnostics.golangci_lint,
 
   --elixir
-  --b.diagnostics.credo,
+  -- with_root_file(b.diagnostics.credo, ".credo.exs"),
+  -- b.formatting.mix,
+  -- b.diagnostics.credo,
 }
 
 function M.setup(opts)
+  -- null_ls.setup({
+  --   log_level = "error", -- "off", "error", "warn", "info", "debug", "trace"
+  --   debounce = 150,
+  --   save_after_format = false,
+  --   sources = sources,
+  --   on_attach = opts.on_attach,
+  --   root_dir = null_ls_utils.root_pattern ".git",
+  --   default_timeout = 8000
+  -- })
+
   null_ls.setup({
-    debug = false,
-    debounce = 150,
-    save_after_format = false,
     sources = sources,
     on_attach = opts.on_attach,
-    root_dir = null_ls_utils.root_pattern ".git",
+    default_timeout = 8000,
+    debug = false
   })
 end
 

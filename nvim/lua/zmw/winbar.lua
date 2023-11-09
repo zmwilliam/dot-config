@@ -13,6 +13,8 @@ function M.setup()
   end
 
   barbecue.setup {
+    attach_navic = false,
+    create_autocmd = false,
     kinds = kinds,
     modifiers = {
       dirname = ":s?.*??", --show only file name
@@ -36,6 +38,20 @@ function M.setup()
       ""
     }
   }
+  vim.api.nvim_create_autocmd({
+    "WinScrolled", -- or WinResized on NVIM-v0.9 and higher
+    "BufWinEnter",
+    "CursorHold",
+    "InsertLeave",
+
+    -- include this if you have set `show_modified` to `true`
+    -- "BufModifiedSet",
+  }, {
+    group = vim.api.nvim_create_augroup("barbecue.updater", {}),
+    callback = function()
+      require("barbecue.ui").update()
+    end,
+  })
 end
 
 return M

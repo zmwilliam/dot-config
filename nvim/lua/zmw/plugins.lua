@@ -41,8 +41,8 @@ packer.init {
 -- Install your plugins here
 return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
-  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "nvim-lua/popup.nvim"    -- An implementation of the Popup API from vim in Neovim
+  use "nvim-lua/plenary.nvim"  -- Useful lua functions used ny lots of plugins
 
   --colorschmes
   use "shaunsingh/nord.nvim"
@@ -77,11 +77,7 @@ return packer.startup(function(use)
   }
 
   use {
-    "rmagatti/auto-session",
-    requires = {
-      "rmagatti/session-lens",
-      "nvim-telescope/telescope.nvim"
-    }
+    "rmagatti/auto-session"
   }
 
   use {
@@ -91,7 +87,7 @@ return packer.startup(function(use)
 
   use {
     "akinsho/bufferline.nvim",
-    tag = "v2.*",
+    tag = "*",
     requires = { "kyazdani42/nvim-web-devicons", opt = true }
   }
 
@@ -117,7 +113,7 @@ return packer.startup(function(use)
 
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-  use "neovim/nvim-lspconfig" -- enable LSP
+  use "neovim/nvim-lspconfig"        -- enable LSP
   use "williamboman/mason.nvim"
   use {
     "williamboman/mason-lspconfig.nvim",
@@ -130,10 +126,12 @@ return packer.startup(function(use)
 
   -- Git
   use "lewis6991/gitsigns.nvim"
-  use "tpope/vim-fugitive" -- the premier Vim plugin for Git
   use {
-    "tpope/vim-rhubarb", -- fugitive support for github
-    requires = "tpope/vim-fugitive"
+    "tpope/vim-fugitive",             -- the premier Vim plugin for Git
+    requires = {
+      "tpope/vim-rhubarb",            -- fugitive support for github
+      "shumphrey/fugitive-gitlab.vim" -- fugitive support for gitlab
+    }
   }
 
   use {
@@ -143,7 +141,7 @@ return packer.startup(function(use)
     end
   }
 
-  use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
+  use "windwp/nvim-autopairs"  -- Autopairs, integrates with both cmp and treesitter
 
   use "windwp/nvim-ts-autotag" -- Use treesitter to autoclose and autorename html tag
 
@@ -160,7 +158,7 @@ return packer.startup(function(use)
     requires = "tpope/vim-repeat"
   }
 
-  use "takac/vim-hardtime" -- I want to stop using h/j/k/l repeatedly
+  use "takac/vim-hardtime"   -- I want to stop using h/j/k/l repeatedly
 
   use "rcarriga/nvim-notify" -- A fancy, configurable, notification manager for NeoVim
 
@@ -180,23 +178,18 @@ return packer.startup(function(use)
     }
   }
 
-  use({
-    "jackMort/ChatGPT.nvim",
-    config = function()
-      require("chatgpt").setup({})
-    end,
-    requires = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim"
-    }
-  })
-
   use { "nvim-telescope/telescope-file-browser.nvim",
     requires = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim"
     }
+  }
+
+  use {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup()
+    end
   }
 
   -- Automatically set up your configuration after cloning packer.nvim

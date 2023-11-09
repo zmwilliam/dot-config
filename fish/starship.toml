@@ -2,7 +2,7 @@
 add_newline = true
 
 #Enable Right Prompt
-right_format = """$cmd_duration"""
+right_format = """$status $cmd_duration"""
 
 #Timeout for commands executed by starship (in milliseconds).
 command_timeout=1000
@@ -83,3 +83,10 @@ symbol = " "
 
 [swift]
 symbol = "ﯣ "
+
+[username]
+disabled = true
+
+[status]
+disabled = false
+format = "status [$status]($style)"

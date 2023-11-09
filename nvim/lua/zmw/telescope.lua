@@ -14,7 +14,7 @@ M.setup = function()
       prompt_prefix = " ",
       selection_caret = " ",
       path_display = { truncate = 3 },
-      layout_strategy = "vertical",
+      layout_strategy = "horizontal",
       layout_config = {
         vertical = { width = 0.95 },
       },
@@ -40,6 +40,7 @@ M.setup = function()
   }
 
   telescope.load_extension("file_browser")
+  telescope.load_extension("session-lens")
 end
 
 -- Falling back to find_files if git_files can't find a .git directory

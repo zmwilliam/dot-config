@@ -7,10 +7,10 @@ function M.setup(style)
   local transparent = false
 
   tokyonight.setup({
-    style = style or "day", -- `storm`, `moon`, a darker variant `night` and `day`
+    style = style or "day",    -- `storm`, `moon`, a darker variant `night` and `day`
     transparent = transparent, -- Enable this to disable setting the background color
-    dim_inactive = false, -- dims inactive windows
-    lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
+    dim_inactive = false,      -- dims inactive windows
+    lualine_bold = false,      -- When `true`, section headers in the lualine theme will be bold
     styles = {
       -- Background styles. Can be "dark", "transparent" or "normal"
       sidebars = transparent and "transparent" or "dark",
@@ -21,8 +21,18 @@ function M.setup(style)
         hl.LineNr = { fg = c.dark3 }
         hl.CursorLineNr = { fg = c.dark5 }
       end
+    end,
+    on_colors = function(colors)
+      colors.border = colors.bg_highlight
     end
   })
+
+
+  if style == "day" then
+    vim.opt.background = "light"
+  else
+    vim.opt.background = "dark"
+  end
 
   vim.cmd("colorscheme tokyonight")
 end
