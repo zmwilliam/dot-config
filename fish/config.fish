@@ -25,11 +25,10 @@ if type -q exa
   alias ll "exa -l -g --icons"
   alias lla "ll -a"
   alias llt "ll --tree -a"
+else
+  echo (set_color yellow)WARNING:(set_color normal) exa(set_color normal) not found
 end
 
-if type -q nerdctl
-  alias docker "nerdctl"
-end
 
 set -gx EDITOR nvim
 set -gx VISUAL nvim
@@ -42,19 +41,14 @@ if test -f $HOME/.config/fish/config.secret.fish
   source $HOME/.config/fish/config.secret.fish 
 end
 
-if test (which asdf)
+if type -q asdf
   source (brew --prefix)/opt/asdf/libexec/asdf.fish
+else
+  echo (set_color yellow)WARNING:(set_color normal) asdf not found
 end
 
 #Theme/colorscheme
 source $HOME/.config/fish/themes/tokyonight.fish
-#fish_config theme choose "Rose Pine Moon"
-
-# if type -q tmux
-#   and status is-interactive 
-#   and not set -q TMUX
-#     eval tmux attach -t default ;or tmux new -s default
-# end
 
 if type -q erl
   set -gx ERL_AFLAGS "-kernel shell_history enabled"
@@ -68,6 +62,16 @@ fish_add_path "/opt/homebrew/bin"
 
 set -gx GPG_TTY (tty)
 
-set -gx STARSHIP_CONFIG $HOME/.config/fish/starship.toml
-set -gx STARSHIP_LOG "error"
-starship init fish | source
+if type -q direnv
+  direnv hook fish | source
+else
+  echo (set_color yellow)WARNING:(set_color normal) direnv not found
+end
+
+if type -q starship
+  set -gx STARSHIP_CONFIG $HOME/.config/fish/starship.toml
+  set -gx STARSHIP_LOG "error"
+  starship init fish | source
+else
+  echo (set_color red)ERROR:(set_color normal) starship not found
+end
