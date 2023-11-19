@@ -16,7 +16,7 @@ function M.apply(config)
 	config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 1000 }
 
 	config.keys = {
-		{ key = "Space", mods = "LEADER", action = act.SendKey({ key = "Space", mods = "CTRL" }) },
+		{ key = "Space", mods = "LEADER|CTRL", action = act.SendKey({ key = "Space", mods = "CTRL" }) },
 
 		-- Application
 		{ key = "Q", mods = "CTRL", action = act.QuitApplication },

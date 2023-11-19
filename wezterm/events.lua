@@ -5,6 +5,7 @@ local function set_right_status(window)
 	local workspace_name = window:active_workspace()
 	local session_icon = wezterm.nerdfonts.md_dock_window
 	local text = string.format(" %s %s ", session_icon, workspace_name)
+
 	window:set_right_status(wezterm.format({
 		{ Attribute = { Intensity = "Half" } },
 		{ Text = text },
