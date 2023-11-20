@@ -21,12 +21,12 @@ abbr bi 'brew install'
 abbr bs 'brew search'
 abbr bic 'brew install --cask'
 
-if type -q exa
-  alias ll "exa -l -g --icons"
+if type -q eza
+  alias ll "eza -l -g --icons"
   alias lla "ll -a"
   alias llt "ll --tree -a"
 else
-  echo (set_color yellow)WARNING:(set_color normal) exa(set_color normal) not found
+  echo (set_color yellow)WARNING:(set_color normal) eza(set_color normal) not found
 end
 
 
