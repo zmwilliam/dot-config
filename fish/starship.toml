@@ -78,6 +78,13 @@ symbol = " "
 [scala]
 symbol = " "
 
+[shell]
+fish_indicator = '󰈺'
+bash_indicator = '󱆃'
+zsh_indicator = '_'
+style = 'cyan bold'
+disabled = false
+
 [shlvl]
 symbol = " "
 
