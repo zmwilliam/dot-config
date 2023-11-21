@@ -4,15 +4,16 @@
 plug "$HOME/.config/zsh/aliases.zsh"
 plug "$HOME/.config/zsh/exports.zsh"
 
-plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
-plug "zsh-users/zsh-syntax-highlighting"
-plug "wintermi/zsh-starship"
 plug "zap-zsh/exa"
-plug "olets/zsh-abbr"
+plug "zap-zsh/fzf"
+plug "zsh-users/zsh-autosuggestions"
+plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
+plug "olets/zsh-abbr"
 plug "jeffreytse/zsh-vi-mode"
 plug "agkozak/zsh-z"
+plug "$HOME/.config/zsh/startship.zsh"
 
 # Load and initialise completion system
 autoload -Uz compinit
@@ -20,4 +21,8 @@ compinit
 
 if command -v direnv &> /dev/null; then
   eval "$(direnv hook zsh)"
+fi
+
+if command -v asdf &> /dev/null; then
+  . /usr/local/opt/asdf/libexec/asdf.sh
 fi
