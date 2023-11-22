@@ -10,6 +10,9 @@ command_timeout=1000
 [aws]
 symbol = "  "
 
+[character]
+vimcmd_symbol = '[❮](bold blue)'
+
 [conda]
 symbol = " "
 
