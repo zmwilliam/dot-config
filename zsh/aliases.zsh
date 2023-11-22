@@ -1,3 +1,6 @@
+alias v="nvim"
+alias vim="nvim"
+
 if command -v eza &> /dev/null; then
   alias lla="ll -a"
   alias llt="ll --tree -a"

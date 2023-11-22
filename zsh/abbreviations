@@ -8,8 +8,6 @@ abbr gp="git push"
 abbr gl="git log --graph --date=short"
 abbr glc="git log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status"
 
-abbr vim="nvim"
-abbr v="nvim"
 abbr av="NVIM_APPNAME=astro-nvim nvim"
 
 abbr bi="brew install"
