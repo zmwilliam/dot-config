@@ -6,14 +6,17 @@ plug "$HOME/.config/zsh/exports.zsh"
 
 plug "zap-zsh/supercharge"
 plug "zap-zsh/exa"
-plug "zap-zsh/fzf"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
-plug "olets/zsh-abbr"
 plug "jeffreytse/zsh-vi-mode"
 plug "agkozak/zsh-z"
 plug "$HOME/.config/zsh/startship.zsh"
+
+function zvm_after_init(){
+  plug "zap-zsh/fzf"
+  plug "olets/zsh-abbr"
+}
 
 # Load and initialise completion system
 autoload -Uz compinit
