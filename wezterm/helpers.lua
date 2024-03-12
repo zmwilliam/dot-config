@@ -5,7 +5,7 @@ local M = {}
 function M.get_current_working_folder_name(tab_info)
 	local cwd_uri = tab_info.active_pane.current_working_dir
 
-	cwd_uri = cwd_uri:sub(8)
+	cwd_uri = tostring(cwd_uri):sub(8)
 
 	local slash = cwd_uri:find("/")
 	local cwd = cwd_uri:sub(slash)

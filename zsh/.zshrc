@@ -27,5 +27,5 @@ if command -v direnv &> /dev/null; then
 fi
 
 if command -v asdf &> /dev/null; then
-  . /usr/local/opt/asdf/libexec/asdf.sh
+  . /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
