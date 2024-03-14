@@ -10,7 +10,7 @@ end
 config.color_scheme = "tokyonight_night"
 config.colors = { compose_cursor = "orange" }
 config.font = wezterm.font("JetBrainsMono Nerd Font")
-config.font_size = 14
+config.font_size = 15
 
 require("tab").apply(config)
 require("mappings").apply(config)

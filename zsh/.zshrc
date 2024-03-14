@@ -18,6 +18,10 @@ function zvm_after_init(){
   plug "olets/zsh-abbr"
 }
 
+if type brew &>/dev/null; then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
 # Load and initialise completion system
 autoload -Uz compinit
 compinit
