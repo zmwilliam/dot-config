@@ -15,13 +15,12 @@ end
 local function set_left_status(window, pane)
 	local process_name = helpers.get_current_process_name_from_pane(pane)
 	local icon = helpers.get_process_icon(process_name)
+
+	local text = string.format("%5s %-6s", icon, process_name)
+
 	window:set_left_status(wezterm.format({
 		{ Foreground = { AnsiColor = "Blue" } },
-		{ Text = " " },
-		{ Text = icon },
-		{ Text = " " },
-		{ Text = process_name },
-		{ Text = " " },
+		{ Text = text},
 	}))
 end
 

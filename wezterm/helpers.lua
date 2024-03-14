@@ -24,7 +24,6 @@ end
 
 function M.get_current_process_name_from_pane(pane)
 	local process_name = pane:get_foreground_process_name()
-	wezterm.log_error(process_name)
 	return M.format_process_name(process_name) or "fish"
 end
 
@@ -49,6 +48,15 @@ function M.get_process_icon(process_name)
 
 	local lc_process_name = string.lower(process_name)
 	return process_icons[lc_process_name] or nf.dev_terminal
+end
+
+function M.get_random_entry(tbl)
+	local keys = {}
+	for key, _ in ipairs(tbl) do
+		table.insert(keys, key)
+	end
+	local randomKey = keys[math.random(1, #keys)]
+	return tbl[randomKey]
 end
 
 return M
