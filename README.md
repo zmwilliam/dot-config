@@ -46,6 +46,13 @@ Run .macos script
 chmod +x ~/.macos && ./.macos
 ```
 
+## Obsidian
+
+Create vault synlink
+```sh
+ln -s $HOME/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents $HOME/Obsidian
+```
+
 
 ## Manual Config
 
