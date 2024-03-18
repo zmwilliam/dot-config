@@ -12,7 +12,7 @@ function M.get_current_working_folder_name(tab_info)
 
 	local HOME_DIR = os.getenv("HOME")
 	if cwd == HOME_DIR then
-		return "~"
+		return wezterm.nerdfonts.md_tilde
 	end
 
 	return string.match(cwd, "[^/]+$")
