@@ -13,7 +13,6 @@ abbr glc="git log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status"
 # Neovim
 abbr v="nvim"
 abbr vim="nvim"
-abbr av="NVIM_APPNAME=astro-nvim nvim"
 abbr lv="NVIM_APPNAME=lazyvim nvim"
 
 # Homebrew

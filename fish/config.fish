@@ -14,7 +14,6 @@ abbr glc 'git log --pretty=format:"%h %cr %cn %Cgreen%s%Creset" --name-status'
 
 abbr vim 'nvim'
 abbr v 'nvim'
-abbr av 'NVIM_APPNAME=astro-nvim nvim'
 
 abbr tsd 'tmux attach -t default ;or tmux new -s default'
 abbr bi 'brew install'
@@ -29,16 +28,14 @@ else
   echo (set_color yellow)WARNING:(set_color normal) eza(set_color normal) not found
 end
 
-
 set -gx EDITOR nvim
 set -gx VISUAL nvim
-set -gx NVIM_APPNAME astro-nvim
 
 set -gx GOPATH $HOME/workspace/go
-fish_add_path $GOPATH/bin 
+fish_add_path $GOPATH/bin
 
 if test -f $HOME/.config/fish/config.secret.fish
-  source $HOME/.config/fish/config.secret.fish 
+  source $HOME/.config/fish/config.secret.fish
 end
 
 if type -q asdf
@@ -54,9 +51,9 @@ if type -q erl
   set -gx ERL_AFLAGS "-kernel shell_history enabled"
 end
 
-fish_add_path "/usr/local/opt/erlang@22/bin" 
-fish_add_path "/usr/local/opt/libpq/bin" 
-fish_add_path "$HOME/.local/bin" 
+fish_add_path "/usr/local/opt/erlang@22/bin"
+fish_add_path "/usr/local/opt/libpq/bin"
+fish_add_path "$HOME/.local/bin"
 fish_add_path "/usr/local/sbin"
 fish_add_path "/opt/homebrew/bin"
 
