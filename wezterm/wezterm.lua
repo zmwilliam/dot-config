@@ -20,10 +20,10 @@ local random_font_family = h.get_random_entry({
 config.color_scheme = "tokyonight_night"
 config.colors = { compose_cursor = "orange" }
 config.font = wezterm.font(random_font_family)
-config.font_size = 16
+config.font_size = 18
 
 require("mappings").apply(config)
 require("tab").apply(config)
-require("events").setup()
+-- require("events").setup()
 
 return config

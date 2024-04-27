@@ -74,6 +74,7 @@ tmux/plugins
 karabiner/automatic_backups/
 raycast/
 astro-nvim/
+lazyvim/
 .gitconfig.inc
 
 # podman

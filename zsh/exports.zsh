@@ -1,6 +1,6 @@
 export EDITOR=nvim
 export VISUAL=nvim
-export NVIM_APPNAME=astro-nvim
+export NVIM_APPNAME=lazyvim
 
 export GOPATH=$HOME/workspace/go
 export PATH=$GOPATH/bin:$PATH

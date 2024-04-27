@@ -3,6 +3,7 @@
 
 plug "$HOME/.config/zsh/aliases.zsh"
 plug "$HOME/.config/zsh/exports.zsh"
+plug "$HOME/.config/zsh/functions.zsh"
 
 plug "zap-zsh/supercharge"
 plug "zap-zsh/exa"

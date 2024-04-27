@@ -13,7 +13,7 @@ local format_tab_title = function(tab_info)
 	if tab_info.is_active then
 		return {
 			{ Attribute = { Intensity = "Bold" } },
-			{ Attribute = { Italic = true } },
+			-- { Attribute = { Italic = true } },
 			{ Text = index },
 			{ Background = { Color = "#1a1b26" } },
 			{ Foreground = { AnsiColor = "Blue" } },
