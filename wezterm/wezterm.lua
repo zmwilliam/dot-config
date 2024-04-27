@@ -7,20 +7,23 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-local random_font_family = h.get_random_entry({
--- "JetBrainsMono Nerd Font",
-"MonaspiceNe Nerd Font",
-"MonaspiceAr Nerd Font",
-"MonaspiceXe Nerd Font",
-"MonaspiceRn Nerd Font",
-"MonaspiceKr Nerd Font",
-})
+local monaspace = {
+	"Monaspace Argon",
+	"Monaspace Krypton",
+	"Monaspace Neon",
+	"Monaspace Radon",
+	"Monaspace Xenon",
+}
 
---appearence
+local random_font_family = h.get_random_entry(monaspace)
+
 config.color_scheme = "tokyonight_night"
 config.colors = { compose_cursor = "orange" }
-config.font = wezterm.font(random_font_family)
-config.font_size = 18
+config.font = wezterm.font({
+	family = random_font_family,
+	harfbuzz_features = { "dlig=1" },
+})
+config.font_size = 16
 
 require("mappings").apply(config)
 require("tab").apply(config)
