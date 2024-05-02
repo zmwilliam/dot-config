@@ -23,7 +23,11 @@ config.font = wezterm.font({
 	family = random_font_family,
 	harfbuzz_features = { "dlig=1" },
 })
-config.font_size = 16
+config.font_size = 18
+
+config.window_background_opacity = 0.8
+config.macos_window_background_blur = 20
+config.text_background_opacity = 1
 
 require("mappings").apply(config)
 require("tab").apply(config)
