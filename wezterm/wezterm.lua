@@ -21,12 +21,32 @@ config.color_scheme = "tokyonight_night"
 config.colors = { compose_cursor = "orange" }
 config.font = wezterm.font({
 	family = random_font_family,
-	harfbuzz_features = { "dlig=1" },
+	harfbuzz_features = {
+		"calt=1",
+		"ss01=1",
+		"ss02=1",
+		"ss03=1",
+		"ss04=1",
+		"ss05=1",
+		"ss06=1",
+		"ss07=1",
+		"ss08=1",
+		"ss09=1",
+		"liga=1",
+	},
 })
 config.font_size = 18
 
-config.window_background_opacity = 0.8
-config.macos_window_background_blur = 20
+config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+config.window_padding = {
+	left = "1cell",
+	right = "1cell",
+	top = "1.2cell",
+	bottom = "0.5cell",
+}
+
+config.window_background_opacity = 1
+config.macos_window_background_blur = 0
 config.text_background_opacity = 1
 
 require("mappings").apply(config)
