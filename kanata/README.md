@@ -50,5 +50,7 @@ Now, kanata should be running whenever your macbook starts up!
 ## References
 
 [Dreams of Code video](https://www.youtube.com/watch?v=sLWQ4Gx88h4)
+
 [Dreams of Code github guide](https://github.com/dreamsofcode-io/home-row-mods/tree/main/kanata/macos)
+
 [Kanata permission issue](https://github.com/jtroo/kanata/issues/1211)
