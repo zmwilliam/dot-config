@@ -2,6 +2,12 @@
 
 [Kanata github page](https://github.com/jtroo/kanata)
 
+## Dependencies
+
+[Karabiner VirtualHiDDevice Driver](https://github.com/pqrs-org/Karabiner-DriverKit-VirtualHIDDevice)
+
+The easiest way to install the driver is installing [Karabiner Elements 14](https://github.com/pqrs-org/Karabiner-Elements/releases/tag/v14.13.0)
+
 ## Setup
 
 Download kanata_macos_arm84 at [releases page](https://github.com/jtroo/kanata/releases/tag/v1.7.0)
@@ -29,10 +35,12 @@ sudo kanata --cfg ~/.config/kanata/kanata.kbd
 
 ## Startup Configuration
 
-copy plist this file to your LaunchDaemon folder.
+Update plist file with the correct paths.
+
+Copy plist this file to your LaunchDaemon folder.
 
 ```sh
-sudo cp ~/.config/kanata/com.github.jtroo.kanata.plist /Library/LaunchDaemon
+sudo cp ~/.config/kanata/com.github.jtroo.kanata.plist /Library/LaunchDaemons/
 ```
 
 Once copied over, you can then load it using sudo

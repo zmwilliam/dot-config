@@ -1,42 +1,34 @@
-;; Caps to escape/control configuration for Kanata
+;; Home row mods QWERTY example with more complexity.
+;; Some of the changes from the basic example:
+;; - when a home row mod activates tap, the home row mods are disabled
+;;   while continuing to type rapidly
+;; - tap-hold-release helps make the hold action more responsive
+;; - pressing another key on the same half of the keyboard
+;;   as the home row mod will activate an early tap action
 
 (defcfg
-  #|
-  This configuration will process all keys pressed inside of kanata, even if
-  they are not mapped in defsrc. This is so that certain actions can activate
-  at the right time for certain input sequences. By default, unmapped keys are
-  not processed through kanata due to a Windows issue related to AltGr. If you
-  use AltGr in your keyboard, you will likely want to follow the simple.kbd
-  file while unmapping lctl and ralt from defsrc.
-  |#
   process-unmapped-keys yes
 )
 
 (defsrc
   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10   f11   f12
-  caps a s d f g h j k l ;
+  caps a   s   d   f   g   h   j   k   l   ;
 )
 
 (defvar
   tap-time 200
   hold-time 150
-)
 
-;; Definine two aliases, one for esc/control to other for function key
-(defalias
-  arr (layer-while-held arrows)
-)
-
-(defalias
-  escarr (tap-hold 100 100 esc @arr)
-  a (tap-hold $tap-time $hold-time a lmet)
-  s (tap-hold $tap-time $hold-time s lalt)
-  d (tap-hold $tap-time $hold-time d lsft)
-  f (tap-hold $tap-time $hold-time f lctl)
-  j (tap-hold $tap-time $hold-time j rctl)
-  k (tap-hold $tap-time $hold-time k rsft)
-  l (tap-hold $tap-time $hold-time l ralt)
-  ; (tap-hold $tap-time $hold-time ; rmet)
+  left-hand-keys (
+    q w e r t
+    a s d f g
+    z x c v b
+  )
+  right-hand-keys (
+    y u i o p
+    h j k l ;
+    n m , . /
+  )
 )
 
 (deflayer base
@@ -44,7 +36,34 @@
   @escarr @a @s @d @f _ _ @j @k @l @;
 )
 
+(deflayer nomods
+  brdn brup _    _    bldn blup prev pp   next mute  vold  volu
+  @escarr a   s   d   f   g   h   j   k   l   ;
+)
+
 (deflayer arrows
   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10   f11   f12
-  @escarr _ _ _ _ _ left down up right _
+  @escarr _   _   _   _   _   left down up right _
+)
+
+(deffakekeys
+  to-base (layer-switch base)
+)
+
+(defalias
+  escarr (tap-hold 100 100 esc (layer-while-held arrows))
+
+  tap (multi
+    (layer-switch nomods)
+    (on-idle-fakekey to-base tap 20)
+  )
+
+  a (tap-hold-release-keys $tap-time $hold-time (multi a @tap) lmet $left-hand-keys)
+  s (tap-hold-release-keys $tap-time $hold-time (multi s @tap) lalt $left-hand-keys)
+  d (tap-hold-release-keys $tap-time $hold-time (multi d @tap) lsft $left-hand-keys)
+  f (tap-hold-release-keys $tap-time $hold-time (multi f @tap) lctl $left-hand-keys)
+  j (tap-hold-release-keys $tap-time $hold-time (multi j @tap) rctl $right-hand-keys)
+  k (tap-hold-release-keys $tap-time $hold-time (multi k @tap) rsft $right-hand-keys)
+  l (tap-hold-release-keys $tap-time $hold-time (multi l @tap) ralt $right-hand-keys)
+  ; (tap-hold-release-keys $tap-time $hold-time (multi ; @tap) rmet $right-hand-keys)
 )

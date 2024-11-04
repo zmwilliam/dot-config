@@ -7,9 +7,9 @@
 
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/zmwilliam/.local/bin/kanata</string>
+      <string>$REPLACE_WITH_HOME_PATH/.local/bin/kanata/</string>
         <string>-c</string>
-        <string>/Users/zmwilliam/.config/kanata/kanata.kbd</string>
+        <string>$REPLACE_WITH_HOME_PATH/.config/kanata/kanata.kbd</string>
     </array>
 
     <key>RunAtLoad</key>
@@ -19,9 +19,9 @@
     <true/>
 
     <key>StandardOutPath</key>
-    <string>/Library/Logs/Kanata/kanata.out.log</string>
+    <string>/var/log/Kanata/kanata.out.log</string>
 
     <key>StandardErrorPath</key>
-    <string>/Library/Logs/Kanata/kanata.err.log</string>
+    <string>/var/log/Kanata/kanata.err.log</string>
 </dict>
 </plist>
