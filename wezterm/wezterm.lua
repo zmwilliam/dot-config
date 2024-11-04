@@ -49,6 +49,8 @@ config.window_background_opacity = 1
 config.macos_window_background_blur = 0
 config.text_background_opacity = 1
 
+config.max_fps = 144
+
 require("mappings").apply(config)
 require("tab").apply(config)
 -- require("events").setup()
