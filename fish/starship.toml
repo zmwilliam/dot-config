@@ -5,7 +5,7 @@ add_newline = true
 right_format = """$status $cmd_duration"""
 
 #Timeout for commands executed by starship (in milliseconds).
-command_timeout=1000
+command_timeout=300
 
 [aws]
 symbol = "  "
@@ -17,7 +17,7 @@ vimcmd_symbol = '[❮](bold blue)'
 symbol = " "
 
 [cmd_duration]
-min_time = 300
+min_time = 150
 format = "underwent [$duration](bold yellow)"
 
 [dart]

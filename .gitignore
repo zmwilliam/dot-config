@@ -78,3 +78,6 @@ lazyvim/
 
 # podman
 containers/
+
+AWS VPN Client/
+AWSVPNClient/

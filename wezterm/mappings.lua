@@ -55,6 +55,9 @@ function M.apply(config)
 		{ key = "4", mods = "LEADER", action = act.ActivateTab(3) },
 		{ key = "5", mods = "LEADER", action = act.ActivateTab(4) },
 		{ key = "6", mods = "LEADER", action = act.ActivateTab(5) },
+		{ key = "7", mods = "LEADER", action = act.ActivateTab(6) },
+		{ key = "8", mods = "LEADER", action = act.ActivateTab(7) },
+		{ key = "9", mods = "LEADER", action = act.ActivateTab(8) },
 
 		-- -- Spawn new tab at the current dir
 		-- { key = "c", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },

@@ -1,4 +1,3 @@
-#
 # Git
 abbr gcm="git commit -m"
 abbr gs="git status"
@@ -21,7 +20,14 @@ abbr bs="brew search"
 abbr bic="brew install --cask"
 
 # Docker / Podman
-abbr docker="podman"
+
+if command -v podman &> /dev/null; then
+  abbr docker="podman"
+fi
+
+if command -v docker &> /dev/null; then
+  abbr dc="docker compose"
+fi
 
 # Eza
 abbr lla="ll -a"

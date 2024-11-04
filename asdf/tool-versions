@@ -1,12 +1,12 @@
 elixir 1.17.2-otp-27
 erlang 27.0
-golang 1.22.1
+golang 1.23.2
 neovim 0.10.2
-nodejs 21.1.0
+nodejs 22.9.0
 ruby 3.3.0
 sqlite 3.45.2
 lua 5.4.6
 chromedriver 123.0.6312.86
 bun 1.1.6
 python 3.12.3
-rust 1.78.0
+rust 1.78

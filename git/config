@@ -42,6 +42,9 @@
   default = current
 	autoSetupRemote = true
 
+[commit]
+	gpgsign = true
+
 [user]
   email = willcxa@gmail.com
   name = zmwilliam
@@ -49,5 +52,5 @@
 [includeIf "gitdir:~/workspace/zmw/"]
     path = ~/workspace/zmw/.gitconfig
 
-[includeIf "gitdir:~/workspace/remote/"]
-    path = ~/workspace/remote/.gitconfig
+[includeIf "gitdir:~/workspace/iseatz/"]
+    path = ~/workspace/iseatz/.gitconfig
