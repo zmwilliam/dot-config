@@ -51,8 +51,10 @@ config.text_background_opacity = 1
 
 config.max_fps = 144
 
-require("mappings").apply(config)
-require("tab").apply(config)
+config.hide_tab_bar_if_only_one_tab = true
+
+-- require("mappings").apply(config)
+-- require("tab").apply(config)
 -- require("events").setup()
 
 return config
