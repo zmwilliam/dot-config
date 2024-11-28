@@ -25,9 +25,7 @@ if command -v podman &> /dev/null; then
   abbr docker="podman"
 fi
 
-if command -v docker &> /dev/null; then
-  abbr dc="docker compose"
-fi
+abbr dc="docker compose"
 
 # Eza
 abbr lla="ll -a"

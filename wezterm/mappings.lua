@@ -81,8 +81,11 @@ function M.apply(config)
 
 		--Font
 		{ key = "=", mods = "LEADER", action = act.IncreaseFontSize },
+		{ key = "+", mods = "LEADER", action = act.IncreaseFontSize },
 		{ key = "-", mods = "LEADER", action = act.DecreaseFontSize },
+		{ key = "_", mods = "LEADER", action = act.DecreaseFontSize },
 		{ key = "0", mods = "LEADER", action = act.ResetFontSize },
+		{ key = ")", mods = "LEADER", action = act.ResetFontSize },
 
 		-- Enter CopyMode
 		{ key = "Enter", mods = "LEADER", action = act.ActivateCopyMode },
