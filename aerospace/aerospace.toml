@@ -59,11 +59,11 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
 inner.horizontal = 10
-inner.vertical =   10
-outer.left =       10
-outer.bottom =     10
-outer.top =        10
-outer.right =      10
+inner.vertical = 10
+outer.left = 10
+outer.bottom = 10
+outer.top = 10
+outer.right = 10
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -119,12 +119,18 @@ alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
+alt-t = 'workspace t'
+alt-b = 'workspace b'
+alt-f = 'workspace f'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
 alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
 alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
 alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
+alt-shift-t = ['move-node-to-workspace t', 'workspace t']
+alt-shift-b = ['move-node-to-workspace b', 'workspace b']
+alt-shift-f = ['move-node-to-workspace f', 'workspace f']
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -152,7 +158,10 @@ esc = 'mode main'
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 #s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+f = [
+  'layout floating tiling',
+  'mode main',
+] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
 
 alt-shift-h = ['join-with left', 'mode main']
@@ -166,11 +175,11 @@ run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
-run = "move-node-to-workspace 1"
+run = "move-node-to-workspace t"
 
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
-run = "move-node-to-workspace 2"
+run = "move-node-to-workspace b"
 
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
@@ -180,3 +189,15 @@ run = "move-node-to-workspace 4"
 if.app-id = 'com.tinyspeck.slackmacgap'
 run = "move-node-to-workspace 4"
 
+[[on-window-detected]]
+if.app-id = 'com.amazonaws.acvc.osx'
+run = "move-node-to-workspace f"
+
+[[on-window-detected]]
+if.app-id = 'com.tinyapp.TablePlus-setapp'
+run = "move-node-to-workspace f"
+
+[[on-window-detected]]
+if.workspace = 'workspace f'
+check-further-callbacks = false
+run = 'layout floating'
