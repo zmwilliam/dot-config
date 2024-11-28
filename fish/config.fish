@@ -66,7 +66,7 @@ else
 end
 
 if type -q starship
-  set -gx STARSHIP_CONFIG $HOME/.config/fish/starship.toml
+  set -gx STARSHIP_CONFIG $HOME/.config/starship/starship.toml
   set -gx STARSHIP_LOG "error"
   starship init fish | source
 else
