@@ -43,7 +43,7 @@
 	autoSetupRemote = true
 
 [commit]
-	gpgsign = true
+	gpgsign = false
 
 [user]
   email = willcxa@gmail.com
