@@ -94,6 +94,8 @@ outer.right = 10
 # end tell'
 # '''
 
+alt-shift-enter = 'fullscreen'
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
@@ -119,18 +121,18 @@ alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
-alt-t = 'workspace t'
-alt-b = 'workspace b'
-alt-f = 'workspace f'
+alt-t = 'workspace 5'
+alt-b = 'workspace 6'
+alt-f = 'workspace 7'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
-alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
-alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
-alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
-alt-shift-t = ['move-node-to-workspace t', 'workspace t']
-alt-shift-b = ['move-node-to-workspace b', 'workspace b']
-alt-shift-f = ['move-node-to-workspace f', 'workspace f']
+alt-shift-1 = ['move-node-to-workspace 1 --focus-follows-window']
+alt-shift-2 = ['move-node-to-workspace 2 --focus-follows-window']
+alt-shift-3 = ['move-node-to-workspace 3 --focus-follows-window']
+alt-shift-4 = ['move-node-to-workspace 4 --focus-follows-window']
+alt-shift-5 = ['move-node-to-workspace 5 --focus-follows-window']
+alt-shift-6 = ['move-node-to-workspace 6 --focus-follows-window']
+alt-shift-7 = ['move-node-to-workspace 7 --focus-follows-window']
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -169,35 +171,40 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
+# alt-t = 'exec-and-forget open -a /Applications/WezTerm.app'
+# alt-b = 'exec-and-forget open -a /Applications/Arc.app'
+# alt-o = 'exec-and-forget open -a /Applications/Obsidian.app'
+# alt-s = 'exec-and-forget open -a /Applications/Slack.app'
+
 [[on-window-detected]]
 if.app-id = 'com.kapeli.dash-setapp'
 run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
-run = "move-node-to-workspace t"
+run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
-run = "move-node-to-workspace b"
+run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
-run = "move-node-to-workspace 4"
+run = "move-node-to-workspace 3"
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
 run = "move-node-to-workspace 4"
 
 [[on-window-detected]]
-if.app-id = 'com.amazonaws.acvc.osx'
-run = "move-node-to-workspace f"
-
-[[on-window-detected]]
 if.app-id = 'com.tinyapp.TablePlus-setapp'
-run = "move-node-to-workspace f"
+run = "move-node-to-workspace 5"
 
 [[on-window-detected]]
-if.workspace = 'workspace f'
+if.app-id = 'com.amazonaws.acvc.osx'
+run = "move-node-to-workspace 7"
+
+[[on-window-detected]]
+if.workspace = 'workspace 7'
 check-further-callbacks = false
 run = 'layout floating'

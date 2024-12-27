@@ -35,7 +35,7 @@ config.font = wezterm.font({
 		"liga=1",
 	},
 })
-config.font_size = 18
+config.font_size = 17
 
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.window_padding = {
