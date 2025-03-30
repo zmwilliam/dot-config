@@ -10,6 +10,14 @@ The easiest way to install the driver is installing [Karabiner Elements 14](http
 
 ## Setup
 
+### Install with Homebrew
+
+```sh
+brew install kanata
+```
+
+### Manual Install
+
 Download kanata_macos_arm84 at [releases page](https://github.com/jtroo/kanata/releases/tag/v1.7.0)
 
 Copy executable to bin folder
@@ -25,9 +33,11 @@ Give executable permission
 chmod u+x ~/.local/bin/kanata
 ```
 
+### Allow input monitoring
+
 Allow Wezterm and Kanata to monitor input at "System Settings -> Input Monitoring" ([example](https://github.com/jtroo/kanata/issues/1211#issuecomment-2327141671))
 
-Run Kanata
+### Run Kanata
 
 ```sh
 sudo kanata --cfg ~/.config/kanata/kanata.kbd
