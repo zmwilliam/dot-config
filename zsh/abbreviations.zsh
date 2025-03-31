@@ -7,9 +7,10 @@ abbr gds="git diff --shortstat"
 abbr glast="git diff HEADˆ"
 abbr ga="git add"
 abbr gp="git push"
-abbr gpl="git pull"
+abbr gpl="git pull --rebase"
 abbr gl="git log --graph --date=short"
 abbr glc="git log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status"
+abbr lg="lazygit"
 
 # Neovim
 abbr v="nvim"
@@ -32,3 +33,6 @@ abbr dc="docker compose"
 # Eza
 abbr lla="ll -a"
 abbr llt="ll --tree -a"
+
+#Tmux
+abbr tns="tmux new-session -A -s"

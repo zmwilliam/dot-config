@@ -5,11 +5,11 @@ cursor-style-blink = false
 window-decoration = true
 macos-option-as-alt = true
 
-font-size = 17
-font-family = Monaspace Neon
+font-size = 18
+#font-family = Monaspace Neon
 #font-family = Monaspace Argon
 #font-family = Monaspace Xenon
-#font-family = Monaspace Radon
+font-family = Monaspace Radon
 #font-family = Monaspace Krypton
 
 font-feature = calt
