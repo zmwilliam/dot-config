@@ -75,6 +75,7 @@ karabiner/automatic_backups/
 raycast/
 lazyvim/
 .gitconfig.inc
+zed/prompts/
 
 # podman
 containers/
