@@ -17,7 +17,7 @@ local monaspace = {
 
 local random_font_family = h.get_random_entry(monaspace)
 
-config.color_scheme = "tokyonight_night"
+config.color_scheme = "rose-pine"
 config.colors = { compose_cursor = "orange" }
 config.font = wezterm.font({
 	family = random_font_family,
@@ -35,7 +35,7 @@ config.font = wezterm.font({
 		"liga=1",
 	},
 })
-config.font_size = 17
+config.font_size = 19
 
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.window_padding = {
@@ -51,10 +51,10 @@ config.text_background_opacity = 1
 
 config.max_fps = 144
 
-config.hide_tab_bar_if_only_one_tab = true
+-- config.hide_tab_bar_if_only_one_tab = true
 
--- require("mappings").apply(config)
--- require("tab").apply(config)
--- require("events").setup()
+require("mappings").apply(config)
+require("tab").apply(config)
+require("events").setup()
 
 return config

@@ -121,9 +121,9 @@ alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
-alt-t = 'workspace 5'
-alt-b = 'workspace 6'
-alt-f = 'workspace 7'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = ['move-node-to-workspace 1 --focus-follows-window']
@@ -133,6 +133,12 @@ alt-shift-4 = ['move-node-to-workspace 4 --focus-follows-window']
 alt-shift-5 = ['move-node-to-workspace 5 --focus-follows-window']
 alt-shift-6 = ['move-node-to-workspace 6 --focus-follows-window']
 alt-shift-7 = ['move-node-to-workspace 7 --focus-follows-window']
+
+alt-w = '''exec-and-forget osascript -e 'tell application "Notes" to activate''''
+alt-t = 'exec-and-forget open -a /Applications/Ghostty.app'
+alt-b = 'exec-and-forget open -a /Applications/Arc.app'
+alt-s = 'exec-and-forget open -a /Applications/Slack.app'
+alt-d = 'exec-and-forget open -a /Applications/Setapp/Dash.app'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'

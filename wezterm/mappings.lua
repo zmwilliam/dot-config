@@ -13,10 +13,10 @@ function M.apply(config)
 	config.send_composed_key_when_left_alt_is_pressed = true
 	config.send_composed_key_when_right_alt_is_pressed = false
 
-	config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 1000 }
+	config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 
 	config.keys = {
-		{ key = "Space", mods = "LEADER|CTRL", action = act.SendKey({ key = "Space", mods = "CTRL" }) },
+		-- { key = "Space", mods = "LEADER|CTRL", action = act.SendKey({ key = "Space", mods = "CTRL" }) },
 
 		-- Application
 		{ key = "Q", mods = "CTRL", action = act.QuitApplication },
