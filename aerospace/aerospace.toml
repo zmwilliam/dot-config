@@ -137,6 +137,7 @@ alt-shift-7 = ['move-node-to-workspace 7 --focus-follows-window']
 alt-w = '''exec-and-forget osascript -e 'tell application "Notes" to activate''''
 alt-t = 'exec-and-forget open -a /Applications/Ghostty.app'
 alt-b = 'exec-and-forget open -a /Applications/Arc.app'
+alt-z = 'exec-and-forget open -a /Applications/Zen.app'
 alt-s = 'exec-and-forget open -a /Applications/Slack.app'
 alt-d = 'exec-and-forget open -a /Applications/Setapp/Dash.app'
 
@@ -177,11 +178,6 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
-# alt-t = 'exec-and-forget open -a /Applications/WezTerm.app'
-# alt-b = 'exec-and-forget open -a /Applications/Arc.app'
-# alt-o = 'exec-and-forget open -a /Applications/Obsidian.app'
-# alt-s = 'exec-and-forget open -a /Applications/Slack.app'
-
 [[on-window-detected]]
 if.app-id = 'com.kapeli.dash-setapp'
 run = "move-node-to-workspace 1"
@@ -196,6 +192,10 @@ run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
+run = "move-node-to-workspace 2"
+
+[[on-window-detected]]
+if.app-id = 'app.zen-browser.zen'
 run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
