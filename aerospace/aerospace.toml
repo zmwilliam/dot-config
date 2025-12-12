@@ -135,6 +135,7 @@ alt-shift-6 = ['move-node-to-workspace 6 --focus-follows-window']
 alt-shift-7 = ['move-node-to-workspace 7 --focus-follows-window']
 
 alt-w = '''exec-and-forget osascript -e 'tell application "Notes" to activate''''
+alt-o = 'exec-and-forget open -a /Applications/Obsidian.app'
 alt-t = 'exec-and-forget open -a /Applications/Ghostty.app'
 alt-b = 'exec-and-forget open -a /Applications/Arc.app'
 alt-z = 'exec-and-forget open -a /Applications/Zen.app'

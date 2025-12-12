@@ -1,5 +1,5 @@
-#theme = tokyonight
-theme = rose-pine
+# theme = "Rose Pine"
+theme = "Kanagawa Wave"
 mouse-hide-while-typing = true
 cursor-style = block
 cursor-style-blink = false
@@ -8,12 +8,12 @@ macos-option-as-alt = true
 adjust-cell-height = 35%
 window-colorspace=display-p3
 
-font-size = 18
+font-size = 21
 font-family = Monaspace Neon
-#font-family = Monaspace Argon
-#font-family = Monaspace Xenon
-#font-family = Monaspace Radon
-#font-family = Monaspace Krypton
+# font-family = Monaspace Argon
+# font-family = Monaspace Xenon
+# font-family = Monaspace Radon
+# font-family = Monaspace Krypton
 
 font-feature = calt
 font-feature = liga

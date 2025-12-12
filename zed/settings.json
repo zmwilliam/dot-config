@@ -7,12 +7,11 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "assistant": {
+  "agent": {
     "default_model": {
       "provider": "ollama",
       "model": "qwen2.5-coder:latest"
-    },
-    "version": "2"
+    }
   },
   "theme": "Rosé Pine Moon",
   "features": {
@@ -25,7 +24,7 @@
     "metrics": false,
     "diagnostics": false
   },
-  "ui_font_size": 17,
+  "ui_font_size": 18,
   "buffer_font_size": 18,
   "buffer_line_height": { "custom": 2 },
   // "buffer_line_height": "comfortable",
@@ -58,11 +57,16 @@
   },
   "file_finder": {
     "modal_max_width": "medium"
+  },
+  "languages": {
+    "Elixir": {
+      "language_servers": [
+        "expert",
+        "!elixir-ls",
+        "!next-ls",
+        "!lexical",
+        "..."
+      ]
+    }
   }
-  // "languages": {
-  //   "Elixir": {
-  //     // "language_servers": ["lexical", "!elixir-ls", "..."]
-  //     // "language_servers": ["next-ls", "!lexical", "!elixir-ls", "..."]
-  //   }
-  // }
 }

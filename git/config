@@ -3,7 +3,7 @@
 	helper = osxkeychain
 
 [merge]
-	tool = nvimdiff4
+	tool = nvimdiff3
 
 [mergetool]
 	keepBackup = false
@@ -31,6 +31,7 @@
 
 [core]
 	autocrlf = input
+  sshCommand = ssh -i ~/.ssh/id_ed25519
 
 [pull]
 	rebase = false

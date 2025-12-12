@@ -10,6 +10,7 @@ abbr gp="git push"
 abbr gpl="git pull --rebase"
 abbr gl="git log --graph --date=short"
 abbr glc="git log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status"
+abbr gwt="just -g wt"
 abbr lg="lazygit"
 
 # Neovim
