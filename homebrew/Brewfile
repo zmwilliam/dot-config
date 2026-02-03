@@ -1,28 +1,129 @@
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
+tap "homebrew/services"
+tap "nikitabobko/tap"
+tap "olets/tap"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
+# Tool for generating GNU Standards-compliant Makefiles
+brew "automake"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# Secure and free password manager for all of your devices
+brew "bitwarden-cli"
+# Collection of portable C++ source libraries
+brew "boost"
+# Core application library for C
+brew "glib"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
+# Vector graphics library with cross-device output support
+brew "cairo"
+# Load/unload environment variables based on $PWD
 brew "direnv"
+# C library of Git core methods that is re-entrant and linkable
+brew "libgit2"
+# Modern, maintained replacement for ls
 brew "eza"
-brew "fish"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Command-line fuzzy finder written in Go
 brew "fzf"
+# Distributed revision control system
 brew "git"
-brew "golang-migrate"
+# Asynchronous event library
+brew "libevent"
+# OpenType text shaping engine
+brew "harfbuzz"
+# User-friendly cURL replacement (command-line HTTP client)
+brew "httpie"
+# Run and Test HTTP Requests with plain text and curl
 brew "hurl"
+# Lightweight and flexible command-line JSON processor
 brew "jq"
+# Cross-platform software keyboard remapper for Linux, macOS and Windows
+brew "kanata"
+# Postgres C API library
+brew "libpq"
+# Generic library support script
+brew "libtool"
+# Linux virtual machines
+brew "lima"
+# Run a Kubernetes cluster locally
+brew "minikube"
+# Deep clean and optimize your Mac
+brew "mole"
+# Framework for layout and rendering of i18n text
+brew "pango"
+# CLI for Postgres with auto-completion and syntax highlighting
 brew "pgcli"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
+# Tool for managing OCI containers and pods
 brew "podman"
+# Generic machine emulator and virtualizer
+brew "qemu"
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# 7-Zip is a file archiver with a high compression ratio
+brew "sevenzip"
+# Daemon to provide vmnet.framework support for rootless QEMU
+brew "socket_vmnet"
+# Cross-shell prompt for astronauts
 brew "starship"
+# Terminal multiplexer
+brew "tmux"
+# Cross-platform C++ GUI toolkit
+brew "wxwidgets@3.2"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# Auto-expanding abbreviations manager for zsh, inspired by fish
+brew "olets/tap/zsh-abbr"
+# AeroSpace is an i3-like tiling window manager for macOS
+cask "nikitabobko/tap/aerospace"
+# Chromium based browser
 cask "arc"
+# Display management tool
+cask "betterdisplay"
+# Open source IDE for exploring and testing APIs
 cask "bruno"
-cask "discord"
-cask "disk-inventory-x"
+# Terminal-based AI coding assistant
+cask "claude-code"
+# Web browser
+cask "firefox"
 cask "font-jetbrains-mono-nerd-font"
+cask "font-monaspace"
+cask "font-monaspice-nerd-font"
 cask "font-victor-mono-nerd-font"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
+# Web browser
+cask "google-chrome"
+# Free and open-source media player
 cask "iina"
+# Keyboard customiser
 cask "karabiner-elements"
+# Support for Logitech G gear
+cask "logitech-g-hub"
+# Mouse control with the keyboard
+cask "mouseless"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
+# Control your tools with a few keystrokes
 cask "raycast"
+# Move and resize windows using keyboard shortcuts or snap areas
+cask "rectangle"
+# Collection of apps available by subscription
 cask "setapp"
-cask "spotify"
-cask "transmission"
+# Team communication and collaboration software
+cask "slack"
+# Configurator of compatible keyboards in real time
+cask "vial"
+# GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"
+# Multiplayer code editor
+cask "zed"
+# Gecko based web browser
+cask "zen"
+# Video communication and virtual meeting platform
+cask "zoom"

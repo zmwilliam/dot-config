@@ -11,15 +11,14 @@ plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
 plug "jeffreytse/zsh-vi-mode"
-plug "agkozak/zsh-z"
 plug "$HOME/.config/zsh/startship.zsh"
 
 function zvm_after_init(){
   plug "zap-zsh/fzf"
-  plug "olets/zsh-abbr"
 }
 
 if type brew &>/dev/null; then
+  plug "$(brew --prefix)/share/zsh-abbr/zsh-abbr.zsh"
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
@@ -33,4 +32,8 @@ fi
 
 if command -v asdf &> /dev/null; then
   . /opt/homebrew/opt/asdf/libexec/asdf.sh
+fi
+
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init zsh)"
 fi
