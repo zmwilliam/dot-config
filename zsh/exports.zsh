@@ -9,4 +9,8 @@ export ABBR_USER_ABBREVIATIONS_FILE=$HOME/.config/zsh/abbreviations.zsh
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-export ZVM_CURSOR_STYLE_ENABLED=false
+export ZVM_CURSOR_STYLE_ENABLED=true
+
+if command -v podman &> /dev/null; then
+  export DOCKER_HOST="unix://$(podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}')"
+fi

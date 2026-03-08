@@ -76,6 +76,10 @@ raycast/
 lazyvim/
 .gitconfig.inc
 zed/prompts/
+acli/
+gh/
+mole/
+op/
 
 # podman
 containers/

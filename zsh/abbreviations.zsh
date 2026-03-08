@@ -10,7 +10,7 @@ abbr gp="git push"
 abbr gpl="git pull --rebase"
 abbr gl="git log --graph --date=short"
 abbr glc="git log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status"
-abbr gwt="just -g wt"
+abbr "git wt"="just -g wt"
 abbr lg="lazygit"
 
 # Neovim
@@ -22,12 +22,6 @@ abbr lv="NVIM_APPNAME=lazyvim nvim"
 abbr bi="brew install"
 abbr bs="brew search"
 abbr bic="brew install --cask"
-
-# Docker / Podman
-
-if command -v podman &> /dev/null; then
-  abbr docker="podman"
-fi
 
 abbr dc="docker compose"
 
