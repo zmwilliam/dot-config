@@ -8,11 +8,11 @@ if wezterm.config_builder then
 end
 
 local monaspace = {
-	"Monaspace Argon",
-	"Monaspace Krypton",
+	-- "Monaspace Argon",
+	-- "Monaspace Krypton",
 	"Monaspace Neon",
-	"Monaspace Radon",
-	"Monaspace Xenon",
+	-- "Monaspace Radon",
+	-- "Monaspace Xenon",
 }
 
 local random_font_family = h.get_random_entry(monaspace)
@@ -23,6 +23,8 @@ config.font = wezterm.font({
 	family = random_font_family,
 	harfbuzz_features = {
 		"calt=1",
+		"liga=1",
+		"dlig=1",
 		"ss01=1",
 		"ss02=1",
 		"ss03=1",
@@ -32,18 +34,18 @@ config.font = wezterm.font({
 		"ss07=1",
 		"ss08=1",
 		"ss09=1",
-		"liga=1",
 	},
 })
-config.font_size = 19
+config.font_size = 18
 
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.window_padding = {
 	left = "1cell",
 	right = "1cell",
-	top = "1.2cell",
+	top = "1.5cell",
 	bottom = "0.5cell",
 }
+config.line_height = 1.2
 
 config.window_background_opacity = 1
 config.macos_window_background_blur = 0
@@ -51,10 +53,10 @@ config.text_background_opacity = 1
 
 config.max_fps = 144
 
--- config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = true
 
-require("mappings").apply(config)
-require("tab").apply(config)
-require("events").setup()
+-- require("mappings").apply(config)
+-- require("tab").apply(config)
+-- require("events").setup()
 
 return config

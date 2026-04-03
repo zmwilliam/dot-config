@@ -3,7 +3,8 @@ export VISUAL=nvim
 export NVIM_APPNAME=lazyvim
 
 export GOPATH=$HOME/workspace/go
-export PATH=$GOPATH/bin:$PATH
+export GOBIN=$GOPATH/bin
+export PATH=$GOBIN:$PATH
 
 export ABBR_USER_ABBREVIATIONS_FILE=$HOME/.config/zsh/abbreviations.zsh
 
