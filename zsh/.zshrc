@@ -38,6 +38,8 @@ if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"
 fi
 
-if command -v wt >/dev/null 2>&1; then 
+if command -v wt >/dev/null 2>&1; then
   eval "$(command wt config shell init zsh)"
 fi
+
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
