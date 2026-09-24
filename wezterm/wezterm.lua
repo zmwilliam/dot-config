@@ -17,6 +17,7 @@ local monaspace = {
 
 local random_font_family = h.get_random_entry(monaspace)
 
+config.front_end = "WebGpu"
 config.color_scheme = "rose-pine"
 config.colors = { compose_cursor = "orange" }
 config.font = wezterm.font({
@@ -36,7 +37,7 @@ config.font = wezterm.font({
 		"ss09=1",
 	},
 })
-config.font_size = 18
+config.font_size = 16
 
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.window_padding = {
@@ -51,7 +52,10 @@ config.window_background_opacity = 1
 config.macos_window_background_blur = 0
 config.text_background_opacity = 1
 
-config.max_fps = 144
+config.max_fps = 100
+config.animation_fps = 1
+config.cursor_blink_ease_in = "Constant"
+config.cursor_blink_ease_out = "Constant"
 
 config.hide_tab_bar_if_only_one_tab = true
 

@@ -7,6 +7,27 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "cli_default_open_behavior": "new_window",
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry",
+    },
+  },
+  "diff_view_style": "split",
+  "project_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "agent": {
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "git_panel": {
+    "dock": "left",
+  },
   "icon_theme": {
     "mode": "dark",
     "light": "Zed (Default)",
@@ -15,7 +36,7 @@
   "theme": {
     "mode": "dark",
     "light": "Rosé Pine Moon",
-    "dark": "Rosé Pine Moon",
+    "dark": "Rosé Pine",
   },
   "outline_panel": {
     "dock": "left",
@@ -24,47 +45,12 @@
     "metrics": false,
     "diagnostics": false,
   },
-  "ui_font_size": 17,
-  "buffer_font_size": 17,
-  "agent_ui_font_size": 17,
-  "agent_buffer_font_size": 15,
-  "buffer_line_height": "comfortable",
   "cursor_blink": false,
   "vim_mode": true,
   "vim": {
     "use_system_clipboard": "on_yank",
     "use_smartcase_find": true,
     "toggle_relative_line_numbers": true,
-  },
-  "buffer_font_family": "Monaspace Xenon",
-  "ui_font_family": "Monaspace Xenon",
-  "ui_font_features": {
-    "calt": 1,
-    "liga": 1,
-    "dlig": 1,
-    "ss01": 1,
-    "ss02": 1,
-    "ss03": 1,
-    "ss04": 1,
-    "ss05": 1,
-    "ss06": 1,
-    "ss07": 1,
-    "ss08": 1,
-    "ss09": 1,
-  },
-  "buffer_font_features": {
-    "calt": 1,
-    "liga": 1,
-    "dlig": 1,
-    "ss01": 1,
-    "ss02": 1,
-    "ss03": 1,
-    "ss04": 1,
-    "ss05": 1,
-    "ss06": 1,
-    "ss07": 1,
-    "ss08": 1,
-    "ss09": 1,
   },
   "git": {
     "inline_blame": { "enabled": false },
