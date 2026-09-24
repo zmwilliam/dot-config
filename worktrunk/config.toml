@@ -237,8 +237,8 @@
 worktree-path = "{{ repo_path }}/../{{ branch | sanitize }}"
 
 [post-create]
+copy = "wt step copy-ignored"
 deps = "[[ -f mix.exs ]] && mix deps.get"
 
 [post-start]
-copy = "wt step copy-ignored"
 compile = "[[ -f mix.exs ]] && mix compile"

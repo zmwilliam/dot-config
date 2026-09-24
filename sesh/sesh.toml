@@ -1,0 +1,2 @@
+git_namer_use_worktree_root = true
+git_dir_length = 2
