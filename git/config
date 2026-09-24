@@ -4,6 +4,7 @@
 
 [merge]
 	tool = nvimdiff3
+  conflictStyle = zdiff3
 
 [mergetool]
 	keepBackup = false
@@ -29,9 +30,19 @@
 [difftool "nvimdiff"]
 	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"
 
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  side-by-side = true
+  line-numbers = true
+  dark = true
+
+
 [core]
 	autocrlf = input
-  sshCommand = ssh -i ~/.ssh/id_ed25519
+  pager = delta
 
 [pull]
 	rebase = false
@@ -44,14 +55,28 @@
 	autoSetupRemote = true
 
 [commit]
-	gpgsign = false
+	gpgsign = true
 
 [user]
   email = willcxa@gmail.com
   name = zmwilliam
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB+HXjdZ6J+kv/wNbscP7BBA1g4WikynoAwXtV9l6ZKM
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[credential "https://github.com"]
+		helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+		helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
 
 [includeIf "gitdir:~/workspace/zmw/"]
     path = ~/workspace/zmw/.gitconfig
 
-[includeIf "gitdir:~/workspace/iseatz/"]
-    path = ~/workspace/iseatz/.gitconfig
+[includeIf "gitdir:~/workspace/fc/"]
+    path = ~/workspace/fc/.gitconfig
