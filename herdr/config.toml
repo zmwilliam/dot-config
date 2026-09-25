@@ -65,9 +65,9 @@ auto_switch = false
 prefix = "ctrl+a"
 workspace_picker = "prefix+u"
 rename_workspace = "prefix+comma"
-new_worktree = "prefix+shift+g"
+new_worktree = ""
 open_worktree = "prefix+shift+o"
-remove_worktree = "prefix+shift+c"
+remove_worktree = ""
 close_workspace = "prefix+shift+d"
 
 # Prefix-mode actions
@@ -168,6 +168,18 @@ key = "ctrl+l"
 type = "plugin_action"
 command = "smart-splits.nvim.right"
 description = "navigate right between Neovim windows and Herdr panes"
+
+[[keys.command]]
+key = "prefix+shift+g"
+type = "plugin_action"
+command = "worktrunk.open"
+description = "switch or create a Worktrunk worktree"
+
+[[keys.command]]
+key = "prefix+shift+c"
+type = "plugin_action"
+command = "worktrunk.remove"
+description = "remove a Worktrunk worktree"
 
 [[keys.command]]
 key = "prefix+w"
