@@ -146,6 +146,30 @@ close_workspace = "prefix+shift+d"
 # directory = "~/.herdr/worktrees"
 
 [[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "smart-splits.nvim.left"
+description = "navigate left between Neovim windows and Herdr panes"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "smart-splits.nvim.down"
+description = "navigate down between Neovim windows and Herdr panes"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "smart-splits.nvim.up"
+description = "navigate up between Neovim windows and Herdr panes"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "smart-splits.nvim.right"
+description = "navigate right between Neovim windows and Herdr panes"
+
+[[keys.command]]
 key = "prefix+w"
 type = "plugin_action"
 command = "fullerzz.sesh.open-picker"
