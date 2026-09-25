@@ -1,0 +1,13 @@
+version = 1
+
+[naming]
+path_components = 2
+[picker]
+separator_aware = false
+show_preview = false
+show_icons = true
+herdr_theme_inherit = true
+replace_worktree_icon = true
+show_last_workspace = true
+show_last_workspace_path = true
+workspace_sort = 'workspace'

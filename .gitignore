@@ -81,6 +81,15 @@ gh/
 mole/
 op/
 
+# Herdr runtime state and managed plugin checkouts
+herdr/*.log
+herdr/*.sock
+herdr/.plugins.lock
+herdr/plugins.json
+herdr/session.json
+herdr/plugins/github/
+herdr/plugins/config/**/*.lock
+
 # podman
 containers/
 
